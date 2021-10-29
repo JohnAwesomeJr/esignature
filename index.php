@@ -47,7 +47,8 @@ error_reporting(E_ALL);
 <body>
     <?php require "/var/www/html/uiParts/baseContainer.php"; ?>
     <div id="bodyCentering">
-        <div style="height:100px;"></div>
+        <?php require "/var/www/html/uiParts/headder.php"; ?>
+        <div style="height:85px;"></div>
         <?php makeCard($content, "", 1); ?>
         <?php makeCard($content); ?>
         <?php makeCard($content); ?>
