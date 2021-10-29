@@ -55,6 +55,7 @@ error_reporting(E_ALL);
         <?php makeCard($content); ?>
         <?php makeCard($content); ?>
         <div style="height:100px;"></div>
+        <?php require "/var/www/html/uiParts/footer.php"; ?>
     </div>
     </div>
 </body>
