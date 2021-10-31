@@ -65,6 +65,7 @@ error_reporting(E_ALL);
         <?php makeCard($content); ?>
         <div style="height:100px;"></div>
         <?php require "/var/www/html/uiParts/footer.php"; ?>
+        <?php footer("contractsButton", "nextButton", "plusButtonShort"); ?>
     </div>
     </div>
 </body>

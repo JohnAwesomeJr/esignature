@@ -1,5 +1,45 @@
+<style>
+    .button {
+        -webkit-user-select: none;
+        /* Safari */
+        -moz-user-select: none;
+        /* Firefox */
+        -ms-user-select: none;
+        /* IE10+/Edge */
+        user-select: none;
+        /* Standard */
+
+        display: inline-block;
+        font-size: 18px;
+        position: relative;
+        max-width: 100px;
+        height: 50px;
+        padding: 0px;
+        bottom: 15px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-left: 7px;
+        margin-right: 7px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 15px;
+    }
+</style>
 <?php
-function button($contents, $arguments = NULL, $color = 0)
+/**
+ * Inserts a button
+ *
+ * @param function or string  $contents can be a function or a string. This is waht will be insid the button.
+ * @param array $arguments if the first argument happens to be a function: 
+ * Must be an array of all of the arguments. 
+ * If you are NOT passing a function, than this can be a blank string. (eg "").
+ * @param integer $color 0 or 1... (0 = white button) (1 = secondariy color button).
+ * @param integer $buttonSize 0 or 1... (0 = button size 100px) (1 = button size 50px).
+ * 
+ */
+function button($contents, $arguments = NULL, $color = 0, $buttonSize = NULL)
 {
     global $secondColor;
     global $whiteColor;
@@ -7,7 +47,7 @@ function button($contents, $arguments = NULL, $color = 0)
 
 
     echo "<div ";
-    echo "id=button ";
+    echo "class=button ";
     echo "style= " . '"';
 
     if ($color == 0) {
@@ -16,33 +56,12 @@ function button($contents, $arguments = NULL, $color = 0)
         echo "background:" . $secondColor . "; ";
         echo "color:white; ";
     }
-    echo "display: inline-block; ";
-    echo "position:relative; ";
-    echo "min-width: 50px; ";
-    echo "max-width: 150px; ";
-    echo "height: 50px; ";
-    echo "padding:15px; ";
-    echo "margin-left: 7px; ";
-    echo "margin-right: 7px; ";
-    echo "bottom: 15px; ";
-
-
-
-
-    echo "margin:0px; ";
-    echo "overflow: hidden; ";
-
-    echo "display: flex; ";
-    echo "flex-direction: row; ";
-    echo "align-items: center; ";
-    echo "justify-content: center; ";
-
-
-
-
-    echo "box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); ";
-    echo "border-radius: 15px; ";
-
+    if ($buttonSize != NULL) {
+        $buttonSize = 50;
+    } else {
+        $buttonSize = 100;
+    }
+    echo "min-width: " . $buttonSize . "px; ";
     echo '"';
     echo '>';
 
