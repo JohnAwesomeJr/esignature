@@ -1,21 +1,10 @@
-<?php
-$primaryColor = "#476CF2";
-// $primaryColor = "#8fd1f7";
-$secondColor = "#F1AD47";
-$background = "#EEF8FF";
-$blackColor = "black";
-$whiteColor = "white";
-?>
+<?php require "/var/www/html/colors.php"; ?>
 
 <?php require "/var/www/html/uiParts/card.php"; ?>
 <?php $content = "I am thinking that I want to do somthing fun. I am thinking that I want to do somthing fun. I am thinking that I want to do somthing fun. I am thinking that I want to do somthing fun."; ?>
 
 
-<?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-?>
+
 
 
 

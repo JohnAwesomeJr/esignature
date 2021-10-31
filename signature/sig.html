@@ -1,25 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <title>Signature Pad demo</title>
-    <meta name="description"
-        content="Signature Pad - HTML5 canvas based smooth signature drawing using variable width spline interpolation.">
-
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-
     <link rel="stylesheet" href="signature-pad.css">
-
-    <!--[if IE]>
-    <link rel="stylesheet" type="text/css" href="css/ie9.css">
-  <![endif]-->
-
     <script type="text/javascript" async="" src="ga.js"></script>
     <script type="text/javascript">
         var _gaq = _gaq || [];
@@ -34,43 +16,41 @@
     </script>
 </head>
 
-<body onselectstart="return false">
-    <a id="github" style="position: absolute; top: 0; right: 0; border: 0" href="signature_pad">
-        <img src="forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub">
-    </a>
-
-    <div id="signature-pad" class="signature-pad">
-        <div class="signature-pad--body">
-            <canvas style="touch-action: none;" width="1328" height="738"></canvas>
+<div id="signature-pad" class="signature-pad">
+    <div class="signature-pad--body">
+        <canvas style="touch-action: none;" width="1328" height="738"></canvas>
+    </div>
+    <div class="signature-pad--actions">
+        <div>
+            <button style="display:none;" type="button" class="button clear" data-action="clear">Reset</button>
+            <button style="display:none;" type="button" class="button" data-action="change-color">Change color</button>
+            <button style="display:none;" type="button" class="button" data-action="undo">Undo</button>
+            <button style="display:none;" type="button" class="button save" data-action="save-png">Save as PNG</button>
+            <button style="display:none;" type="button" class="button save" data-action="save-jpg">Save as JPG</button>
+            <button style="display:none;" type="button" class="button save" data-action="save-svg">Save as SVG</button>
+            <button style="display:none;" type="button" id="base64id" class="button save" data-action="conBase64">JJ's
+                base64</button>
         </div>
-        <div class="signature-pad--footer">
-            <div class="description">Sign above</div>
-
-            <div class="signature-pad--actions">
-                <div>
-                    <button type="button" class="button clear" data-action="clear">Clear</button>
-                    <button type="button" class="button" data-action="change-color">Change color</button>
-                    <button type="button" class="button" data-action="undo">Undo</button>
-
-                </div>
-                <div>
-                    <button type="button" class="button save" data-action="save-png">Save as PNG</button>
-                    <button type="button" class="button save" data-action="save-jpg">Save as JPG</button>
-                    <button type="button" class="button save" data-action="save-svg">Save as SVG</button>
-                    <button type="button" class="button save" data-action="conBase64">JJ's base64</button>
-                </div>
-            </div>
-        </div>
-        <form action="upload.php" method="post">
-            <textarea id="myTest" name="base64Data">test</textarea>
-            <input type="submit">
-        </form>
     </div>
 
-    <script src="signature_pad.js"></script>
-    <script src="app.js"></script>
+</div>
+<form action="upload.php" method="post">
+    <textarea style="display:none;" id="myTest" name="base64Data"></textarea>
+    <input style="display:none;" id="submitSvg" type="submit">
+</form>
+<div onclick="finalClick()" style="background:red; padding:10px;">Click!</div>
+<script src="signature_pad.js"></script>
+<script src="app.js"></script>
+<script>
+    function finalClick() {
+        document.getElementById('base64id').click();
+        var button = document.getElementById("myTest").innerHTML;
+        if (button != "") {
+            document.getElementById('submitSvg').click();
+        }
+    }
+</script>
 
 
-</body>
 
 </html>

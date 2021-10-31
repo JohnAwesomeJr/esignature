@@ -1,75 +1,66 @@
-<?php require "/var/www/html/arrayVisualizer.php"; ?>
-
-<?php
-$primaryColor = "#476CF2";
-// $primaryColor = "#8fd1f7";
-$secondColor = "#F1AD47";
-$background = "#EEF8FF";
-$blackColor = "black";
-$whiteColor = "white";
-?>
-
+<?php require "/var/www/html/colors.php"; ?>
 <?php require "/var/www/html/uiParts/card.php"; ?>
-<?php $content = <<<EODCONTENTTHINGS
-<h1>H1 headding</h1>
+<?php require "/var/www/html/htmlStart.php"; ?>
 
-<ul>
-<li>TEST</li>
-<li>TEST</li>
-<li>TEST</li>
-</ul>
-<p>
-I am testing all of the functions in the HTML section.
-</p>
-<p>
-Pekaboo!
-</p>
-<h2>this is an H2 headding</h2>
-EODCONTENTTHINGS;; ?>
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
 
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+$sql = <<<EOD
+SELECT contractName, contractContent 
+FROM contract
+WHERE contractId = ?;
+EOD;
+$id = $_GET['contractNumber'];
+$pdo = new PDO('mysql:host=localhost;dbname=esignature', "root", "il0veG@D");
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$id]);
+$rows = $stmt->fetchAll();
 ?>
 
+<?php $content = $rows[0]['contractContent']; ?>
+<?php $title = $rows[0]['contractName']; ?>
 
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>e-Signature</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed&display=swap" rel="stylesheet">
-</head>
 <style>
-    * {
-        padding: 0px;
-        margin: 0px;
-        box-sizing: border-box;
+    #title {
+        font-size: 30px;
+        font-family: 'Merriweather', serif;
+        margin-bottom: 24px;
+    }
+
+    #contractText p {
+        font-size: 14px;
+        font-family: 'Merriweather', serif;
+        margin-bottom: 24px;
+    }
+
+    #contractText li {
+        font-size: inherit;
+        font-family: 'Merriweather', serif;
+        margin-bottom: 10px;
+        margin-left: 30px;
+    }
+
+    #contractText h1 {
+        font-size: 30px;
+        font-family: 'Merriweather', serif;
+        margin-bottom: 24px;
+    }
+
+    #contractText h2 {
         font-size: 24px;
-        text-decoration: none;
-        color: black;
+        font-family: 'Merriweather', serif;
+        margin-bottom: 24px;
 
     }
 
-    body {
-        overflow: hidden;
-        font-family: 'Barlow Condensed', sans-serif;
-    }
+    #contractText h3 {
+        font-size: 20px;
+        font-family: 'Merriweather', serif;
+        margin-bottom: 24px;
 
-    #bodyCentering {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
     }
 </style>
 
@@ -81,7 +72,8 @@ error_reporting(E_ALL);
     <div id="bodyCentering">
         <?php require "/var/www/html/uiParts/headder.php"; ?>
         <div style="height:85px;"></div>
-        <?php makeCard($content); ?>
+        <?php makeCard("<p>please read the contract and press (NEXT) when you are ready to sign.</p>", "", 1); ?>
+        <?php makeCard("<h1 id=title>" . $title . "</h1>" . "<br>" . "<div id=contractText>"  . $content . "</div>"); ?>
         <div style="height:100px;"></div>
 
 
