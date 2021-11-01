@@ -130,6 +130,14 @@ function footer($button1 = NULL, $button2 = NULL, $button3 = NULL)
         button(" NEXT", "", 1, NULL);
         echo "</a>";
     }
+    function nextButtonOrangeJavascript()
+    {
+        echo "<div ";
+        echo "onclick=" . "'" . "clickRed()" . "'";
+        echo ">";
+        button(" NEXT", "", 1, NULL);
+        echo "</div>";
+    }
     function saveButton($link)
     {
         echo "<a ";
