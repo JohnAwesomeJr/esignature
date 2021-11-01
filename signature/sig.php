@@ -8,10 +8,13 @@
         _gaq.push(['_setAccount', 'UA-39365077-1']);
         _gaq.push(['_trackPageview']);
 
-        (function () {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        (function() {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
         })();
     </script>
 </head>
@@ -34,7 +37,9 @@
     </div>
 
 </div>
-<form action="upload.php" method="post">
+
+<?php $urlPath = "upload.php?" . "contractNumber=" . $_GET['contractNumber'] . "&" . "contractSigner=" . $_GET['contractSigner']; ?>
+<form action="<?= $urlPath; ?>" method="post">
     <textarea style="display:none;" id="myTest" name="base64Data"></textarea>
     <input style="display:none;" id="submitSvg" type="submit">
 </form>
