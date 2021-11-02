@@ -4,7 +4,7 @@
 
 <head>
     <link rel="stylesheet" href="signature-pad.css">
-    <script type="text/javascript" async="" src="ga.js"></script>
+    <script type="text/javascript" async="" src="app.js"></script>
     <script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-39365077-1']);
@@ -30,6 +30,12 @@
         align-items: center;
         justify-content: center;
     }
+
+    #spacer {
+        width: 200px;
+        height: 70px;
+        background: none;
+    }
 </style>
 
 
@@ -41,7 +47,6 @@
 
 
     <div id="bodyCentering">
-        <?php require "/var/www/html/uiParts/headder.php"; ?>
         <div id="container">
             <div id="signature-pad" class="signature-pad">
                 <div class="signature-pad--body">
@@ -59,6 +64,9 @@
                             base64</button>
                     </div>
                 </div>
+
+            </div>
+            <div id="spacer">
 
             </div>
         </div>
