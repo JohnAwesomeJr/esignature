@@ -37,8 +37,55 @@ function resizeCanvas() {
 
 // On mobile devices it might make more sense to listen to orientation change,
 // rather than window resize events.
-window.onresize = resizeCanvas;
-resizeCanvas();
+// window.onresize = resizeCanvas;
+
+
+
+window.onresize = test;
+var vwString = "";
+var vhString = "";
+
+
+function test() {
+  var vw = document.getElementById('container').offsetWidth;
+  var vh = document.getElementById('container').offsetHeight;
+  vwString = String(vw);
+  vwString = String(vh);
+
+  console.log("x: " + vw + " y: " + vh);
+}
+
+test();
+console.log(vwString);
+console.log(vhString);
+
+document.getElementById('signature-pad').style.width = vwString + "px";
+document.getElementById('signature-pad').style.height = vhString + "px";
+
+setTimeout(() => {
+  resizeCanvas();
+}, 0)
+
+
+
+
+
+
+
+// JJs Code modifacation...
+// var wW = document.getElementById('container').offsetWidth;
+// document.getElementById('signature-pad').style.width = wW - 70 + "px";
+
+// var wH = document.getElementById('container').offsetWidth;
+// document.getElementById('signature-pad').style.height = wH - 10 + "px";
+
+// var ratio = Math.max(window.devicePixelRatio || 1, 1);
+// // This part causes the canvas to be cleared
+// canvas.width = canvas.offsetWidth * ratio;
+// canvas.height = canvas.offsetHeight * ratio;
+// canvas.getContext("2d").scale(ratio, ratio);
+// // resizeCanvas();
+//end JJs Cond modifacations
 
 function download(dataURL, filename) {
   if (navigator.userAgent.indexOf("Safari") > -1 && navigator.userAgent.indexOf("Chrome") === -1) {
