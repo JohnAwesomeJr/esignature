@@ -41,30 +41,38 @@ function resizeCanvas() {
 
 
 
-window.onresize = test;
-var vwString = "";
-var vhString = "";
+// window.onresize = test;
+var vwString = "test w";
+var vhString = "test h";
+var setvw = 0;
+var setvh = 0;
 
 
 function test() {
   var vw = document.getElementById('container').offsetWidth;
-  var vh = document.getElementById('container').offsetHeight;
-  vwString = String(vw);
-  vwString = String(vh);
+  var vh = document.getElementById('container').clientHeight;
+  let vwString = String(vw - 40);
+  let vhString = String(vh - 40);
+  if (vw > vh) {
+    setvw = document.getElementById('signature-pad').style.width = vwString + "px";
+    setvh = document.getElementById('signature-pad').style.height = vhString + "px";
 
-  console.log("x: " + vw + " y: " + vh);
+  } else {
+    setvw = document.getElementById('signature-pad').style.width = vhString + "px";
+    setvh = document.getElementById('signature-pad').style.height = vwString + "px";
+
+  }
+
 }
-
 test();
-console.log(vwString);
-console.log(vhString);
-
-document.getElementById('signature-pad').style.width = vwString + "px";
-document.getElementById('signature-pad').style.height = vhString + "px";
+window.addEventListener("orientationchange", function (event) {
+  alert("the orientation of the device is now " + event.target.screen.orientation.angle);
+});
 
 setTimeout(() => {
   resizeCanvas();
-}, 0)
+}, 10000);
+
 
 
 
