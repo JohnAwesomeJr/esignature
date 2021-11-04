@@ -65,13 +65,8 @@ function test() {
 
 }
 test();
-window.addEventListener("orientationchange", function (event) {
-  alert("the orientation of the device is now " + event.target.screen.orientation.angle);
-});
 
-setTimeout(() => {
-  resizeCanvas();
-}, 10000);
+resizeCanvas();
 
 
 

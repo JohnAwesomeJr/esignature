@@ -34,7 +34,7 @@
     #spacer {
         width: 200px;
         height: 70px;
-        background: none;
+        background: red;
     }
 </style>
 
