@@ -34,7 +34,53 @@
     #spacer {
         width: 200px;
         height: 70px;
-        background: red;
+        /* background: red; */
+    }
+
+    #rotateScreen {
+        position: fixed;
+        width: 100vw;
+        height: calc(100vh - 70px);
+        background: <?= $background; ?>;
+
+        display: flex;
+
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #signPrompt {
+        position: relative;
+        pointer-events: none;
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #grayLine {
+        width: calc(100% - 50px);
+        height: 3px;
+        background: hsla(0, 0%, 0%, 0.21);
+        margin: 30px;
+        pointer-events: none;
+
+    }
+
+    #fade {
+        opacity: 20%;
+        transition: all 1s;
+
+    }
+
+    @media screen and (orientation:landscape) {
+        #rotateScreen {
+            display: none;
+        }
     }
 </style>
 
@@ -51,6 +97,12 @@
             <div id="signature-pad" class="signature-pad">
                 <div class="signature-pad--body">
                     <canvas style="touch-action: none;" width="1328" height="738"></canvas>
+                    <div id="signPrompt">
+                        <div id="fade">
+                            <?php require "/var/www/html/uiImages/signPromptIcon.svg"; ?>
+                        </div>
+                        <div id="grayLine"></div>
+                    </div>
                 </div>
                 <div class="signature-pad--actions">
                     <div>
@@ -79,7 +131,10 @@
         <div style="display:none;" id="clickRed" onclick="finalClick()" style="background:red; padding:10px;">Click!</div>
 
 
-
+        <div id="rotateScreen">
+            <div>Please rotate your device.</div>
+            <?php require "/var/www/html/uiImages/rotateIcon.svg"; ?>
+        </div>
         <!-- Add the footer -->
         <?php
         require "/var/www/html/uiParts/footer.php";
