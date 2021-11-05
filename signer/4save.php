@@ -30,24 +30,53 @@
         }
     </style>
 
-    <div id="screen">
-        <?php require "/var/www/html/uiImages/loading/loading.php"; ?>
-    </div>
+    <!-- <div id="screen"> -->
+    <?php //require "/var/www/html/uiImages/loading/loading.php"; 
+    ?>
+    <!-- </div> -->
 
 
+    <?php
+
+    $sql = <<<EOD
+    SELECT * 
+    FROM esignature.signers
+    WHERE signerId =?;
+    EOD;
+
+    $id = $_GET['contractSigner'];
+
+    $pdo = new PDO('mysql:host=localhost;dbname=esignature', "root", "il0veG@D");
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$id]);
+    $rows = $stmt->fetchAll();
+    ?>
+    <pre>
+        <?php print_r($rows); ?>
+    </pre>
 
 
 
     <?php
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
 
-    require_once __DIR__ . '/vendor/autoload.php';
+
+    $signatureCss = "style=\"width:300px;\" ";
+    $pathToSignature = "/var/www/html/signature" . $rows[0]['signerImagePath'];
+    $svgImage = "<img class=sig {$signatureCss} src=\"{$pathToSignature}\">";
+    $signatureDate = $rows[0]['signDate'];
+    $signerEmail = $rows[0]['signerEmail'];
+    $signerTitle = $rows[0]['signerTitle'];
+
+
+    require "/var/www/html/testBlog.php";
+
+    require_once __DIR__ . "/.." . '/vendor/autoload.php';
 
     $mpdf = new \Mpdf\Mpdf();
-    $mpdf->WriteHTML('<h1>Hello world!</h1>');
+    $mpdf->WriteHTML($blog);
     $mpdf->Output();
+
+    // $mpdf->Output('/var/www/html/pdfFiles/mydoc.pdf');
     ?>
 
 

@@ -11,18 +11,19 @@ file_put_contents($newFilePath, $decoded_image);
 // make the file path
 $completeFilePath = "/" . $newFilePath;
 ?>
-
+<?php $todaysDate = date("Y-m-d"); ?>
+<?php $urlPath = "/signer/4save.php?" . "contractNumber=" . $_GET['contractNumber'] . "&" . "contractSigner=" . $_GET['contractSigner']; ?>
 
 <?php
 $sql = <<<EOD
 UPDATE esignature.signers
-SET signers.signerImagePath=?
+SET signers.signerImagePath=?, signers.signDate=? 
 WHERE signerId = ?;
 EOD;
 
 $pdo = new PDO('mysql:host=localhost;dbname=esignature', "root", "il0veG@D");
 $stmt = $pdo->prepare($sql);
-$stmt->execute([$completeFilePath, $_GET['contractSigner']]);
+$stmt->execute([$completeFilePath, $todaysDate, $_GET['contractSigner']]);
 $rows = $stmt->fetchAll();
 ?>
-<?php header("Location: /signer/4save.php");
+<?php header("Location: {$urlPath}");
