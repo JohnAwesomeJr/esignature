@@ -21,7 +21,7 @@
         width: 6px;
         height: 18px;
         border-radius: 20%;
-        background: #fff;
+        background: <?= $secondColor; ?>;
     }
 
     .lds-spinner div:nth-child(1) {
