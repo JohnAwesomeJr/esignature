@@ -72,20 +72,29 @@
             $signerTitle = $rows[$value]['signerTitle'];
             $signatureName = $rows[$value]['signerName'];
             $html = <<<EOD
-
-        <div style="width: 100%; border-radius: 15px; padding:30px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); ">
+            <br>
+            <table style="page-break-inside: avoid;">
+            <tr>
+            <td>
+            <div style="width: 100%; border-radius: 15px; padding:30px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); ">
             <div align="left" style="width: 50%;float: left;">
-                <h2>{$signerTitle}</h2>
-                <h4>{$signatureName}</h4>
-                <h4>{$signerEmail}</h4>
+            <h2>{$signerTitle}</h2>
+            <h4>{$signatureName}</h4>
+            <h4>{$signerEmail}</h4>
             </div>
             <div align="left" style="width: 50%;float: left;">
-                <div style="width: 100%;">
-                    <img style="width:200px;" src="{$pathToSignature}">
-                    <p>Signed: {$signatureDate}</p>
-                </div>
+            <div style="width: 100%;">
+            <img style="width:400px;" src="{$pathToSignature}">
+            <p>Signed: {$signatureDate}</p>
             </div>
-        </div>
+            </div>
+            </div>
+            </td>
+            </tr>
+            </table>
+            <hr>
+            <br>
+            <br>
         EOD;
 
             $signers = $signers . $html;
@@ -116,15 +125,18 @@
         $mpdf = new \Mpdf\Mpdf();
         $mpdf->WriteHTML($title . $content . $signers);
         // $mpdf->Output();
-        $mpdf->Output('/var/www/html/pdfFiles/mydoc.pdf');
+        $fileId = uniqid('', true) . ".pdf";
+        $mpdf->Output('/var/www/html/pdfFiles/' . $fileId);
+        $email = "yes";
     } else {
         echo "we will email you when everyone has signed the contract.";
+        $email = "no";
     }
 
 
 
     ?>
-    <?php $urlPath = "/signer/5done.php?" . "contractNumber=" . $_GET['contractNumber'] . "&" . "contractSigner=" . $_GET['contractSigner']; ?>
+    <?php $urlPath = "/signer/5done.php?" . "contractNumber=" . $_GET['contractNumber'] . "&" . "contractSigner=" . $_GET['contractSigner']  . "&" . "email=" . $email . "&" . "downloadLink=" . urlencode("/pdfFiles/" . $fileId); ?>
     <?php header("Location: {$urlPath}"); ?>
 
 
