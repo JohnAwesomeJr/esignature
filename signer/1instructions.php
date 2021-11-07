@@ -2,30 +2,62 @@
 <?php require "/var/www/html/uiParts/card.php"; ?>
 <?php require "/var/www/html/htmlStart.php"; ?>
 
+<style>
+    .numberTextContainer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: left;
+
+        margin: 30px 0px;
+    }
+
+    .numberTextContainer h4 {
+        margin: 0px;
+        flex-shrink: 1;
+        font-size: 20px;
+    }
+
+    #card {
+        padding: 30px 30px 30px 30px !important;
+    }
+
+    .flexCentering {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+
 <body>
 
     <?php $content = <<<EODCONTENTTHINGS
-        <h1>H1 headding</h1>
-
-        <ul>
-            <li>TEST</li>
-            <li>TEST</li>
-            <li>TEST</li>
-        </ul>
-        <p>
-        I am testing all of the functions in the HTML section.
-        </p>
-        <p>
-        Pekaboo!
-        </p>
-        <h1>this is an H1 headding</h1>
-        <h2>this is an H2 headding</h2>
-        <h3>this is an H3 headding</h3>
-
+        <div class="flexCentering">
+            <div>
+                <div class="numberTextContainer">
+                    <img src="/uiImages/1.svg">
+                    <h4>&nbsp;&nbsp;&nbsp;Read The Contract</h4>
+                </div>
+                <div class="numberTextContainer">
+                    <img src="/uiImages/2.svg">
+                    <h4>&nbsp;&nbsp;&nbsp;Sign The Contract</h4>
+                </div>
+                <div class="numberTextContainer">
+                    <img src="/uiImages/3.svg">
+                    <h4>&nbsp;&nbsp;&nbsp;Send a copy to the owner</h4>
+                </div>
+                <div class="numberTextContainer">
+                    <img src="/uiImages/4.svg">
+                    <h4>&nbsp;&nbsp;&nbsp;Save Your Copy</h4>
+                </div>
+            </div>
+        </div>
     EODCONTENTTHINGS;; ?>
 
     <!-- start of the base container -->
     <?php require "/var/www/html/uiParts/baseContainer.php"; ?>
+
 
 
     <div id="bodyCentering">
