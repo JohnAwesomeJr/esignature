@@ -3,11 +3,6 @@
 <?php require "/var/www/html/uiParts/card.php"; ?>
 <?php $content = "I am thinking that I want to do somthing fun. I am thinking that I want to do somthing fun. I am thinking that I want to do somthing fun. I am thinking that I want to do somthing fun."; ?>
 
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
