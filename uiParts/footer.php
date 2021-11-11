@@ -32,11 +32,11 @@
  * 
  * 
  */
+require "/var/www/html/uiParts/button.php";
 function footer($button1 = NULL, $button2 = NULL, $button3 = NULL)
 {; ?>
 
     <?php global $primaryColor; ?>
-    <?php require "/var/www/html/uiParts/button.php"; ?>
 
     <style>
         #footer {

@@ -9,7 +9,9 @@
 </head>
 
 <body>
-    <a href="/signer/1instructions.php?contractNumber=1&contractSigner=1">go to first contract</a>
+    <a href="/signer/1instructions.php?contractNumber=1&contractSigner=1">Signer 1</a>
+    <a href="/signer/1instructions.php?contractNumber=1&contractSigner=2">signer 2</a>
+    <a href="/signer/1instructions.php?contractNumber=1&contractSigner=5">signer 3</a>
 </body>
 
 </html>

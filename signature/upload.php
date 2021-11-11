@@ -1,4 +1,8 @@
 <?php
+// enviroment variables
+require "/var/www/html/.env";
+?>
+<?php
 $fileName = uniqid();
 $data_uri = $_POST['base64Data'];
 $encoded_image = explode(",", $data_uri)[1];
@@ -21,7 +25,7 @@ SET signers.signerImagePath=?, signers.signDate=?
 WHERE signerId = ?;
 EOD;
 
-$pdo = new PDO('mysql:host=localhost;dbname=esignature', "root", "il0veG@D");
+$pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$completeFilePath, $todaysDate, $_GET['contractSigner']]);
 $rows = $stmt->fetchAll();

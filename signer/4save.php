@@ -1,3 +1,7 @@
+<?php
+// enviroment variables
+require "/var/www/html/.env";
+?>
 <?php require "/var/www/html/colors.php"; ?>
 
 <!DOCTYPE html>
@@ -11,31 +15,6 @@
 </head>
 
 <body>
-    <style>
-        * {
-            margin: 0px;
-            padding: 0px;
-        }
-
-        #screen {
-            position: fixed;
-            background: <?= $background; ?>;
-            width: 100vw;
-            height: 100vh;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-    </style>
-
-    <div id="screen">
-        <?php require "/var/www/html/uiImages/loading/loading.php";
-        ?>
-    </div>
-
-
     <?php
 
     $sql = <<<EOD
@@ -46,7 +25,7 @@
 
     $id = $_GET['contractNumber'];
 
-    $pdo = new PDO('mysql:host=localhost;dbname=esignature', "root", "il0veG@D");
+    $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$id]);
     $rows = $stmt->fetchAll();
@@ -109,7 +88,7 @@
 
         $id = $_GET['contractNumber'];
 
-        $pdo = new PDO('mysql:host=localhost;dbname=esignature', "root", "il0veG@D");
+        $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$id]);
         $rows = $stmt->fetchAll();
@@ -136,6 +115,7 @@
 
 
     ?>
+
     <?php $urlPath = "/signer/5done.php?" . "contractNumber=" . $_GET['contractNumber'] . "&" . "contractSigner=" . $_GET['contractSigner']  . "&" . "email=" . $email . "&" . "downloadLink=" . urlencode("/pdfFiles/" . $fileId); ?>
     <?php header("Location: {$urlPath}"); ?>
 

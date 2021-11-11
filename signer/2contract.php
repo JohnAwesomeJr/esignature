@@ -1,3 +1,7 @@
+<?php
+// enviroment variables
+require "/var/www/html/.env";
+?>
 <?php require "/var/www/html/colors.php"; ?>
 <?php require "/var/www/html/uiParts/card.php"; ?>
 <?php require "/var/www/html/htmlStart.php"; ?>
@@ -13,7 +17,7 @@ FROM contract
 WHERE contractId = ?;
 EOD;
 $id = $_GET['contractNumber'];
-$pdo = new PDO('mysql:host=localhost;dbname=esignature', "root", "il0veG@D");
+$pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$id]);
 $rows = $stmt->fetchAll();

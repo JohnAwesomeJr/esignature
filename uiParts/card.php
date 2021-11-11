@@ -4,7 +4,7 @@ function makeCard($contents, $arguments = NULL, $color = 0)
     global $secondColor;
 
     echo "<div ";
-    echo "id=card ";
+    echo "class=card ";
     echo "style= " . '"';
 
     if ($color == 0) {
@@ -18,7 +18,7 @@ function makeCard($contents, $arguments = NULL, $color = 0)
     echo "max-width: 700px; ";
     // echo "width:100px; ";
     // echo "height:100px; ";
-    echo "padding:30px 30px 30px 39px; ";
+    echo "padding:30px 30px 0px 39px; ";
     echo "margin:15px 30px; ";
 
     echo "box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); ";
