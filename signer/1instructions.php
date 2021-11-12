@@ -1,6 +1,27 @@
 <?php require "/var/www/html/colors.php"; ?>
 <?php require "/var/www/html/uiParts/card.php"; ?>
 <?php require "/var/www/html/htmlStart.php"; ?>
+<?php
+// enviroment variables
+require "/var/www/html/.env";
+?>
+
+<?php
+
+$sql = <<<EOD
+SELECT * 
+FROM esignature.signers
+WHERE signerId =?;
+EOD;
+
+$id = $_GET['contractSigner'];
+
+$pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$id]);
+$rows = $stmt->fetchAll();
+?>
+
 
 <style>
     .numberTextContainer {
@@ -32,7 +53,9 @@
 
 <body>
 
-    <?php $content = <<<EODCONTENTTHINGS
+    <?php
+    if ($rows[0]['signDate'] == 0) {
+        $content = <<<EODCONTENTTHINGS
         <div class="flexCentering">
             <div>
                 <div class="numberTextContainer">
@@ -53,7 +76,13 @@
                 </div>
             </div>
         </div>
-    EODCONTENTTHINGS;; ?>
+    EODCONTENTTHINGS;
+    } else {
+        $content = "<p>You have alredy signed this contract</p>";
+    }
+    ?>
+
+
 
     <!-- start of the base container -->
     <?php require "/var/www/html/uiParts/baseContainer.php"; ?>
@@ -68,13 +97,16 @@
 
         <!-- Add the footer -->
         <?php
-        require "/var/www/html/uiParts/footer.php";
-        $allButtons = [
-            //$button1 = ["templatesButton", "http://www.google.com"],
-            //$button2 = ["contractsButton", "http://www.google.com"],
-            $button3 = ["nextButtonOrange", "/signer/2contract.php?" . "contractNumber=" . $_GET['contractNumber'] . "&" . "contractSigner=" . $_GET['contractSigner']]
-        ];
-        footer(...$allButtons);
+        if ($rows[0]['signDate'] == 0) {
+
+            require "/var/www/html/uiParts/footer.php";
+            $allButtons = [
+                //$button1 = ["templatesButton", "http://www.google.com"],
+                //$button2 = ["contractsButton", "http://www.google.com"],
+                $button3 = ["nextButtonOrange", "/signer/2contract.php?" . "contractNumber=" . $_GET['contractNumber'] . "&" . "contractSigner=" . $_GET['contractSigner']]
+            ];
+            footer(...$allButtons);
+        }
         ?>
 
 
