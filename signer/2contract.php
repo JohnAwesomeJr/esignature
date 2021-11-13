@@ -74,7 +74,11 @@ $rows = $stmt->fetchAll();
 
 
     <div id="bodyCentering">
-        <?php require "/var/www/html/uiParts/headder.php"; ?>
+        <?php
+        $backButton = true;
+        $backLink1 = "/signer/1instructions.php?contractNumber={$_GET['contractNumber']}&contractSigner={$_GET['contractSigner']}";
+        require "/var/www/html/uiParts/headder.php";
+        ?>
         <div style="height:85px;"></div>
         <?php makeCard("<p>please read the contract and press (NEXT) when you are ready to sign.</p>", "", 1); ?>
         <?php makeCard("<h1 id=title>" . $title . "</h1>" . "<br>" . "<div id=contractText>"  . $content . "</div>"); ?>

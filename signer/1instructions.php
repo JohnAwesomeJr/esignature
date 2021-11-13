@@ -90,7 +90,12 @@ $rows = $stmt->fetchAll();
 
 
     <div id="bodyCentering">
-        <?php require "/var/www/html/uiParts/headder.php"; ?>
+        <?php
+        $backButton = false;
+        $backLink1 = "http://www.youtube.com";
+        require "/var/www/html/uiParts/headder.php";
+        ?>
+
         <div style="height:85px;"></div>
         <?php makeCard($content); ?>
         <div style="height:100px;"></div>
