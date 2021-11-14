@@ -61,6 +61,7 @@
 
     }
 
+
     #bodyCentering {
         display: flex;
         flex-direction: column;
