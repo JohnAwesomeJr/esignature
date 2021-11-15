@@ -61,11 +61,47 @@
 
     }
 
+    input {
+        margin: 20px 0px;
+        padding: 10px;
+        width: calc(100%);
+        border: none;
+        border-radius: 15px;
+        background: #e8e8e8
+    }
+
+    a {
+        font-size: 16px;
+        text-decoration: underline;
+    }
+
 
     #bodyCentering {
         display: flex;
         flex-direction: column;
         align-items: center;
         width: 100%;
+    }
+
+    .customCard {
+        -webkit-appearance: none;
+        background: white;
+        padding: 30px 30px 30px 30px;
+        margin: 15px 30px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 15px;
+    }
+
+    input[type=submit] {
+        -webkit-appearance: none;
+        background-color: <?= $secondColor; ?>;
+        border-radius: 15px;
+        border: none;
+        color: white;
+        padding: 20px;
+        text-decoration: none;
+        cursor: pointer;
+        margin: 20px 0px;
+
     }
 </style>

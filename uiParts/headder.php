@@ -64,7 +64,7 @@
 
 <div id="menu">
 
-    <a href="https://www.google.com">
+    <a href="/">
         <p>login</p>
     </a>
 

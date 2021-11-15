@@ -1,9 +1,5 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-?>
-<?php
+session_start();
 require "/var/www/html/htmlStart.php";
 require "/var/www/html/.env";
 $errors = [];
@@ -25,43 +21,61 @@ $rows = $stmt->fetchAll();
 $HashedPassword = hash("sha512", $_POST['password'] . $rows[0]['salt']);
 
 if ($userName == "" | $userPassword == "") {
-    $errorText = urlencode("Please Correct User Name Or Password.");
-    array_push($errors, $errorText);
-    header("Location: /?error={$errorText}");
+    $errorText = "Please Correct User Name Or Password.";
+    echo <<<EOD
+    <form method="post" action="/">
+        <input type="hidden" name="error" value="{$errorText}">
+        <input type="hidden" name="lastTypedEmail" value="{$userName}">
+        <input id="submit" type="submit" hidden>
+    </form>
+    <script>
+        document.getElementById("submit").click();
+    </script>
+    EOD;
 } else {
     if ($rows != true) {
         $errorText = "No Account Found";
-        array_push($errors, $errorText);
-        header("Location: /?error={$errorText}");
+        echo <<<EOD
+        <form method="post" action="/">
+            <input type="hidden" name="error" value="{$errorText}">
+            <input type="hidden" name="lastTypedEmail" value="{$userName}">
+            <input id="submit" type="submit" hidden>
+        </form>
+        <script>
+            document.getElementById("submit").click();
+        </script>
+        EOD;
     } else {
         if ($HashedPassword != $rows[0]['userPassword']) {
-            echo "<br><br><br>";
-
-            echo $HashedPassword;
-            echo "<br>";
-            echo $rows[0]['userPassword'];
-            echo "<br><br><br>";
-
             $errorText = "that is not the right password for that account.";
-            array_push($errors, $errorText);
-            header("Location: /?error={$errorText}");
+            echo <<<EOD
+            <form method="post" action="/">
+                <input type="hidden" name="error" value="{$errorText}">
+                <input type="hidden" name="lastTypedEmail" value="{$userName}">
+                <input id="submit" type="submit" hidden>
+            </form>
+            <script>
+                document.getElementById("submit").click();
+            </script>
+            EOD;
         } else {
+            $_SESSION['userName'] = $userName;
             $errorText = "You are now qualified to login!";
-            array_push($errors, $errorText);
-            header("Location: /?error={$errorText}");
+            echo <<<EOD
+            <form method="post" action="/">
+                <input type="hidden" name="error" value="{$errorText}">
+                <input type="hidden" name="lastTypedEmail" value="{$userName}">
+                <input id="submit" type="submit" hidden>
+            </form>
+            <script>
+                document.getElementById("submit").click();
+            </script>
+            EOD;
         }
     }
 }
-
-require "arrayVisualizer.php";
-
 ?>
 
 <body>
-    <?php
-    foreach ($errors as $key => $value) {
-        echo $errors[$key] . "<br>";
-    }
-    ?>
 
 </body>
