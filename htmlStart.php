@@ -70,10 +70,6 @@
         background: #e8e8e8
     }
 
-    a {
-        font-size: 16px;
-        text-decoration: underline;
-    }
 
 
     #bodyCentering {
@@ -85,6 +81,8 @@
 
     .customCard {
         -webkit-appearance: none;
+        width: calc(100% - 30px);
+        max-width: 700px;
         background: white;
         padding: 30px 30px 30px 30px;
         margin: 15px 30px;

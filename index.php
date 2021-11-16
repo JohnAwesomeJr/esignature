@@ -14,6 +14,7 @@
     }
 
     .customCard {
+        max-width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -32,7 +33,7 @@
             }
             ?>
             <p style="text-align:center; margin: 10px;">Login</p>
-            <form action="backendMainPage.php" method="post">
+            <form action="authLogin.php" method="post">
                 <input type="email" name="userName" placeholder="email" value="<?php if ($_POST) {
                                                                                     echo $_POST['lastTypedEmail'];
                                                                                 }; ?>">
@@ -43,12 +44,30 @@
             <a href="http://www.google.com"> Create An Account </a>
         </div>
     </div>
-    <a href="/signer/1instructions.php?contractNumber=1&contractSigner=1">JJ</a>
-    <br>
-    <a href="/signer/1instructions.php?contractNumber=1&contractSigner=2">Jessica</a>
-    <br>
-    <a href="/signer/1instructions.php?contractNumber=1&contractSigner=5">Jenny</a>
+    <style>
+        .sideWindow {
+            display: inline-block;
+            background: white;
+            padding: 30px;
+            position: fixed;
+            z-index: 10;
+            bottom: 30px;
+            right: 30px;
+            border-radius: 15px;
+            box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+    <div class="sideWindow">
+        <a href="/signer/1instructions.php?contractNumber=2&contractSigner=1">JJ</a>
+        <a href="/signer/1instructions.php?contractNumber=2&contractSigner=2">Jessica</a>
+        <a href="/signer/1instructions.php?contractNumber=2&contractSigner=5">Jenny</a>
     </div>
+    </div><!-- endo of base container -->
 
 </body>
 

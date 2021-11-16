@@ -62,9 +62,7 @@ if ($userName == "" | $userPassword == "") {
             $_SESSION['userName'] = $userName;
             $errorText = "You are now qualified to login!";
             echo <<<EOD
-            <form method="post" action="/">
-                <input type="hidden" name="error" value="{$errorText}">
-                <input type="hidden" name="lastTypedEmail" value="{$userName}">
+            <form method="post" action="/templatesAndContracts.php">
                 <input id="submit" type="submit" hidden>
             </form>
             <script>
