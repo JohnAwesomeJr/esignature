@@ -128,7 +128,7 @@
             <textarea style="display:none;" id="myTest" name="base64Data"></textarea>
             <input style="display:none;" id="submitSvg" type="submit">
         </form>
-        <div style="display:none;" id="clickRed" onclick="finalClick()" style="background:red; padding:10px;">Click!</div>
+        <div style="display:none;" id="clickRed" onclick="startLoading()" style="background:red; padding:10px;">Click!</div>
 
 
         <div id="rotateScreen">
@@ -172,6 +172,39 @@
     <!-- end of the base container -->
     </div>
 
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #screen {
+            position: fixed;
+            background: <?= $background; ?>;
+            width: 100vw;
+            height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+
+
+    <div id="screen">
+        <?php require "/var/www/html/uiImages/loading/loading.php"; ?>
+    </div>
+
+    <script>
+        const screen = document.getElementById('screen').style;
+        screen.display = "none";
+
+        function startLoading() {
+            screen.display = "flex";
+            finalClick();
+        }
+    </script>
 
 
 
