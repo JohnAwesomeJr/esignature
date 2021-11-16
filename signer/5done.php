@@ -3,7 +3,6 @@
 require "/var/www/html/.env";
 ?>
 <?php
-
 //top level php mailer class
 require "/var/www/html/vendor/phpmailer/phpmailer/src/PHPMailer.php";
 require "/var/www/html/vendor/phpmailer/phpmailer/src/SMTP.php";
