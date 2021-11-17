@@ -1,4 +1,9 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+?>
+<?php
 // enviroment variables
 require "/var/www/html/.env";
 ?>
@@ -118,6 +123,8 @@ EOD; ?>
 
 
     <div id="bodyCentering">
+        <?= $backLink1 = "yourMom!" ?>
+        <?php $backButton = true; ?>
         <?php require "/var/www/html/uiParts/headder.php"; ?>
         <div style="height:85px;"></div>
 

@@ -76,7 +76,7 @@
         </div>
 
         <?php foreach ($rows as $key => $value) : ?>
-            <a href="http://www.google.com" class="customCard centerRow" style="justify-content: space-between;">
+            <a href="/contractViewer.php" class="customCard centerRow" style="justify-content: space-between;">
                 <div class=" centerColomn" style="height:100px; margin-right:15px; overflow:hidden; align-items: flex-start; justify-content: space-between; ">
                     <div style="font-size: 30px; white-space: nowrap;"><?= $rows[$key]['contractName']; ?></div>
                     <?php
