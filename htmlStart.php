@@ -102,4 +102,21 @@
         margin: 20px 0px;
 
     }
+
+    .centerColomn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+
+
+    }
+
+    .centerRow {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
 </style>

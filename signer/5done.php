@@ -102,11 +102,6 @@ $emailStatus = $stmt->fetchAll();
 <?php endif; ?>
 
 
-
-
-
-
-
 <?php require "/var/www/html/uiParts/footer.php"; ?>
 <?php require "/var/www/html/colors.php"; ?>
 <?php require "/var/www/html/uiParts/card.php"; ?>

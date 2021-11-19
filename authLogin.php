@@ -60,13 +60,14 @@ if ($userName == "" | $userPassword == "") {
             EOD;
         } else {
             $_SESSION['userName'] = $userName;
+            $_SESSION['userId'] = $rows[0]['userId'];
             $errorText = "You are now qualified to login!";
             echo <<<EOD
             <form method="post" action="/templatesAndContracts.php">
                 <input id="submit" type="submit" hidden>
             </form>
             <script>
-                document.getElementById("submit").click();
+                 document.getElementById("submit").click();
             </script>
             EOD;
         }
