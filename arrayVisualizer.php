@@ -36,9 +36,5 @@
         <?php print_r($rows); ?>
     </pre>
 
-    <pre style="font-size: 10px !important;">
-        <?php print_r($rows); ?>
-    </pre>
-
 
 </div>

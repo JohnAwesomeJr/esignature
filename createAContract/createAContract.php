@@ -9,8 +9,8 @@
     <?php
     $sql = <<<EOD
     INSERT INTO
-    contract(contractName,contractParentUser,draft)
-    VALUES ("NA",?,1); 
+    contract(contractParentUser,draft)
+    VALUES (?,1); 
     EOD;
     $contractOwner = $_SESSION['userId'];
     $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
@@ -23,7 +23,7 @@
 
 
     <!-- go to edit contract page -->
-    <?php header("Location: /createAContract/editContract.php?contractNumber={$rows}"); ?>
+    <?php header("Location: /createAContract/TemplatePicker.php?contractNumber={$rows}"); ?>
     <!-- if you are not logged in -->
 <?php else : ?>
     you are not logged in
