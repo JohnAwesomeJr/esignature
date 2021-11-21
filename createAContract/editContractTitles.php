@@ -52,41 +52,9 @@
             <?php else : ?>
                 <!-- open contract----------------------------------------------------------------------------- -->
 
-                <div class="customCard">
-                    <div class="centerColomn" style="justify-content:space-evenly; min-height:200px;">
-                        <h3>Type the name of the contract</h3>
-                        <div>
-                            <?php $iconSize = 80; ?>
-                            <?php require "/var/www/html/uiImages/contractIconColor.php"; ?>
-                        </div>
-                        <form method="post">
-                            <!-- pull contract name into textbox if it exsists -->
-
-                            <?php
-
-                            $sql = <<<EOD
-                        SELECT contractName
-                        FROM esignature.contract
-                        WHERE contractId = ?;
-                        EOD;
-
-                            $contractNumber = $_GET['contractNumber'];
-
-                            $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
-                            $stmt = $pdo->prepare($sql);
-                            $stmt->execute([$contractNumber]);
-                            $rows = $stmt->fetchAll();
-
-                            ?>
-                            <?php if ($rows[0]['contractName'] == 'None') : ?>
-                                <input type="text" name="updatedName" placeholder="Contract Name">
-                            <?php else : ?>
-                                <input type="text" name="updatedName" value="test">
-                            <?php endif; ?>
-                            <input id="submit" type="submit" hidden>
-                        </form>
-                    </div>
-                </div>
+                <?php foreach ($rows as $key => $value) : ?>
+                    <?= $key; ?>
+                <?php endforeach; ?>
                 <!-- edit contract name screen----------------------------------------------------------------- -->
                 <!-- loop through titles, add inputs to the textArea------------------------------------------- -->
                 <!-- loop through tags, add inputs to the textArea--------------------------------------------- -->
@@ -117,5 +85,3 @@
 <?php else : ?>
     you are not logged in
 <?php endif; ?>
-<?php require "/var/www/html/arrayVisualizer.php";
-?>
