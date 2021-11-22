@@ -1,4 +1,3 @@
-<?php require "/var/www/html/arrayVisualizer.php"; ?>
 <?php require "/var/www/html/.env"; ?>
 <?php session_start(); ?>
 <!-- are you logged in? -->
@@ -25,85 +24,75 @@
         <?php require "/var/www/html/htmlStart.php"; ?>
         <!-- PLACE CODE HERE -->
 
+        <!-- get a list of all the titles to from the template-->
         <?php
-        $sql = <<<EOD
-        SELECT * 
-        FROM esignature.template
-        WHERE templateId = ?;
-        EOD;
-        $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$_GET['templateNumber']]);
-        $rows = $stmt->fetchAll();
-
-
-
-
-        $TemplateName = $rows[0]['templateName'];
-        $templateContent = $rows[0]['templateContent'];
-
-
 
         $sql = <<<EOD
         SELECT *
         FROM esignature.titles
         WHERE parentTemplate = ?;
         EOD;
+
         $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$_GET['templateNumber']]);
-        $rows = $stmt->fetchAll();
+        $listOfTitles = $stmt->fetchAll();
+        ?>
 
-        echo "<pre>";
-        print_r($rows);
-        echo "</pre>";
 
-        $insertSql = "";
+        <!-- add new signers based on the template -->
 
-        foreach ($rows as $key => $value) {
+        <?php
 
+        foreach ($listOfTitles as $key => $value) {
             $sql = <<<EOD
             INSERT INTO
             signers(signerTitle, signerParentContract)
             VALUES (?, ?); 
             EOD;
-
-            $pdo = new PDO('sqlite:/var/www/html/movingBox.db');
+            $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
             $stmt = $pdo->prepare($sql);
-            $stmt->execute([$rows[$key]['titleName']], $_GET['contractNumber']);
-            // the row number of the last inserted item so you can go back and edit it
-            $rowNumber = $pdo->lastInsertId();
-
-
-
-            $insertSql = $insertSql . "test";
+            $stmt->execute([$listOfTitles[$key]['titleName'], $_GET['contractNumber']]);
+            $rows = $pdo->lastInsertId();
         }
-        echo $insertSql;
+        ?>
 
 
+        <!-- Get The content of the template -->
 
-
-
-
+        <?php
 
         $sql = <<<EOD
-        UPDATE esignature.contract
-        SET contractContent=?
-        WHERE contractId=?;       
+        SELECT templateContent
+        FROM esignature.template
+        WHERE templateId = ?;
         EOD;
 
         $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([$templateContent, $_GET['contractNumber']]);
+        $stmt->execute([$_GET['templateNumber']]);
         $rows = $stmt->fetchAll();
         ?>
 
 
+        <!-- update the content based on the template -->
+
+        <?php
+        $sql = <<<EOD
+        UPDATE esignature.contract
+        SET contractContent=?
+        WHERE contractId=?;     
+        EOD;
+
+        $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$rows[0]['templateContent'], $_GET['contractNumber']]);
+        $insertSigneres = $stmt->fetchAll();
+        ?>
 
 
 
-
-        <?php //header("Location: /createAContract/editContractName.php?contractNumber={$_GET['contractNumber']}&templateNumber={$_GET['templateNumber']}"); 
+        <?php header("Location: /createAContract/editContractName.php?contractNumber={$_GET['contractNumber']}&templateNumber={$_GET['templateNumber']}");
         ?>
 
 
@@ -116,3 +105,6 @@
 <?php else : ?>
     you are not logged in
 <?php endif; ?>
+
+
+<?php require "/var/www/html/arrayVisualizer.php"; ?>
