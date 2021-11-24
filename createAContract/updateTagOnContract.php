@@ -10,7 +10,7 @@ SELECT contractContent
 FROM esignature.contract
 WHERE contractId =?;
 EOD;
-$contract = $db->selectSql($selectExample, [1])[0]['contractContent'];
+$contract = $db->selectSql($selectExample, [$_POST['contractNumber']])[0]['contractContent'];
 
 
 // SELECT
@@ -27,6 +27,16 @@ $tagToReplace =  "{[ " . $tagList[$_POST['arrayPosition']]['tagName'] . " ]}";
 
 $contentReplaced = str_replace($tagToReplace, " <b> " . $_POST['tag'] . " </b> ", $contract);
 echo $contentReplaced;
+
+
+// UPDATE
+$updateExample = <<<EOD
+UPDATE `esignature`.`contract` 
+SET `contractContent` = ? 
+WHERE (`contractId` = ?);
+
+EOD;
+$db->updateSql($updateExample, [$contentReplaced, $_GET['contractNumber']]);
 
 
 
