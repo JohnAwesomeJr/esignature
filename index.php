@@ -96,5 +96,3 @@ session_destroy();
 </body>
 
 </html>
-<?php // require "/var/www/html/arrayVisualizer.php"; 
-?>

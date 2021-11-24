@@ -163,9 +163,7 @@
             </div>
 
             <?php foreach ($rows as $key => $value) : ?>
-                <a href="http://www.google.com" class="customCard ">
-
-
+                <div class="customCard ">
                     <div class="container">
                         <div class="title">
                             <h3 style="white-space: nowrap;"><?= $rows[$key]['signerTitle']; ?></h3>
@@ -197,7 +195,10 @@
                             </div>
                         </div>
                     </div>
-                </a>
+                    <a href="/signer/1instructions.php?contractNumber=<?= $_GET['contractNumber']; ?>&contractSigner=<?= $rows[$key]['signerId']; ?>">
+                        /signer/1instructions.php?contractNumber=<?= $_GET['contractNumber']; ?>&contractSigner=<?= $rows[$key]['signerId']; ?>
+                    </a>
+                </div>
             <?php endforeach; ?>
 
             <?php
@@ -227,8 +228,6 @@
 
     <!-- End of base CONTAINER -->
     </div>
-    <?php // require "/var/www/html/arrayVisualizer.php";
-    ?>
 
 
 <?php else : ?>
@@ -242,5 +241,3 @@
 <?php else : ?>
     You are not logged in.
 <?php endif; ?>
-<?php //require "/var/www/html/arrayVisualizer.php"; 
-?>

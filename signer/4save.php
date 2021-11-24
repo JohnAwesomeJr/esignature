@@ -1,5 +1,4 @@
 <?php
-require "/var/www/html/arrayVisualizer.php";
 // enviroment variables
 require "/var/www/html/.env";
 ?>

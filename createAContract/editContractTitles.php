@@ -1,5 +1,6 @@
 <?php require "/var/www/html/.env"; ?>
 <?php require "/var/www/html/colors.php"; ?>
+<?php require "/var/www/html/classes/db.php"; ?>
 
 <?php session_start(); ?>
 <!-- are you logged in? -->
@@ -32,35 +33,37 @@
             require "/var/www/html/uiParts/headder.php";
             ?>
             <div style="height:85px;"></div>
-            <?php if ($_POST) : ?>
-                <?php
-                $sql = <<<EOD
-                UPDATE esignature.contract
-                SET contractName=?
-                WHERE contractId=?;        
-                EOD;
 
-                $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
-                $stmt = $pdo->prepare($sql);
-                $stmt->execute([$_POST['updatedName'], $_GET['contractNumber']]);
-                $rows = $stmt->fetchAll();
-                ?>
-                <a id="redirect" href="/createAContract/editContractTitles.php?contractNumber=<?= $_GET['contractNumber']; ?>"></a>
-                <script>
-                    document.getElementById('redirect').click();
-                </script>
-            <?php else : ?>
-                <!-- open contract----------------------------------------------------------------------------- -->
 
-                <?php foreach ($rows as $key => $value) : ?>
-                    <?= $key; ?>
-                <?php endforeach; ?>
-                <!-- edit contract name screen----------------------------------------------------------------- -->
-                <!-- loop through titles, add inputs to the textArea------------------------------------------- -->
-                <!-- loop through tags, add inputs to the textArea--------------------------------------------- -->
-                <!-- show textArea for editing----------------------------------------------------------------- -->
-                <!-- save the contract------------------------------------------------------------------------- -->
-            <?php endif; ?>
+            <?php
+            // SELECT
+            $db = new db();
+            $selectExample = <<<EOD
+            SELECT * 
+            FROM esignature.signers 
+            WHERE signerParentContract=?;
+            EOD;
+            $currentSigner = $db->selectSql($selectExample, [$_GET['contractNumber']]);
+            ?>
+
+            <div class="customCard centerColomn">
+                <h1><?= strtoupper($currentSigner[$_GET['totalTitleList']]['signerTitle']); ?></h1>
+                <div>
+                    <?php $iconSize = 100; ?>
+                    <?php require "/var/www/html/uiImages/personIcon.php"; ?>
+                </div>
+                <form method="post" action="/createAContract/processTitles.php">
+                    <input hidden name="signerId" type="text" value="<?= $currentSigner[$_GET['totalTitleList']]['signerId']; ?>">
+                    <input hidden name="contractNumber" type="text" value="<?= $currentSigner[$_GET['totalTitleList']]['signerParentContract']; ?>">
+                    <input hidden name="arrayPosition" type="text" value="<?= $_GET['totalTitleList']; ?>">
+                    <input name="email" type="email" placeholder="Signer Email">
+                    <input name="name" type="text" placeholder="Signer Name">
+                    <input hidden id="submit" type="submit">
+                </form>
+            </div>
+
+
+
             <div style="height:100px;"></div>
             <!-- Add the footer -->
             <?php
