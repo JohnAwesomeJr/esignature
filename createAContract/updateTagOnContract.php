@@ -23,7 +23,7 @@ $tagList = $db->selectSql($selectTags, [$_POST['templateNumber']]);
 $numberInArray = count($tagList) - 1;
 
 
-$tagToReplace =  "{[ " . $tagList[0]['tagName'] . " ]}";
+$tagToReplace =  "{[ " . $tagList[$_POST['arrayPosition']]['tagName'] . " ]}";
 
 $contentReplaced = str_replace($tagToReplace, " <b> " . $_POST['tag'] . " </b> ", $contract);
 echo $contentReplaced;
