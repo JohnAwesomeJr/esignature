@@ -45,7 +45,7 @@
                 $stmt->execute([$_POST['updatedName'], $_GET['contractNumber']]);
                 $rows = $stmt->fetchAll();
                 ?>
-                <a id="redirect" href="/createAContract/editContractTitles.php?contractNumber=<?= $_GET['contractNumber']; ?>&totalTitleList=0"></a>
+                <a id="redirect" href="/createAContract/editContractTitles.php?contractNumber=<?= $_GET['contractNumber']; ?>&totalTitleList=0&templateNumber=<?= $_GET['templateNumber']; ?>"></a>
                 <script>
                     document.getElementById('redirect').click();
                 </script>

@@ -86,11 +86,11 @@ session_destroy();
             justify-content: center;
         }
     </style>
-    <div class="sideWindow">
+    <!-- <div class="sideWindow">
         <a href="/signer/1instructions.php?contractNumber=2&contractSigner=1">JJ</a>
         <a href="/signer/1instructions.php?contractNumber=2&contractSigner=2">Jessica</a>
         <a href="/signer/1instructions.php?contractNumber=2&contractSigner=5">Jenny</a>
-    </div>
+    </div> -->
     </div><!-- endo of base container -->
 
 </body>
