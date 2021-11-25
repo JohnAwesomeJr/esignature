@@ -3,6 +3,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 ?>
+<?php ob_start(); ?>
 <?php session_start(); ?>
 <?php require "/var/www/html/classes/db.php"; ?>
 
@@ -47,7 +48,7 @@ $db->updateSql($updateExample, [$contentReplaced, $_POST['contractNumber']]);
 ?>
 <?php if ($_POST['arrayPosition'] == $numberInArray) : ?>
     <?php
-    $urlPath = "/createAContract/placeNameTagsInContract.php";
+    $urlPath = "/createAContract/placeNameTagsInContract.php?" . "contractNumber=" . (int)$_POST['contractNumber'] . "&arrayPosition=0";
     echo "<br>" . $urlPath;
     header("Location: {$urlPath}");
     ?>
@@ -59,5 +60,4 @@ $db->updateSql($updateExample, [$contentReplaced, $_POST['contractNumber']]);
     header("Location: {$urlPath}");
     ?>
 <?php endif; ?>
-
-<?php require "/var/www/html/arrayVisualizer.php"; ?>
+<?php ob_end_flush(); ?>
