@@ -1,3 +1,8 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+?>
 <?php session_start(); ?>
 <?php require "/var/www/html/classes/db.php"; ?>
 
@@ -34,19 +39,25 @@ $updateExample = <<<EOD
 UPDATE `esignature`.`contract` 
 SET `contractContent` = ? 
 WHERE (`contractId` = ?);
-
 EOD;
-$db->updateSql($updateExample, [$contentReplaced, $_GET['contractNumber']]);
+$db->updateSql($updateExample, [$contentReplaced, $_POST['contractNumber']]);
 
 
 
 ?>
 <?php if ($_POST['arrayPosition'] == $numberInArray) : ?>
-    You are at the end
-    <a href="/createAContract/getTagValues.php?contractNumber=<?= $_POST['contractNumber']; ?>&arrayPosition=<?= $_POST['arrayPosition']; ?>&templateNumber=<?= $_POST['templateNumber']; ?>">Click</a>
+    <?php
+    $urlPath = "/createAContract/placeNameTagsInContract.php";
+    echo "<br>" . $urlPath;
+    header("Location: {$urlPath}");
+    ?>
 <?php else : ?>
-    You have more to go
-    <a href="/createAContract/getTagValues.php?contractNumber=<?= $_POST['contractNumber']; ?>&arrayPosition=<?= $_POST['arrayPosition'] + 1; ?>&templateNumber=<?= $_POST['templateNumber']; ?>">Click</a>
+    <?php
+    $newPosition = (int)$_POST['arrayPosition'] + 1;
+    $urlPath = "/createAContract/getTagValues.php?contractNumber=" . (int)$_POST['contractNumber'] . "&arrayPosition=" . $newPosition . "&templateNumber=" . (int)$_POST['templateNumber'];
+    echo "<br>" . $urlPath;
+    header("Location: {$urlPath}");
+    ?>
 <?php endif; ?>
 
 <?php require "/var/www/html/arrayVisualizer.php"; ?>
