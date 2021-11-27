@@ -56,9 +56,20 @@ $emailStatus = $stmt->fetchAll();
     ?>
 
     <?php if ($_GET['email'] == "no") : ?>
-        ""
     <?php else : ?>
         <?php
+        $sql = <<<EOD
+        UPDATE esignature.contract 
+        SET emailSent=1
+        WHERE contractId=?;
+        EOD;
+
+        $id = $_GET['contractNumber'];
+
+        $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$id]);
+        $rows = $stmt->fetchAll();
         $filePath = '/var/www/html' . urldecode($_GET['downloadLink']);
         chmod($filePath, 0777);
 
@@ -83,19 +94,6 @@ $emailStatus = $stmt->fetchAll();
         $mail->addAttachment($filePath, 'Contract.pdf');
         $mail->send();
         $mail->smtpClose();
-
-        $sql = <<<EOD
-        UPDATE esignature.contract 
-        SET emailSent=1
-        WHERE contractId=?;
-        EOD;
-
-        $id = $_GET['contractNumber'];
-
-        $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$id]);
-        $rows = $stmt->fetchAll();
         ?>
 
     <?php endif; ?>
@@ -115,8 +113,6 @@ EOD; ?>
 <body>
     <!-- start of the base container -->
     <?php require "/var/www/html/uiParts/baseContainer.php"; ?>
-
-
     <div id="bodyCentering">
         <?= $backLink1 = "yourMom!" ?>
         <?php $backButton = true; ?>
@@ -166,8 +162,8 @@ EOD; ?>
             </div>
 
         </div>
-
         EOD;
+
         $everyoneNotSigned = "<p>It looks like we are still waiting for signatures from everyone else who needs to sign. <br> We will send you an email with a copy of the contract once everyone else signs the contract.</p>"
         ?>
 

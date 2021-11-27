@@ -80,7 +80,7 @@ echo "<br>" . $arrayPosition;
 $link = "";
 
 if ($numberOfTags == $arrayPosition) {
-    $link = "http://www.google.com";
+    $link = "/JavascriptLibrarys/pell-master/contractEditor.php?contractNumber={$_GET['contractNumber']}";
     echo "<br>" . $link;
 } else {
     $nextArrayPosition = $arrayPosition + 1;
