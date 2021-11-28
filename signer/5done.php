@@ -58,6 +58,13 @@ $emailStatus = $stmt->fetchAll();
     <?php if ($_GET['email'] == "no") : ?>
     <?php else : ?>
         <?php
+
+        $emailToAdresses = array();
+        foreach ($rows as $key => $value) {
+            array_push($emailToAdresses, $rows[$key]['signerEmail']);
+        }
+
+
         $sql = <<<EOD
         UPDATE esignature.contract 
         SET emailSent=1
@@ -73,10 +80,6 @@ $emailStatus = $stmt->fetchAll();
         $filePath = '/var/www/html' . urldecode($_GET['downloadLink']);
         chmod($filePath, 0777);
 
-        $emailToAdresses = array();
-        foreach ($rows as $key => $value) {
-            array_push($emailToAdresses, $rows[$key]['signerEmail']);
-        }
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;

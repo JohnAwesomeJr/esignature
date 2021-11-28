@@ -20,7 +20,7 @@ $content = $db->selectSql($selectExample, [$_GET['contractNumber']])[0]['contrac
 
   <meta name="viewport" content="user-scalable=1.0,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 
-  <title>pell</title>
+  <title>Contract Editor</title>
 
   <link rel="stylesheet" type="text/css" href="dist/pell.css">
 
@@ -210,8 +210,8 @@ $content = $db->selectSql($selectExample, [$_GET['contractNumber']])[0]['contrac
     <div id="editor" class="pell"></div>
   </div>
   <div id="footer">
-    <div class="button" onclick="process();">DRAFT</div>
-    <a href="/JavascriptLibrarys/pell-master/processContract.php?contractNumber=<?= $_GET['contractNumber']; ?>">test</a>
+    <div class="button" onclick="send();">SEND</div>
+    <div class="button" onclick="draft();" style="background:white; color:black;">DRAFT</div>
   </div>
 
 
@@ -227,8 +227,7 @@ $content = $db->selectSql($selectExample, [$_GET['contractNumber']])[0]['contrac
     </div>
   </div>
 
-  <form method="post" action="/JavascriptLibrarys/pell-master/processContract.php?contractNumber=<?= $_GET['contractNumber']; ?>" style="display:block; position:fixed; top:0px; right:0px;">
-    <input hidden type="text" name="draft" value="1">
+  <form id="formInput" method="post" action="" style="display:block; position:fixed; top:0px; right:0px;">
     <textarea hidden name="output" id="sendToDatabase"></textarea>
     <input hidden id="send" type="submit">
   </form>
@@ -374,6 +373,16 @@ $content = $db->selectSql($selectExample, [$_GET['contractNumber']])[0]['contrac
 
     var startingOutput = document.getElementById('html-output').innerHTML;
     document.getElementById('sendToDatabase').innerHTML = startingOutput;
+
+    function send() {
+      document.getElementById('formInput').action = "/JavascriptLibrarys/pell-master/processContract.php?contractNumber=<?= $_GET['contractNumber']; ?>&draft=0&arrayPosition=0";
+      process();
+    }
+
+    function draft() {
+      document.getElementById('formInput').action = "/JavascriptLibrarys/pell-master/processContract.php?contractNumber=<?= $_GET['contractNumber']; ?>&draft=1&arrayPosition=0";
+      process();
+    }
 
     function process() {
       var output = document.getElementById('html-output').innerHTML;
