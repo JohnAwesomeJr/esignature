@@ -40,10 +40,6 @@ foreach ($emails as $key => $value) {
 }
 $lastItem = count($emailToAdresses) - 1;
 
-echo "<pre>";
-print_r($emailToAdresses);
-echo "</pre>";
-
 $mail->isSMTP();
 $mail->Host = 'smtp.gmail.com';
 $mail->SMTPAuth = true;
@@ -66,7 +62,7 @@ echo "<br>";
 echo $lastItem;
 if ($_GET['arrayPosition'] == $lastItem) {
     echo "last one";
-    header("Location: http://www.google.com");
+    header("Location: /createAContract/finished.php");
 } else {
     $newPosition = (int)$_GET['arrayPosition'] + 1;
     echo "not done";

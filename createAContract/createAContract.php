@@ -3,8 +3,6 @@
 <!-- are you logged in? -->
 <?php if ($_SESSION) : ?>
 
-
-
     <!-- Add a new contract to database -->
     <?php
     $sql = <<<EOD
