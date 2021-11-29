@@ -9,6 +9,7 @@ error_reporting(E_ALL);
 <!-- are you logged in? -->
 <?php if ($_SESSION) : ?>
   <!-- are you the owner of the contract? -->
+
   <?php
 
   $sql = <<<EOD
@@ -17,13 +18,13 @@ error_reporting(E_ALL);
   WHERE contractId = ?;
   EOD;
 
-  $contractNumber = $_POST['contractNumber'];
+  $contractNumber = $_GET['contractNumber'];
 
   $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+
   $stmt = $pdo->prepare($sql);
   $stmt->execute([$contractNumber]);
   $rows = $stmt->fetchAll();
-
   ?>
 
   <?php if ($_SESSION['userId'] == $rows[0]['contractParentUser']) : ?>
@@ -49,9 +50,9 @@ error_reporting(E_ALL);
 
 
 
-    <?php require "/var/www/html/colors.php";
+    <?php
+    require "/var/www/html/colors.php";
 
-    require "/var/www/html/classes/db.php";
 
     // SELECT
     $db = new db();
@@ -64,6 +65,7 @@ error_reporting(E_ALL);
     $content = $db->selectSql($selectExample, [$_GET['contractNumber']])[0]['contractContent'];
 
     ?>
+
     <!DOCTYPE html>
     <html>
 
@@ -446,9 +448,6 @@ error_reporting(E_ALL);
     </body>
 
     </html>
-
-    <?php //require "/var/www/html/arrayVisualizer.php"; 
-    ?>
 
 
 
