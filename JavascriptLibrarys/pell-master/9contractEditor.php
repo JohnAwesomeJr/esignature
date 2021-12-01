@@ -262,10 +262,16 @@ error_reporting(E_ALL);
       <div class="content">
         <div id="editor" class="pell"></div>
       </div>
+
+
+
       <div id="footer">
         <div class="button" onclick="send();">SEND</div>
         <div class="button" onclick="draft();" style="background:white; color:black;">DRAFT</div>
       </div>
+
+
+
 
 
       <div class="outputs">
@@ -428,12 +434,12 @@ error_reporting(E_ALL);
         document.getElementById('sendToDatabase').innerHTML = startingOutput;
 
         function send() {
-          document.getElementById('formInput').action = "/JavascriptLibrarys/pell-master/processContract.php?contractNumber=<?= $_GET['contractNumber']; ?>&draft=0&arrayPosition=0";
+          document.getElementById('formInput').action = "/JavascriptLibrarys/pell-master/10processContract.php?contractNumber=<?= $_GET['contractNumber']; ?>&draft=0&arrayPosition=0";
           process();
         }
 
         function draft() {
-          document.getElementById('formInput').action = "/JavascriptLibrarys/pell-master/processContract.php?contractNumber=<?= $_GET['contractNumber']; ?>&draft=1&arrayPosition=0";
+          document.getElementById('formInput').action = "/JavascriptLibrarys/pell-master/10processContract.php?contractNumber=<?= $_GET['contractNumber']; ?>&draft=1&arrayPosition=0";
           process();
         }
 

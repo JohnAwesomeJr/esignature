@@ -55,7 +55,7 @@
             <?php if ($rows[0]['parentUser'] == $_SESSION['userId']) : ?>
                 <?php foreach ($rows as $key => $value) : ?>
 
-                    <a href="/createAContract/addTemplateDataToContract.php?contractNumber=<?= $_GET['contractNumber']; ?>&templateNumber=<?= $rows[$key]['templateId']; ?>" class="customCard centerRow" style="justify-content: space-between;">
+                    <a href="/createAContract/2addTemplateDataToContract.php?contractNumber=<?= $_GET['contractNumber']; ?>&templateNumber=<?= $rows[$key]['templateId']; ?>" class="customCard centerRow" style="justify-content: space-between;">
                         <div class=" centerColomn" style="height:100px; margin-right:15px; overflow:hidden; align-items: flex-start; justify-content: space-between; ">
                             <div style="font-size: 30px; white-space: nowrap;"><?= strtoupper($rows[$key]['templateName']); ?></div>
                         </div>

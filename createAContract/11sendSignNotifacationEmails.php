@@ -62,9 +62,9 @@ echo "<br>";
 echo $lastItem;
 if ($_GET['arrayPosition'] == $lastItem) {
     echo "last one";
-    header("Location: /createAContract/finished.php");
+    header("Location: /createAContract/12finished.php");
 } else {
     $newPosition = (int)$_GET['arrayPosition'] + 1;
     echo "not done";
-    header("Location: /createAContract/sendSignNotifacationEmails.php?arrayPosition=" . $newPosition . "&contractNumber=" . $_GET['contractNumber']);
+    header("Location: /createAContract/11sendSignNotifacationEmails.php?arrayPosition=" . $newPosition . "&contractNumber=" . $_GET['contractNumber']);
 }

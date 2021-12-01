@@ -92,7 +92,7 @@
 
 
 
-        <?php header("Location: /createAContract/editContractName.php?contractNumber={$_GET['contractNumber']}&templateNumber={$_GET['templateNumber']}");
+        <?php header("Location: /createAContract/3editContractName.php?contractNumber={$_GET['contractNumber']}&templateNumber={$_GET['templateNumber']}");
         ?>
 
 

@@ -64,11 +64,11 @@ error_reporting(E_ALL);
         $numberOfItemsInArray = count($numberOfTitles);
 
         if ($_POST['arrayPosition'] == $numberOfItemsInArray - 1) {
-            $urlPath = "http://localhost/createAContract/getTagValues.php?contractNumber=" . $_POST['contractNumber'] . "&arrayPosition=0&templateNumber=" . $_POST['templateNumber'];
+            $urlPath = "/createAContract/6loopGetTagValues.php?contractNumber=" . $_POST['contractNumber'] . "&arrayPosition=0&templateNumber=" . $_POST['templateNumber'];
             header("Location: {$urlPath}");
         } else {
             $addToArray = (int)$_POST['arrayPosition'] + 1;
-            $urlPath = "/createAContract/editContractTitles.php?contractNumber=" . $_POST['contractNumber'] . "&totalTitleList=" . $addToArray . "&templateNumber=" . $_POST['templateNumber'];
+            $urlPath = "/createAContract/4loopEditContractTitles.php?contractNumber=" . $_POST['contractNumber'] . "&totalTitleList=" . $addToArray . "&templateNumber=" . $_POST['templateNumber'];
             header("Location: {$urlPath}");
         }
 

@@ -32,7 +32,7 @@ error_reporting(E_ALL);
 
 </html>
 <?php if ($draft == 0) : ?>
-    <?php header('Location: /createAContract/sendSignNotifacationEmails.php?arrayPosition=0&contractNumber=' . $_GET['contractNumber']); ?>
+    <?php header('Location: /createAContract/11sendSignNotifacationEmails.php?arrayPosition=0&contractNumber=' . $_GET['contractNumber']); ?>
 <?php else : ?>
     <?php header('Location: http://www.google.com'); ?>
 <?php endif; ?>

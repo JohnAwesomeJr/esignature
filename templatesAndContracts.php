@@ -158,7 +158,7 @@
         ];
         if ($_GET['screen'] == "contracts") {
             //URL to the create contracts page!!!!!!!!!!!!!!!!
-            $button3 = ["plusButtonShort", "/createAContract/createAContract.php"];
+            $button3 = ["plusButtonShort", "/createAContract/0createAContract.php"];
         } else {
             //URL to the create templates page!!!!!!!!!!!!!!!!
             $button3 = ["plusButtonShort", "/createATemplate/createATemplate.php"];

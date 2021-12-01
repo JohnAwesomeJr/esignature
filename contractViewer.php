@@ -134,21 +134,21 @@
             $contractId = $_GET['contractNumber'];
 
             $sql = <<<EOD
-        SELECT 
-        signers.signerId as signerId,
-        signers.signerTitle as signerTitle,
-        signers.signerName as signerName,
-        signers.signDate as signStatus,
-        signers.signerEmail as signerEmail,
-        signers.signerImagePath,
-        users.userEmail as contractOwner
-        FROM esignature.signers
-        LEFT JOIN esignature.contract
-        ON signers.signerParentContract = contract.contractId
-        RIGHT JOIN esignature.users
-        ON users.userId = contract.contractParentUser
-        WHERE contract.contractId = ?;
-        EOD;
+            SELECT 
+            signers.signerId as signerId,
+            signers.signerTitle as signerTitle,
+            signers.signerName as signerName,
+            signers.signDate as signStatus,
+            signers.signerEmail as signerEmail,
+            signers.signerImagePath,
+            users.userEmail as contractOwner
+            FROM esignature.signers
+            LEFT JOIN esignature.contract
+            ON signers.signerParentContract = contract.contractId
+            RIGHT JOIN esignature.users
+            ON users.userId = contract.contractParentUser
+            WHERE contract.contractId = ?;
+            EOD;
 
             $userEmail = $_SESSION['userName'];
 
@@ -204,18 +204,26 @@
             <?php
 
             $sql = <<<EOD
-        SELECT contractName, contractContent
-        FROM esignature.contract
-        WHERE contractId = ?;
-        EOD;
+            SELECT contractName, contractContent, draft
+            FROM esignature.contract
+            WHERE contractId = ?;
+            EOD;
 
             $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$contractId]);
             $rows = $stmt->fetchAll();
             ?>
-
-
+            <?php if ($rows[0]["draft"] == 1) : ?>
+                <div class="customCard">
+                    <a href="/editContract/1editContractDetails.php?contractNumber=<?= $_GET['contractNumber']; ?>" style="display:inline-block; ">
+                        <div class="centerRow status " style="background:#5075D6; font-size:20px; width: 100px;">Edit Draft</div>
+                    </a>
+                    <a href="/deleteContract.php?contractNumber=<?= $_GET['contractNumber']; ?>" style="display:inline-block;">
+                        <div class="centerRow status" style="background:#f54242; font-size:20px; width: 150px;">DELETE DRAFT</div>
+                    </a>
+                </div>
+            <?php endif; ?>
             <div class="customCard">
                 <h1><?= $rows[0]["contractName"]; ?></h1>
                 <div>

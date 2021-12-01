@@ -84,13 +84,13 @@ error_reporting(E_ALL);
         ?>
         <?php if ($_POST['arrayPosition'] == $numberInArray) : ?>
             <?php
-            $urlPath = "/createAContract/placeNameTagsInContract.php?" . "contractNumber=" . (int)$_POST['contractNumber'] . "&arrayPosition=0";
+            $urlPath = "/createAContract/8placeNameTagsInContract.php?" . "contractNumber=" . (int)$_POST['contractNumber'] . "&arrayPosition=0";
             header("Location: {$urlPath}");
             ?>
         <?php else : ?>
             <?php
             $newPosition = (int)$_POST['arrayPosition'] + 1;
-            $urlPath = "/createAContract/getTagValues.php?contractNumber=" . (int)$_POST['contractNumber'] . "&arrayPosition=" . $newPosition . "&templateNumber=" . (int)$_POST['templateNumber'];
+            $urlPath = "/createAContract/6loopGetTagValues.php?contractNumber=" . (int)$_POST['contractNumber'] . "&arrayPosition=" . $newPosition . "&templateNumber=" . (int)$_POST['templateNumber'];
             header("Location: {$urlPath}");
             ?>
         <?php endif; ?>
