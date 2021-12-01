@@ -50,30 +50,83 @@ if ($_SESSION > 0) :
             process
         <?php else : ?>
 
-            <form method="post" action="/editContract/2updateContract.php?contractNumber=<?= $_GET['contractNumber']; ?>">
-                <fieldset>
-                    <legend><?= $contractTitle; ?></legend>
-                    <input name="ContractName" type="text" value="<?= $contractTitle; ?>"> Contract Name
-                    <br>
-                </fieldset>
-                <?php foreach ($signersArray as $key => $value) : ?>
-                    <fieldset>
-                        <legend><?= $signersArray[$key]['signerId']; ?></legend>
-                        <div style="border:solid black 1px">
-                            <h3><?= $signersArray[$key]['signerTitle']; ?></h3>
-                            <br>
-                            <input name="contractSigners['<?= $signersArray[$key]['signerId']; ?>']['signerEmail']" value="<?= $signersArray[$key]['signerEmail']; ?>"> Email
-                            <br>
-                            <input name="contractSigners['<?= $signersArray[$key]['signerId']; ?>']['signerName']" value="<?= $signersArray[$key]['signerName']; ?>"> Signer Name
-                            <br>
-                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <?php require "/var/www/html/htmlStart.php"; ?>
+            <?php require "/var/www/html/colors.php" ?>
+
+            <style>
+                * {
+                    border: none;
+                }
+            </style>
+
+            <body class="centerColomn" style="overflow-y: scroll; background:<?= $background; ?>">
+
+                <form class="centerColomn" style="width:100%; max-width: 700px;" method="post" action="/editContract/2updateContract.php?contractNumber=<?= $_GET['contractNumber']; ?>">
+                    <fieldset class="customCard">
+                        <legend>Contract Title: <?= $contractTitle; ?></legend>
+                        <br>
+                        Contract Name
+                        <br>
+                        <input name="ContractName" type="text" value="<?= $contractTitle; ?>">
+                        <br>
                     </fieldset>
-                <?php endforeach; ?>
+                    <?php foreach ($signersArray as $key => $value) : ?>
+                        <fieldset class="customCard">
+                            <legend>Signer ID#: <?= $signersArray[$key]['signerId']; ?></legend>
+                            <div>
+                                <h3><?= $signersArray[$key]['signerTitle']; ?></h3>
+                                <br>
+                                Email
+                                <br>
+                                <input name="contractSigners['<?= $signersArray[$key]['signerId']; ?>']['signerEmail']" value="<?= $signersArray[$key]['signerEmail']; ?>">
+                                <br>
+                                Signer Name
+                                <br>
+                                <input name="contractSigners['<?= $signersArray[$key]['signerId']; ?>']['signerName']" value="<?= $signersArray[$key]['signerName']; ?>">
+                                <br>
+                            </div>
+                        </fieldset>
+                    <?php endforeach; ?>
 
-                <br>
-                <input type="submit">
+                    <br>
+                    <input type="submit">
 
-            </form>
+                </form>
+            </body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <?php endif; ?>
 
 
@@ -115,4 +168,5 @@ if ($_SESSION > 0) :
 
 
 
-<?php require "/var/www/html/arrayVisualizer.php"; ?>
+<?php //require "/var/www/html/arrayVisualizer.php"; 
+?>
