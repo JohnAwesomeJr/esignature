@@ -8,37 +8,6 @@
     <!-- Start of base CONTAINER -->
     <?php require "/var/www/html/htmlStart.php"; ?>
     <?php require "/var/www/html/uiParts/baseContainer.php"; ?>
-    <style>
-        .centerColomn {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-
-
-
-        }
-
-        .centerRow {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .drawBorder {
-            border: solid black 1px;
-        }
-
-        .status {
-            border-radius: 6px;
-            font-size: 13px;
-            color: white;
-            background: red;
-            padding: 5px 15px;
-            width: 67px;
-        }
-    </style>
     <div id="bodyCentering">
         <?php
         $backButton = false;
@@ -48,9 +17,6 @@
 
         <div style="height:100px;"></div>
         <!-- Contracts screen--------------------------------- -->
-        <style>
-
-        </style>
         <?php if ($_GET['screen'] == "contracts") : ?>
 
             <?php

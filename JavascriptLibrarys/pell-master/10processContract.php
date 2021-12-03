@@ -9,11 +9,15 @@ error_reporting(E_ALL);
 <body>
     <html>
     <?php
-    require "/var/www/html/arrayVisualizer.php";
     require "/var/www/html/classes/db.php";
     require "/var/www/html/.env";
 
-    $escape = addslashes($_POST['output']);
+    $origanal = $_POST['output'];
+    $removeLineBreak = str_replace(["\r", "\n"], '', $origanal);
+    $stripTags = strip_tags($removeLineBreak, ['p', 'h1', 'h2', 'ul', 'li', 'ol', 'strong', 'b', 'em']);
+    $escape = $stripTags;
+
+
     $draft = (int)$_GET['draft'];
 
     // UPDATE
@@ -37,6 +41,4 @@ error_reporting(E_ALL);
     <?php header('Location: /templatesAndContracts.php?screen=contracts'); ?>
 <?php endif; ?>
 
-
-?>
 <?php ob_end_flush(); ?>

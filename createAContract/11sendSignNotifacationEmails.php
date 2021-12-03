@@ -50,7 +50,7 @@ $mail->Password = $googlePassword;
 $mail->isHTML(true);
 $mail->Subject = 'Sign Contract';
 $mail->setFrom($googleEmail);
-$mail->Body = 'Hey' . $emails[$_GET['arrayPosition']]['signerName'] . ' as you know, you are a ' . $emails[$_GET['arrayPosition']]['signerTitle'] . ' on this contract. You have been sent a contract to sign <a href="' . "http://localhost/signer/1instructions.php?" . "contractNumber=" . $_GET['contractNumber'] . "&contractSigner= " . $emails[$_GET['arrayPosition']]['signerId'] . '">click here to sign</a>';
+$mail->Body = 'Hey ' . ucwords($emails[$_GET['arrayPosition']]['signerName']) . ' <br> This email is to inform you that you have been assigned as a ' . strtolower($emails[$_GET['arrayPosition']]['signerTitle']) . ' on this contract. <br> You can click the link to sign it. <a href="' . $mainUrl . "/signer/1instructions.php?" . "contractNumber=" . $_GET['contractNumber'] . "&contractSigner= " . $emails[$_GET['arrayPosition']]['signerId'] . '">click here to sign</a>';
 $mail->addAddress($emailToAdresses[$_GET['arrayPosition']]);
 $mail->send();
 $mail->smtpClose();

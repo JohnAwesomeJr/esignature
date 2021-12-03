@@ -1,33 +1,5 @@
-<style>
-    .button {
-        -webkit-user-select: none;
-        /* Safari */
-        -moz-user-select: none;
-        /* Firefox */
-        -ms-user-select: none;
-        /* IE10+/Edge */
-        user-select: none;
-        /* Standard */
-
-        display: inline-block;
-        font-size: 18px;
-        position: relative;
-        max-width: 100px;
-        height: 50px;
-        padding: 0px;
-        bottom: 15px;
-        overflow: hidden;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        margin-left: 7px;
-        margin-right: 7px;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        border-radius: 15px;
-    }
-</style>
 <?php
+
 /**
  * Inserts a button
  *

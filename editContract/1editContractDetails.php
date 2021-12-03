@@ -73,12 +73,6 @@ if ($_SESSION > 0) :
             <?php require "/var/www/html/htmlStart.php"; ?>
             <?php require "/var/www/html/colors.php" ?>
 
-            <style>
-                * {
-                    border: none;
-                }
-            </style>
-
             <body class="centerColomn" style="overflow-y: scroll; background:<?= $background; ?>">
 
                 <form class="centerColomn" style="width:100%; max-width: 700px;" method="post" action="/editContract/2updateContract.php?contractNumber=<?= $_GET['contractNumber']; ?>">

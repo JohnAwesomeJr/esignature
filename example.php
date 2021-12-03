@@ -16,29 +16,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed&display=swap" rel="stylesheet">
 </head>
-<style>
-    * {
-        padding: 0px;
-        margin: 0px;
-        box-sizing: border-box;
-        font-size: 24px;
-        text-decoration: none;
-        color: black;
-
-    }
-
-    body {
-        overflow: hidden;
-        font-family: 'Barlow Condensed', sans-serif;
-    }
-
-    #bodyCentering {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-    }
-</style>
 
 <body>
     <!-- start of the base container -->

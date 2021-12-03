@@ -125,32 +125,6 @@ EOD; ?>
         <?php
         $fileDownload = urldecode($_GET['downloadLink']);
         $stringWithButton = <<<EOD
-        <style>
-            .card {
-                padding: 30px !important;
-            }
-
-            .outerBox {
-                width: 100%;
-
-                display: flex;
-                flex-direction: row;
-                align-items: flex-start;
-                justify-content: flex-start;
-
-            }
-
-            .innerBox {
-                width: 50%;
-                height: 125px;
-
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: center;
-
-            }
-        </style>
 
         <div class="outerBox" style="height:100%;">
         

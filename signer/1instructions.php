@@ -28,35 +28,6 @@ $stmt->execute([$id]);
 $rows = $stmt->fetchAll();
 ?>
 
-
-<style>
-    .numberTextContainer {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: left;
-
-        margin: 30px 0px;
-    }
-
-    .numberTextContainer h4 {
-        margin: 0px;
-        flex-shrink: 1;
-        font-size: 20px;
-    }
-
-    #card {
-        padding: 30px 30px 30px 30px !important;
-    }
-
-    .flexCentering {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-    }
-</style>
-
 <body>
 
     <?php

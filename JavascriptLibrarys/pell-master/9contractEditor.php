@@ -62,7 +62,7 @@ error_reporting(E_ALL);
     WHERE contractId = ?;
     EOD;
 
-    $content = $db->selectSql($selectExample, [$_GET['contractNumber']])[0]['contractContent'];
+    $content = html_entity_decode($db->selectSql($selectExample, [$_GET['contractNumber']])[0]['contractContent']);
 
     ?>
 

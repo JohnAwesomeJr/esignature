@@ -26,26 +26,6 @@ session_destroy();
 <?php require "/var/www/html/colors.php"; ?>
 <?php require "/var/www/html/htmlStart.php"; ?>
 
-<style>
-    #centering {
-        width: 100%;
-        height: 100%;
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .customCard {
-        max-width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-</style>
-
 <body style="font-size:40px;">
     <?php require "/var/www/html/uiParts/baseContainer.php"; ?>
     <div id="centering">
@@ -68,24 +48,6 @@ session_destroy();
             <a href="http://www.google.com"> Create An Account </a>
         </div>
     </div>
-    <style>
-        .sideWindow {
-            display: inline-block;
-            background: white;
-            padding: 30px;
-            position: fixed;
-            z-index: 10;
-            bottom: 30px;
-            right: 30px;
-            border-radius: 15px;
-            box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-    </style>
     <!-- <div class="sideWindow">
         <a href="/signer/1instructions.php?contractNumber=2&contractSigner=1">JJ</a>
         <a href="/signer/1instructions.php?contractNumber=2&contractSigner=2">Jessica</a>

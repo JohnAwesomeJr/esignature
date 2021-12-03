@@ -5,3 +5,16 @@ $secondColor = "#F1AD47";
 $background = "#EEF8FF";
 $blackColor = "black";
 $whiteColor = "white";
+
+
+?>
+
+<style>
+    :root {
+        --primaryColor: <?= $primaryColor; ?>;
+        --secondColor: <?= $secondColor; ?>;
+        --background: <?= $background; ?>;
+        --blackColor: <?= $blackColor; ?>;
+        --whiteColor: <?= $whiteColor; ?>;
+    }
+</style>
