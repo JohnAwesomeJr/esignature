@@ -105,6 +105,7 @@ if ($_SESSION > 0) :
                                 <input name="contractSigners['<?= $signersArray[$key]['signerId']; ?>']['signerName']" value="<?= $signersArray[$key]['signerName']; ?>">
                                 <br>
                             </div>
+                            <a href="/editContract/removeSigner.php?signerId=<?= $signersArray[$key]['signerId']; ?>&contractNumber=<?= $_GET['contractNumber']; ?>">Remove Signer</a>
                         </fieldset>
                     <?php endforeach; ?>
 

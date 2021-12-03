@@ -34,7 +34,7 @@ error_reporting(E_ALL);
 <?php if ($draft == 0) : ?>
     <?php header('Location: /createAContract/11sendSignNotifacationEmails.php?arrayPosition=0&contractNumber=' . $_GET['contractNumber']); ?>
 <?php else : ?>
-    <?php header('Location: http://www.google.com'); ?>
+    <?php header('Location: /templatesAndContracts.php?screen=contracts'); ?>
 <?php endif; ?>
 
 

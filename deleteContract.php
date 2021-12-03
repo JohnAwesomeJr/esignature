@@ -71,6 +71,7 @@ if ($_SESSION > 0) :
                 WHERE (`signerParentContract` = ?);
                 EOD;
                 $db->deleteSql($deleteSigners, [$_GET['contractNumber']]);
+                header("Location: /templatesAndContracts.php?screen=contracts");
             } else {
                 echo "going back";
             }
