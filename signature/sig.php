@@ -204,6 +204,17 @@
             screen.display = "flex";
             finalClick();
         }
+
+
+
+        // setTimeout(() => {
+        //     location.reload();
+        //     alert("done");
+        // }, 1000);
+        window.onresize = function() {
+            location.reload();
+
+        };
     </script>
 
 
