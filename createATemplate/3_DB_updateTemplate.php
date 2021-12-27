@@ -27,9 +27,22 @@ error_reporting(E_ALL);
     </fieldset>
 
     <?php
+    $origanal = $_POST['templateContent'];
+    $removeLineBreak = str_replace(["\r", "\n"], '', $origanal);
+    $stripTags = strip_tags($removeLineBreak, ['p', 'h1', 'h2', 'ul', 'li', 'ol', 'strong', 'b', 'em']);
+    $escape = $stripTags;
+
     $userId = $_SESSION['userId'];
 
-
+    //INSERT
+    $db = new db();
+    $insertExample = <<<EOD
+    UPDATE `esignature`.`template` 
+    SET `templateName` = ?, `templateContent` = ? 
+    WHERE (`templateId` = ?);
+    EOD;
+    // use echo to see the key of the last inserted 
+    echo $db->createSql($insertExample, [$_POST['templateName'], $escape, $_GET['templateNumber']]);
 
     // header("location: /createATemplate/2_PAGE_editTemplate.php?templateNumber={$newTemplateId}")
     ?>

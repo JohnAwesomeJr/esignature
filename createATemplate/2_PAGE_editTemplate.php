@@ -35,13 +35,6 @@ error_reporting(E_ALL);
 
 
     ?>
-    <fieldset>
-        <legend>
-            <h3>template Info</h3>
-        </legend>
-
-        <pre> <?php print_r($templateDbArray); ?> </pre>
-    </fieldset>
 
     <?php if ($_SESSION['userId'] == $templateDbArray[0]['parentUser']) : ?>
 
@@ -81,7 +74,7 @@ error_reporting(E_ALL);
                 <tr>
                     <td>
                         <h2>contract info</h2>
-                        <form method="post" action="/createATemplate/3_DB_updateTemplate.php">
+                        <form method="post" action="/createATemplate/3_DB_updateTemplate.php?templateNumber=<?= $templateId; ?>">
                             <label for="templateId">Template ID</label>
                             <br>
                             <input name="templateId" type="text" value="<?= $templateId; ?>">
@@ -107,6 +100,11 @@ error_reporting(E_ALL);
                     </td>
                     <td>
                         <h2>insert titles</h2>
+                        <form method="post" action="/createATemplate/2a_DB_addNewTitle.php?templateNumber=<?= $templateId; ?>">
+                            <input type="text" name="newTitleName">
+                            <br>
+                            <input type="submit" value="Add New Title">
+                        </form>
                         <?php
                         $db = new db();
                         $selectTitlesSql = <<<EOD
@@ -116,27 +114,23 @@ error_reporting(E_ALL);
 
                         $titleListArray = $db->selectSql($selectTitlesSql, [$templateId]);
 
-                        echo "<fieldset>";
-                        echo "<pre>";
-                        print_r($titleListArray);
-                        echo "</pre>";
-                        echo "</fieldset>";
-
 
                         foreach ($titleListArray as $key => $value) {
-                            $tag = "{[ " . $titleListArray[$key]['titleName'] . " ]}";
+                            $tag = " {[ " . $titleListArray[$key]['titleName'] . " ]} ";
+                            echo "<div style=\"border:solid black 1px; padding: 5px; \">";
                             echo "<button onclick=\" insertTextAtCursor(el, '{$tag}')\">Insert Title Name</button>";
                             echo "{[ " . $titleListArray[$key]['titleName'] . " ]}" . "<br>";
+                            echo "</div>";
                         }
                         ?>
-                        <form method="post" action="/createATemplate/2a_DB_addNewTitle.php?templateNumber=<?= $templateId; ?>">
-                            <input type="text" name="newTitleName">
-                            <br>
-                            <input type="submit" value="Add New Title">
-                        </form>
                     </td>
                     <td>
                         <h2>insert tags</h2>
+                        <form method="post" action="/createATemplate/2b_DB_addNewTag.php?templateNumber=<?= $templateId; ?>">
+                            <input type="text" name="newTagName">
+                            <br>
+                            <input type="submit" value="Add New Tag">
+                        </form>
                         <?php
                         $db = new db();
                         $selectTagsQuery = <<<EOD
@@ -146,17 +140,14 @@ error_reporting(E_ALL);
 
                         $tagListArray = $db->selectSql($selectTagsQuery, [$templateId]);
 
-                        echo "<fieldset>";
-                        echo "<pre>";
-                        print_r($tagListArray);
-                        echo "</pre>";
-                        echo "</fieldset>";
-
 
                         foreach ($tagListArray as $key => $value) {
-                            $tag = "{[ " . $tagListArray[$key]['tagName'] . " ]}";
+                            $tag = " {[ " . $tagListArray[$key]['tagName'] . " ]} ";
+
+                            echo "<div style=\"border:solid black 1px; padding: 5px; \">";
                             echo "<button onclick=\" insertTextAtCursor(el, '{$tag}')\">Insert Tag</button>";
                             echo "{[ " . $tagListArray[$key]['tagName'] . " ]}" . "<br>";
+                            echo "</div>";
                         }
                         ?>
                     </td>
