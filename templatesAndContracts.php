@@ -94,13 +94,26 @@
             <!-- do you have access to this content? -->
             <?php if ($rows[0]['parentUser'] == $_SESSION['userId']) : ?>
                 <?php foreach ($rows as $key => $value) : ?>
-                    <div class="customCard centerRow" style="justify-content: space-between;">
-                        <div class=" centerColomn" style="height:100px; margin-right:15px; overflow:hidden; align-items: flex-start; justify-content: space-between; ">
-                            <div style="font-size: 30px; white-space: nowrap;"><?= strtoupper($rows[$key]['templateName']); ?></div>
-                        </div>
-                        <div>
-                            <?php $iconSize = 80; ?>
-                            <?php require "/var/www/html/uiImages/templateIcon.svg"; ?>
+                    <?php $templateId = $rows[$key]['0']; ?>
+                    <div class="customCard centerRow">
+                        <div class="centerColumn" style="width:100%;">
+                            <div class="centerRow" style="justify-content:space-between;">
+                                <div class=" centerColomn" style="height:100px; margin-right:15px; overflow:hidden; align-items: flex-start; justify-content: space-between; ">
+                                    <div style="font-size: 30px; white-space: nowrap;"><?= strtoupper($rows[$key]['templateName']); ?></div>
+                                </div>
+                                <div>
+                                    <?php $iconSize = 80; ?>
+                                    <?php require "/var/www/html/uiImages/templateIcon.svg"; ?>
+                                </div>
+                            </div>
+                            <div class="centerRow" style="justify-content:flex-start;">
+                                <a href="http://www.google.com">
+                                    <div class=" centerRow status" style=" background: #D65050; margin:5px;">Delete</div>
+                                </a>
+                                <a href="/createATemplate/2_PAGE_editTemplate.php?templateNumber=<?= $templateId; ?>">
+                                    <div class=" centerRow status" style=" background: #5075D6; margin:5px;">Edit</div>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 <?php endforeach; ?>
