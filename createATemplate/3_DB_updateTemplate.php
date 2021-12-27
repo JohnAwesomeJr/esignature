@@ -44,7 +44,7 @@ error_reporting(E_ALL);
     // use echo to see the key of the last inserted 
     echo $db->createSql($insertExample, [$_POST['templateName'], $escape, $_GET['templateNumber']]);
 
-    // header("location: /createATemplate/2_PAGE_editTemplate.php?templateNumber={$newTemplateId}")
+    header("location: /templatesAndContracts.php")
     ?>
 
 

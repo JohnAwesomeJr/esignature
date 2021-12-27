@@ -77,7 +77,7 @@ error_reporting(E_ALL);
                         <form method="post" action="/createATemplate/3_DB_updateTemplate.php?templateNumber=<?= $templateId; ?>">
                             <label for="templateId">Template ID</label>
                             <br>
-                            <input name="templateId" type="text" value="<?= $templateId; ?>">
+                            <input readonly name="templateId" type="text" value="<?= $templateId; ?>">
                             <br>
 
                             <label for="templateName">Template Name</label>
@@ -87,13 +87,18 @@ error_reporting(E_ALL);
 
                             <label for="parentUser">Parent User</label>
                             <br>
-                            <input name="parentUser" type="text" value="<?= $parentUser; ?>">
+                            <input readonly name="parentUser" type="text" value="<?= $parentUser; ?>">
                             <br>
 
                             <label for="templateContent">Template Content</label>
                             <br>
-                            <textarea id="contentArea" name="templateContent" type="text" placeholder="<?= $placeholder; ?>"><?= $templateContent; ?></textarea>
+                            <textarea id="html-output" name="templateContent" type="text" placeholder="<?= $placeholder; ?>"><?= $templateContent; ?></textarea>
                             <br>
+                            <!-- ---------------Pell---------------- -->
+                            <div class="content">
+                                <div id="editor" class="pell"></div>
+                            </div>
+                            <!-- ---------------Pell---------------- -->
 
                             <input type="submit">
                         </form>
@@ -156,8 +161,41 @@ error_reporting(E_ALL);
         </table>
 
         <script>
-            const el = document.getElementById('contentArea');
+            const el = document.getElementById('editor');
         </script>
+
+        <!-- ---------------Pell---------------- -->
+        <link rel="stylesheet" type="text/css" href="/JavascriptLibrarys/pell-master/dist/pell.css">
+
+
+        <div class="outputs">
+            <h1>pell</h1>
+            <div style="margin-top:20px;">
+                <h3>Text output:</h3>
+                <div id="text-output"></div>
+            </div>
+        </div>
+
+
+        <script src="/JavascriptLibrarys/pell-master/dist/pell.js"></script>
+
+        <script>
+            var editor = window.pell.init({
+                element: document.getElementById('editor'),
+                defaultParagraphSeparator: 'p',
+                onChange: function(html) {
+                    document.getElementById('text-output').innerHTML = html
+                    document.getElementById('html-output').textContent = html
+                }
+            })
+            document.querySelector('.pell-content').innerHTML = "<?= $templateContent; ?>";
+        </script>
+        <!-- ---------------Pell---------------- -->
+
+
+
+
+
 
 
 
