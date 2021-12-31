@@ -41,32 +41,39 @@
             $rows = $stmt->fetchAll();
             ?>
 
-            <div class="customCard">
-                you are looking at all of your contracts
-            </div>
+            <?php if ($rows[0]['contractStatus'] == "" && count($rows) == 1) : ?>
 
-            <?php foreach ($rows as $key => $value) : ?>
-                <a href="/contractViewer.php?contractNumber=<?= $rows[$key]['contractId']; ?>" class="customCard centerRow" style="justify-content: space-between;">
-                    <div class=" centerColomn" style="height:100px; margin-right:15px; overflow:hidden; align-items: flex-start; justify-content: space-between; ">
-                        <div style="font-size: 30px; white-space: nowrap;"><?= $rows[$key]['contractName']; ?></div>
-                        <?php
-                        if ($rows[$key]['draftStatus'] == 1) {
-                            echo "<div class=\" centerRow status\" style=\" background: #D65050; \">Draft</div>";
-                        } else {
-                            if ($rows[$key]['contractStatus'] == 1) {
-                                echo "<div class=\" centerRow status\" style=\" background: #6BD650; \" >Done</div>";
+                <div class="customCard">
+                    No contracts yet, press the (+) icon to add one.
+                </div>
+
+            <?php else : ?>
+
+                <?php foreach ($rows as $key => $value) : ?>
+                    <a href="/contractViewer.php?contractNumber=<?= $rows[$key]['contractId']; ?>" class="customCard centerRow" style="justify-content: space-between;">
+                        <div class=" centerColomn" style="height:100px; margin-right:15px; overflow:hidden; align-items: flex-start; justify-content: space-between; ">
+                            <div style="font-size: 30px; white-space: nowrap;"><?= $rows[$key]['contractName']; ?></div>
+                            <?php
+                            if ($rows[$key]['draftStatus'] == 1) {
+                                echo "<div class=\" centerRow status\" style=\" background: #D65050; \">Draft</div>";
                             } else {
-                                echo "<div class=\" centerRow status\" style=\" background: #5075D6; \">Pending</div>";
+                                if ($rows[$key]['contractStatus'] == 1) {
+                                    echo "<div class=\" centerRow status\" style=\" background: #6BD650; \" >Done</div>";
+                                } else {
+                                    echo "<div class=\" centerRow status\" style=\" background: #5075D6; \">Pending</div>";
+                                }
                             }
-                        }
-                        ?>
-                    </div>
-                    <div>
-                        <?php $iconSize = 80; ?>
-                        <?php require "/var/www/html/uiImages/contractIconColor.php"; ?>
-                    </div>
-                </a>
-            <?php endforeach; ?>
+                            ?>
+                        </div>
+                        <div>
+                            <?php $iconSize = 80; ?>
+                            <?php require "/var/www/html/uiImages/contractIconColor.php"; ?>
+                        </div>
+                    </a>
+
+                <?php endforeach; ?>
+
+            <?php endif; ?>
 
 
 
@@ -107,7 +114,7 @@
                                 </div>
                             </div>
                             <div class="centerRow" style="justify-content:flex-start;">
-                                <a href="http://www.google.com">
+                                <a href="/createATemplate/deleteTemplate/deleteTemplate.php?templateNumber=<?= $templateId; ?>">
                                     <div class=" centerRow status" style=" background: #D65050; margin:5px;">Delete</div>
                                 </a>
                                 <a href="/createATemplate/2_PAGE_editTemplate.php?templateNumber=<?= $templateId; ?>">
