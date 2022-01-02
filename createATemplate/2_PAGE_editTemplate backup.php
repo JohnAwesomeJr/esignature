@@ -11,24 +11,59 @@ error_reporting(E_ALL);
 <?php if ($_SESSION) : ?>
     <!-- are you the owner of the template? -->
     <?php require "/var/www/html/htmlStart.php"; ?>
-
     <script src="/node_modules/insert-text-at-cursor/dist/index.umd.js"></script>
     <?php
     $templateId = $_GET['templateNumber'];
+
+
+    // Stage status
+    if (empty($_GET['stage'])) {
+        $stage = 1;
+    } else {
+        $stage = $_GET['stage'];
+    }
+
+    echo "<br>" . "Stage Number: " . $stage . "<br>";
+    // Stage status
+
+
+
+
+    // screen selection
+    if (empty($_GET['screen'])) {
+        $screen = 1;
+    } else {
+        $screen = $_GET['screen'];
+    }
+
+    echo "<br>" . "Screen Number: " . $screen . "<br>";
+    // screen selection
+
+
+
+
+
+
+
+
+
 
     $sql = <<<EOD
     SELECT * FROM esignature.template
     WHERE templateId = ?;
     EOD;
 
+
     $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$templateId]);
     $templateDbArray = $stmt->fetchAll();
-    ?>
-    <?php if ($_SESSION['userId'] == $templateDbArray[0]['parentUser']) : ?>
-        <!-- are you the owner of the template? -->
 
+
+
+    ?>
+
+    <?php if ($_SESSION['userId'] == $templateDbArray[0]['parentUser']) : ?>
 
         <?php
         $templateId = $templateDbArray[0]['templateId'];
@@ -58,7 +93,6 @@ error_reporting(E_ALL);
             <thead>
                 <tr>
                     <td>
-                        <!-- --------------------------Content and title--------------------- -->
                         <div class="screen1">
                             <h2>contract info</h2>
                             <form class="customCard centerColumn" method="post" action="/createATemplate/3_DB_updateTemplate.php?templateNumber=<?= $templateId; ?>">
@@ -107,14 +141,8 @@ error_reporting(E_ALL);
                                 <div onclick="showTags()" class="button" style=" padding: 12px 40px;">Show Titles</div>
                             </div>
                         </div>
-                        <!-- --------------------------Content and title--------------------- -->
-
                     </td>
-
-
                     <td>
-                        <!-- --------------------------TITLES--------------------- -->
-
                         <div class="screen2">
                             <h2>insert titles</h2>
                             <form method="post" action="/createATemplate/2a_DB_addNewTitle.php?templateNumber=<?= $templateId; ?>">
@@ -123,8 +151,6 @@ error_reporting(E_ALL);
                                 <input type="submit" value="Add New Title">
                             </form>
                             <?php
-
-
                             $db = new db();
                             $selectTitlesSql = <<<EOD
                             SELECT * FROM esignature.titles
@@ -147,49 +173,49 @@ error_reporting(E_ALL);
                                 <div onclick="showTags()" class="button" style=" padding: 12px 40px;">show tags</div>
                             </div>
                         </div>
-                        <!-- --------------------------TITLES--------------------- -->
-
                     </td>
                     <td>
-                        <!-- --------------------------TAGS--------------------- -->
                         <div class="screen3">
                             <h2>insert tags</h2>
-                            <div class="list">
+                            <form method="post" action="/createATemplate/2b_DB_addNewTag.php?templateNumber=<?= $templateId; ?>">
+                                <input type="text" name="newTagName">
+                                <br>
+                                <input type="submit" value="Add New Tag">
+                            </form>
+                            <?php
+                            $db = new db();
+                            $selectTagsQuery = <<<EOD
+                        SELECT * FROM esignature.tags
+                        WHERE parentTemplate = ?;
+                        EOD;
 
-                                <?php
-                                $db = new db();
-                                $selectTagsQuery = <<<EOD
-                                SELECT * FROM esignature.tags
-                                WHERE parentTemplate = ?;
-                                EOD;
-                                $tagListArray = $db->selectSql($selectTagsQuery, [$templateId]);
-                                ?>
+                            $tagListArray = $db->selectSql($selectTagsQuery, [$templateId]);
 
-                                <h4>Add Tags</h4>
-                                <input id="tagInput"></input>
-                                <button onclick="addNewTag()">Add</button>
-                                <h4>Tag List</h4>
 
+                            foreach ($tagListArray as $key => $value) {
+                                $tag = " {[ " . $tagListArray[$key]['tagName'] . " ]} ";
+
+                                echo "<div style=\"border:solid black 1px; padding: 5px; \">";
+                                echo "<button onclick=\" insertTextAtCursor(el, '{$tag}')\">Insert Tag</button>";
+                                echo "{[ " . $tagListArray[$key]['tagName'] . " ]}" . "<br>";
+                                echo "</div>";
+                            }
+                            ?>
+                            <div class="centerRow">
+                                <div onclick="goToMain()" class="button" style=" padding: 12px 40px;">Back</div>
+                                <div onclick="showTags()" class="button" style=" padding: 12px 40px;">show tags</div>
                             </div>
                         </div>
-                        <!-- --------------------------TAGS--------------------- -->
-
                     </td>
                 </tr>
             </thead>
         </table>
 
-
-
-
-
-
-
-        <!-- ---------------Pell---------------- -->
         <script>
             const el = document.getElementById('editor');
         </script>
 
+        <!-- ---------------Pell---------------- -->
         <link rel="stylesheet" type="text/css" href="/JavascriptLibrarys/pell-master/dist/pell.css">
 
 
@@ -220,14 +246,94 @@ error_reporting(E_ALL);
         </script>
         <!-- ---------------Pell---------------- -->
 
-        <script>
-            // convert tags array to be used with javascript
-            var tagsArray = <?= json_encode($tagListArray); ?>;
-            console.log(tagsArray);
-            // convert tags array to be used with javascript
-        </script>
-        <script src="/createATemplate/listManipulation.js"></script>
 
+        <!-- Stage hiding -->
+        <script>
+            var stage = <?= $stage; ?>;
+            document.querySelectorAll('.stage1')[0].style.display = "none";
+            document.querySelectorAll('.stage2')[0].style.display = "none";
+
+            console.log("stage number: " + stage);
+
+            var classLoop = document.querySelectorAll('.stage<?= $stage; ?>');
+            var itemsInLoop = classLoop.length;
+
+
+            for (i = 0; i < itemsInLoop; i++) {
+                console.log(i);
+                var key = i;
+                classLoop[key].style.display = "block";
+            }
+
+            console.log("length: " + classLoop.length);
+        </script>
+        <!-- Stage hiding -->
+
+
+
+
+        <!-- Screen hiding -->
+        <script>
+            var Screen = <?= $screen; ?>;
+            document.querySelectorAll('.screen1')[0].style.display = "none";
+            document.querySelectorAll('.screen2')[0].style.display = "none";
+            document.querySelectorAll('.screen3')[0].style.display = "none";
+
+
+
+
+
+
+
+            var classLoop = document.querySelectorAll('.screen<?= $screen; ?>');
+            var itemsInLoop = classLoop.length;
+
+
+            for (i = 0; i < itemsInLoop; i++) {
+                console.log(i);
+                var key = i;
+                classLoop[key].style.display = "block";
+            }
+
+            console.log("length: " + classLoop.length);
+        </script>
+        <!-- Screen hiding -->
+
+
+        <script>
+            function showTags() {
+                document.querySelectorAll('.screen1')[0].style.display = "none";
+                document.querySelectorAll('.screen2')[0].style.display = "block";
+                document.querySelectorAll('.screen3')[0].style.display = "none";
+            }
+
+            function goToMain() {
+                document.querySelectorAll('.screen1')[0].style.display = "block";
+                document.querySelectorAll('.screen2')[0].style.display = "none";
+                document.querySelectorAll('.screen3')[0].style.display = "none";
+            }
+
+            function showTitles() {
+                document.querySelectorAll('.screen1')[0].style.display = "none";
+                document.querySelectorAll('.screen2')[0].style.display = "none";
+                document.querySelectorAll('.screen3')[0].style.display = "block";
+            }
+
+
+
+
+            function titleScreen() {
+                document.querySelectorAll('.stage1')[0].style.display = "flex";
+                document.querySelectorAll('.stage2')[0].style.display = "none";
+
+            }
+
+            function contentscreen() {
+                document.querySelectorAll('.stage1')[0].style.display = "none";
+                document.querySelectorAll('.stage2')[0].style.display = "block";
+
+            }
+        </script>
 
 
 

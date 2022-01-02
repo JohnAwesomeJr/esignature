@@ -325,6 +325,10 @@ body {
     border-radius: 15px;
 }
 
+.buttonPadding {
+    padding: 100px 12px;
+}
+
 #footer {
     display: inline-block;
     width: 100%;
