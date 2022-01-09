@@ -1,16 +1,22 @@
+
+
+
+
+
+
+
 var placeTagIn = document.getElementsByClassName('screen3')[0].getElementsByClassName('list')[0];
-
-
-
-
-
-
 for (i = 0; i < tagsArray.length; i++) {
-
     let name = tagsArray[i]['tagName'];
-    createElement(placeTagIn, name);
+    createElement(placeTagIn, tagsArray);
 }
 
+
+var placeTitleIn = document.getElementsByClassName('screen2')[0].getElementsByClassName('list')[0];
+for (i = 0; i < titlessArray.length; i++) {
+    let titleName = titlessArray[i]['titleName'];
+    createElement(placeTitleIn, titlessArray);
+}
 
 
 
@@ -21,21 +27,33 @@ for (i = 0; i < tagsArray.length; i++) {
 function addNewTag() {
     let insideInput = document.querySelector('#tagInput').value;
     createElement(placeTagIn, insideInput);
+    document.getElementById('tagInput').value = "";
+}
 
+function addNewTitle() {
+    let insideInput = document.querySelector('#titleInput').value;
+    createElement(placeTitleIn, insideInput);
+    document.getElementById('titleInput').value = "";
 }
 
 
 
 
 
-
-
-
-
-
 function createElement(spawnLocation, name) {
+    if (Array.isArray(name)) {
+        console.log("array");
+    } else {
+        console.log('nope');
+        name = [[0, 0, 0], [0, 0, 0], [0, 0, name]];
+    }
+
+    console.log(name);
+
+
+
     let className = "tagDiv" + i;
-    let tagName = " {[ " + name + " ]} ";
+    let tagName = " {[ " + name[i][2] + " ]} ";
 
 
 
@@ -66,6 +84,21 @@ function createElement(spawnLocation, name) {
     remove.innerHTML = "Delete";
     remove.setAttribute("onclick", `{alert('flag for delete');}`);
     newElement.appendChild(remove);
+
+
+
+    let tagId = document.createElement('div');
+    tagId.className = "jason";
+    tagId.innerHTML = "tagId: " + "mike";
+    newElement.appendChild(tagId);
+
+
+
+
+    let parentTemplate = document.createElement('parentTemplate');
+    let tagNamedb = document.createElement('tagNamedb');
+
+
 }
 
 

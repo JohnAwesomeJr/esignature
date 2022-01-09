@@ -99,7 +99,7 @@ error_reporting(E_ALL);
                                     <div onclick="titleScreen()" class="button" style=" padding: 12px 40px;">Edit title</div>
                                     <br>
                                 </div>
-                                <input type="submit">
+                                <input type="submit" value="Process All">
 
                             </form>
                             <div class="centerRow customCard">
@@ -114,40 +114,25 @@ error_reporting(E_ALL);
 
                     <td>
                         <!-- --------------------------TITLES--------------------- -->
-
                         <div class="screen2">
-                            <h2>insert titles</h2>
-                            <form method="post" action="/createATemplate/2a_DB_addNewTitle.php?templateNumber=<?= $templateId; ?>">
-                                <input type="text" name="newTitleName">
-                                <br>
-                                <input type="submit" value="Add New Title">
-                            </form>
+                            <h2>insert tags</h2>
                             <?php
-
-
                             $db = new db();
                             $selectTitlesSql = <<<EOD
-                            SELECT * FROM esignature.titles
-                            WHERE parentTemplate = ?;
-                            EOD;
-
+                                SELECT * FROM esignature.titles
+                                WHERE parentTemplate = ?;
+                                EOD;
                             $titleListArray = $db->selectSql($selectTitlesSql, [$templateId]);
-
-
-                            foreach ($titleListArray as $key => $value) {
-                                $tag = " {[ " . $titleListArray[$key]['titleName'] . " ]} ";
-                                echo "<div style=\"border:solid black 1px; padding: 5px; \">";
-                                echo "<button onclick=\" insertTextAtCursor(el, '{$tag}')\">Insert Title Name</button>";
-                                echo "{[ " . $titleListArray[$key]['titleName'] . " ]}" . "<br>";
-                                echo "</div>";
-                            }
                             ?>
-                            <div class="centerRow">
-                                <div onclick="goToMain()" class="button" style=" padding: 12px 40px;">Back</div>
-                                <div onclick="showTags()" class="button" style=" padding: 12px 40px;">show tags</div>
+
+                            <h4>Add Title</h4>
+                            <input id="titleInput"></input>
+                            <button onclick="addNewTitle()">Add</button>
+                            <h4>Title List</h4>
+
+                            <div class="list">
                             </div>
-                        </div>
-                        <!-- --------------------------TITLES--------------------- -->
+                            <!-- --------------------------TITLES--------------------- -->
 
                     </td>
                     <td>
@@ -223,8 +208,11 @@ error_reporting(E_ALL);
         <script>
             // convert tags array to be used with javascript
             var tagsArray = <?= json_encode($tagListArray); ?>;
-            console.log(tagsArray);
             // convert tags array to be used with javascript
+
+            // convert titles array to be used with javascript
+            var titlessArray = <?= json_encode($titleListArray); ?>;
+            // convert titles array to be used with javascript
         </script>
         <script src="/createATemplate/listManipulation.js"></script>
 
