@@ -41,19 +41,30 @@ function addNewTitle() {
 
 
 function createElement(spawnLocation, name) {
+    let justName = "";
+    let justTagId = "";
+    let justParentTemplateNumber = ""
+
     if (Array.isArray(name)) {
-        console.log("array");
+        console.log('yoink');
+        justName = name[i][2];
+        justTagId = name[i][0];
+        justParentTemplateNumber = name[i][1];
+
     } else {
-        console.log('nope');
         name = [[0, 0, 0], [0, 0, 0], [0, 0, name]];
+        justName = name[2][2];
+        justTagId = name[0][0];
+        justParentTemplateNumber = name[0][1];
+        i = spawnLocation.getElementsByClassName('dbListItem').length;
+
     }
 
-    console.log(name);
 
 
 
     let className = "tagDiv" + i;
-    let tagName = " {[ " + name[i][2] + " ]} ";
+    let tagName = " {[ " + justName + " ]} ";
 
 
 
@@ -61,7 +72,7 @@ function createElement(spawnLocation, name) {
     let newElement = document.createElement('div');
     newElement.style.padding = "10px 30px";
     newElement.style.border = "solid black 1px";
-    newElement.className = "centerRow";
+    newElement.className = "centerRow dbListItem";
     spawnLocation.appendChild(newElement);
 
     // create text
@@ -87,18 +98,50 @@ function createElement(spawnLocation, name) {
 
 
 
-    let tagId = document.createElement('div');
-    tagId.className = "jason";
-    tagId.innerHTML = "tagId: " + "mike";
-    newElement.appendChild(tagId);
+
+    let jasonHolder = document.createElement('div');
+    jasonHolder.className = "jasonHolder";
+    jasonHolder.style.border = "solid black 1px";
+    newElement.appendChild(jasonHolder);
 
 
 
 
-    let parentTemplate = document.createElement('parentTemplate');
-    let tagNamedb = document.createElement('tagNamedb');
+
+
+    let tagId = document.createElement('input');
+    tagId.name = "tags[" + i + "]['tagId']"
+    tagId.value = justTagId;
+    jasonHolder.appendChild(tagId);
+
+
+    let parentTemplate = document.createElement('input');
+    parentTemplate.name = "tags[" + i + "]['parentTemplate']"
+    parentTemplate.value = "parentTemplate: " + justParentTemplateNumber;
+    jasonHolder.appendChild(parentTemplate);
+
+
+
+    let tagNamedb = document.createElement('input');
+    tagNamedb.name = "tags[" + i + "]['name']"
+    tagNamedb.value = "tagNamedb: " + justName;
+    jasonHolder.appendChild(tagNamedb);
+
 
 
 }
 
+
+
+
+function getTagList() {
+
+    let tagList = document.getElementsByClassName('screen3')[0].getElementsByTagName('input');
+
+    for (i = 0; i < tagList.length; i++) {
+        console.log(tagList[i]);
+    }
+}
+
+getTagList();
 

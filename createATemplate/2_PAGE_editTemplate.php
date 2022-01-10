@@ -54,14 +54,14 @@ error_reporting(E_ALL);
             }
         </style>
 
-        <table style="position:absolute;">
-            <thead>
-                <tr>
-                    <td>
-                        <!-- --------------------------Content and title--------------------- -->
-                        <div class="screen1">
-                            <h2>contract info</h2>
-                            <form class="customCard centerColumn" method="post" action="/createATemplate/3_DB_updateTemplate.php?templateNumber=<?= $templateId; ?>">
+        <form class="customCard centerColumn" method="post" action="/createATemplate/3_DB_updateTemplate.php?templateNumber=<?= $templateId; ?>">
+            <table>
+                <thead>
+                    <tr>
+                        <td>
+                            <!-- --------------------------Content and title--------------------- -->
+                            <div class="screen1">
+                                <h2>contract info</h2>
                                 <div style="padding:10px; display:none;">
                                     <label for="templateId">Template ID</label>
                                     <br>
@@ -99,70 +99,69 @@ error_reporting(E_ALL);
                                     <div onclick="titleScreen()" class="button" style=" padding: 12px 40px;">Edit title</div>
                                     <br>
                                 </div>
-                                <input type="submit" value="Process All">
-
-                            </form>
-                            <div class="centerRow customCard">
-                                <div onclick="showTitles()" class="button" style=" padding: 12px 40px;">show tags</div>
-                                <div onclick="showTags()" class="button" style=" padding: 12px 40px;">Show Titles</div>
+                                <div class="centerRow customCard">
+                                    <div onclick="showTitles()" class="button" style=" padding: 12px 40px;">show tags</div>
+                                    <div onclick="showTags()" class="button" style=" padding: 12px 40px;">Show Titles</div>
+                                </div>
                             </div>
-                        </div>
-                        <!-- --------------------------Content and title--------------------- -->
+                            <!-- --------------------------Content and title--------------------- -->
 
-                    </td>
+                        </td>
 
 
-                    <td>
-                        <!-- --------------------------TITLES--------------------- -->
-                        <div class="screen2">
-                            <h2>insert tags</h2>
-                            <?php
-                            $db = new db();
-                            $selectTitlesSql = <<<EOD
+                        <td>
+                            <!-- --------------------------TITLES--------------------- -->
+                            <div class="screen2">
+                                <h2>insert tags</h2>
+                                <?php
+                                $db = new db();
+                                $selectTitlesSql = <<<EOD
                                 SELECT * FROM esignature.titles
                                 WHERE parentTemplate = ?;
                                 EOD;
-                            $titleListArray = $db->selectSql($selectTitlesSql, [$templateId]);
-                            ?>
+                                $titleListArray = $db->selectSql($selectTitlesSql, [$templateId]);
+                                ?>
 
-                            <h4>Add Title</h4>
-                            <input id="titleInput"></input>
-                            <button onclick="addNewTitle()">Add</button>
-                            <h4>Title List</h4>
+                                <h4>Add Title</h4>
+                                <input id="titleInput"></input>
+                                <div class="button" onclick="addNewTitle()">Add</div>
+                                <h4>Title List</h4>
 
-                            <div class="list">
-                            </div>
-                            <!-- --------------------------TITLES--------------------- -->
+                                <div class="list">
+                                </div>
+                                <!-- --------------------------TITLES--------------------- -->
 
-                    </td>
-                    <td>
-                        <!-- --------------------------TAGS--------------------- -->
-                        <div class="screen3">
-                            <h2>insert tags</h2>
-                            <div class="list">
+                        </td>
+                        <td>
+                            <!-- --------------------------TAGS--------------------- -->
+                            <div class="screen3">
+                                <h2>insert tags</h2>
 
                                 <?php
                                 $db = new db();
                                 $selectTagsQuery = <<<EOD
-                                SELECT * FROM esignature.tags
-                                WHERE parentTemplate = ?;
-                                EOD;
+                                    SELECT * FROM esignature.tags
+                                    WHERE parentTemplate = ?;
+                                    EOD;
                                 $tagListArray = $db->selectSql($selectTagsQuery, [$templateId]);
                                 ?>
 
                                 <h4>Add Tags</h4>
                                 <input id="tagInput"></input>
-                                <button onclick="addNewTag()">Add</button>
+                                <div class="button" onclick="addNewTag()">Add</div>
                                 <h4>Tag List</h4>
 
+                                <div class="list">
+                                </div>
                             </div>
-                        </div>
-                        <!-- --------------------------TAGS--------------------- -->
+                            <!-- --------------------------TAGS--------------------- -->
 
-                    </td>
-                </tr>
-            </thead>
-        </table>
+                        </td>
+                    </tr>
+                </thead>
+            </table>
+            <input type="submit" value="Process All">
+        </form>
 
 
 
