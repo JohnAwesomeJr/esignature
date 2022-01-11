@@ -11,6 +11,11 @@ error_reporting(E_ALL);
 <?php if ($_SESSION) : ?>
     <!-- are you the owner of the template? -->
     <?php require "/var/www/html/htmlStart.php"; ?>
+    <style>
+        body {
+            overflow: scroll;
+        }
+    </style>
 
     <script src="/node_modules/insert-text-at-cursor/dist/index.umd.js"></script>
     <?php
