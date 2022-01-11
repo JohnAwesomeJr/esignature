@@ -81,9 +81,7 @@ function createElement(spawnLocation, name, listName) {
 
     // create containing div
     let newElement = document.createElement('div');
-    newElement.style.padding = "10px 30px";
-    newElement.style.border = "solid black 1px";
-    newElement.className = "centerRow dbListItem";
+    newElement.className = "centerColumn dbListItem customCard";
     spawnLocation.appendChild(newElement);
 
     // create text
@@ -91,21 +89,32 @@ function createElement(spawnLocation, name, listName) {
     Text.innerHTML = "Tag: " + tagName;
     newElement.appendChild(Text);
 
+
+
+
+    // button holder
+    let buttonHolder = document.createElement('div');
+    buttonHolder.className = "centerRow";
+    newElement.appendChild(buttonHolder);
+
+
     // create insert button div
     let button = document.createElement('div');
     button.style.padding = "10px 30px";
+    button.style.margin = "30px";
     button.className = className + " button";
     button.innerHTML = "Insert";
     button.setAttribute("onclick", `insertTextAtCursor(el, "${tagName}")`);
-    newElement.appendChild(button);
+    buttonHolder.appendChild(button);
 
     // create remove button div
     let remove = document.createElement('div');
     remove.style.padding = "10px 30px";
+    remove.style.margin = "30px";
     remove.className = " button";
     remove.innerHTML = "Delete";
     remove.setAttribute("onclick", `{alert('flag for delete');}`);
-    newElement.appendChild(remove);
+    buttonHolder.appendChild(remove);
 
 
 

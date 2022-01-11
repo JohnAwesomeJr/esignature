@@ -15,6 +15,10 @@ error_reporting(E_ALL);
         body {
             overflow: scroll;
         }
+
+        .jasonHolder {
+            display: none;
+        }
     </style>
 
     <script src="/node_modules/insert-text-at-cursor/dist/index.umd.js"></script>
