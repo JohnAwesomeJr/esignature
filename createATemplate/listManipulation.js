@@ -28,14 +28,22 @@ for (i = 0; i < titlessArray.length; i++) {
 
 function addNewTag() {
     let insideInput = document.querySelector('#tagInput').value;
-    createElement(placeTagIn, insideInput, "tag");
-    document.getElementById('tagInput').value = "";
+    if (insideInput == "") {
+        alert('please input a value');
+    } else {
+        createElement(placeTagIn, insideInput, "tag");
+        document.getElementById('tagInput').value = "";
+    }
 }
 
 function addNewTitle() {
     let insideInput = document.querySelector('#titleInput').value;
-    createElement(placeTitleIn, insideInput, "title");
-    document.getElementById('titleInput').value = "";
+    if (insideInput == "") {
+        alert('please input a value');
+    } else {
+        createElement(placeTitleIn, insideInput, "title");
+        document.getElementById('titleInput').value = "";
+    }
 }
 
 
@@ -115,12 +123,14 @@ function createElement(spawnLocation, name, listName) {
     let tagId = document.createElement('input');
     tagId.name = listName + "[" + i + "]['tagId']"
     tagId.value = justTagId;
+    tagId.readOnly = true;
     jasonHolder.appendChild(tagId);
 
 
     let parentTemplate = document.createElement('input');
     parentTemplate.name = listName + "[" + i + "]['parentTemplate']"
     parentTemplate.value = templateNumber;
+    parentTemplate.readOnly = true;
     jasonHolder.appendChild(parentTemplate);
 
 
@@ -128,6 +138,7 @@ function createElement(spawnLocation, name, listName) {
     let tagNamedb = document.createElement('input');
     tagNamedb.name = listName + "[" + i + "]['name']"
     tagNamedb.value = justName;
+    tagNamedb.readOnly = true;
     jasonHolder.appendChild(tagNamedb);
 
 }
