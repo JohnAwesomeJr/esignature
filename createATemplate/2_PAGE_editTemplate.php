@@ -63,7 +63,7 @@ error_reporting(E_ALL);
             }
         </style>
 
-        <form class="customCard centerColumn" method="post" action="/createATemplate/3_DB_updateTemplate.php?templateNumber=<?= $templateId; ?>">
+        <form class="customCard centerColumn" style="width: fit-content; max-width: unset;" method="post" action="/createATemplate/3_DB_updateTemplate.php?templateNumber=<?= $templateId; ?>">
             <table>
                 <thead>
                     <tr>

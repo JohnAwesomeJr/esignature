@@ -56,7 +56,6 @@ function createElement(spawnLocation, name, listName) {
     let justParentTemplateNumber = "";
 
     if (Array.isArray(name)) {
-        console.log('yoink');
         justName = name[i][2];
         justTagId = name[i][0];
         justParentTemplateNumber = name[i][1];
@@ -81,6 +80,7 @@ function createElement(spawnLocation, name, listName) {
 
     // create containing div
     let newElement = document.createElement('div');
+    newElement.id = listName + i;
     newElement.className = "centerColumn dbListItem customCard";
     spawnLocation.appendChild(newElement);
 
@@ -107,13 +107,19 @@ function createElement(spawnLocation, name, listName) {
     button.setAttribute("onclick", `insertTextAtCursor(el, "${tagName}")`);
     buttonHolder.appendChild(button);
 
+
+
     // create remove button div
     let remove = document.createElement('div');
     remove.style.padding = "10px 30px";
     remove.style.margin = "30px";
     remove.className = " button";
     remove.innerHTML = "Delete";
-    remove.setAttribute("onclick", `{alert('flag for delete');}`);
+    if (justTagId == "none") {
+        remove.setAttribute("onclick", `{deleteFlagNewItem("` + listName + i + `");}`);
+    } else {
+        remove.setAttribute("onclick", `{deleteFlag("` + listName + i + `");}`);
+    }
     buttonHolder.appendChild(remove);
 
 
@@ -150,19 +156,41 @@ function createElement(spawnLocation, name, listName) {
     tagNamedb.readOnly = true;
     jasonHolder.appendChild(tagNamedb);
 
+
+    let deleteFlag = document.createElement('input');
+    deleteFlag.name = listName + "[" + i + "]['deleteFlag']"
+    deleteFlag.id = "deleteing" + listName + i;
+    deleteFlag.value = "0";
+    // deleteFlag.readOnly = true;
+    jasonHolder.appendChild(deleteFlag);
+
 }
 
 
 
 
 function getTagList() {
-
     let tagList = document.getElementsByClassName('screen3')[0].getElementsByTagName('input');
 
     for (i = 0; i < tagList.length; i++) {
-        console.log(tagList[i]);
     }
 }
+
+function deleteFlag(flagNumber) {
+    deleteFlagId = "deleteing" + flagNumber;
+    document.getElementById(deleteFlagId).value = 1;
+    document.getElementById(deleteFlagId).setAttribute("value", 1);
+    document.getElementById(flagNumber).style.display = "none";
+
+
+}
+
+function deleteFlagNewItem(flagNumber) {
+    // alert('still working on this feature');
+    removeElement = document.getElementById(flagNumber);
+    deleteFlagId = removeElement.parentNode.removeChild(removeElement);
+}
+
 
 getTagList();
 
