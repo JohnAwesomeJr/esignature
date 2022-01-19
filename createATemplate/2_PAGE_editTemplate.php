@@ -12,14 +12,13 @@ error_reporting(E_ALL);
     <!-- are you the owner of the template? -->
     <?php require "/var/www/html/htmlStart.php"; ?>
     <style>
-        body {
-            overflow: scroll;
-        }
-
         .jasonHolder {
             display: none;
         }
     </style>
+
+    <link rel="stylesheet" href="/newStyles.css">
+
 
     <script src="/node_modules/insert-text-at-cursor/dist/index.umd.js"></script>
     <?php
@@ -63,113 +62,159 @@ error_reporting(E_ALL);
             }
         </style>
 
-        <form class="customCard centerColumn" style="width: fit-content; max-width: unset;" method="post" action="/createATemplate/3_DB_updateTemplate.php?templateNumber=<?= $templateId; ?>">
-            <table>
-                <thead>
-                    <tr>
-                        <td>
-                            <!-- --------------------------Content and title--------------------- -->
-                            <div class="screen1">
-                                <h2>contract info</h2>
-                                <div style="padding:10px; display:none;">
-                                    <label for="templateId">Template ID</label>
-                                    <br>
-                                    <input readonly name="templateId" type="text" value="<?= $templateId; ?>">
-                                    <br>
-                                </div>
-
-                                <div class="stage1 centerRow">
-                                    <label for="templateName">Template Name</label>
-                                    <br>
-                                    <input name="templateName" type="text" value="<?= $templateName; ?>">
-                                    <br>
-                                    <div onclick="contentscreen()" class="button" style=" padding: 12px 40px;">Edit Content</div>
-                                </div>
+        <form class="demoBorder flexColumn xFlexCenter yFlexTop" style="width:100vw; height:100vh; overflow-x: hidden; overflow-y: scroll;" method="post" action="/createATemplate/3_DB_updateTemplate.php?templateNumber=<?= $templateId; ?>">
 
 
-                                <div style="padding:10px; display:none;">
-                                    <label for="parentUser">Parent User</label>
-                                    <br>
-                                    <input readonly name="parentUser" type="text" value="<?= $parentUser; ?>">
-                                    <br>
-                                </div>
-
-                                <div class="stage2" style="padding:10px;">
-                                    <label for="templateContent" style="display:none;">Template Content</label>
-                                    <br>
-                                    <textarea style="display:none;" id="html-output" name="templateContent" type="text" placeholder="<?= $placeholder; ?>"><?= $templateContent; ?></textarea>
-                                    <br>
-                                    <!-- ---------------Pell---------------- -->
-                                    <div class="content">
-                                        <div id="editor" class="pell"></div>
-                                    </div>
-                                    <!-- ---------------Pell---------------- -->
-
-                                    <div onclick="titleScreen()" class="button" style=" padding: 12px 40px;">Edit title</div>
-                                    <br>
-                                </div>
-                                <div class="centerRow customCard">
-                                    <div onclick="showTitles()" class="button" style=" padding: 12px 40px;">show tags</div>
-                                    <div onclick="showTags()" class="button" style=" padding: 12px 40px;">Show Titles</div>
-                                </div>
-                            </div>
-                            <!-- --------------------------Content and title--------------------- -->
-
-                        </td>
 
 
-                        <td>
-                            <!-- --------------------------TITLES--------------------- -->
-                            <div class="screen2">
-                                <h2>insert tags</h2>
-                                <?php
-                                $db = new db();
-                                $selectTitlesSql = <<<EOD
-                                SELECT * FROM esignature.titles
-                                WHERE parentTemplate = ?;
-                                EOD;
-                                $titleListArray = $db->selectSql($selectTitlesSql, [$templateId]);
-                                ?>
 
-                                <h4>Add Title</h4>
-                                <input id="titleInput"></input>
-                                <div class="button" onclick="addNewTitle()">Add</div>
-                                <h4>Title List</h4>
 
-                                <div class="list">
-                                </div>
-                                <!-- --------------------------TITLES--------------------- -->
 
-                        </td>
-                        <td>
-                            <!-- --------------------------TAGS--------------------- -->
-                            <div class="screen3">
-                                <h2>insert tags</h2>
 
-                                <?php
-                                $db = new db();
-                                $selectTagsQuery = <<<EOD
-                                    SELECT * FROM esignature.tags
-                                    WHERE parentTemplate = ?;
-                                    EOD;
-                                $tagListArray = $db->selectSql($selectTagsQuery, [$templateId]);
-                                ?>
 
-                                <h4>Add Tags</h4>
-                                <input id="tagInput"></input>
-                                <div class="button" onclick="addNewTag()">Add</div>
-                                <h4>Tag List</h4>
 
-                                <div class="list">
-                                </div>
-                            </div>
-                            <!-- --------------------------TAGS--------------------- -->
 
-                        </td>
-                    </tr>
-                </thead>
-            </table>
+
+
+            <!-- --------------------------Content and title--------------------- -->
+            <div class="screen1 demoBorder" style="width:100%; max-width:700px;">
+                <h2>contract info</h2>
+                <div style="padding:10px; display:none;">
+                    <label for="templateId">Template ID</label>
+                    <br>
+                    <input readonly name="templateId" type="text" value="<?= $templateId; ?>">
+                    <br>
+                </div>
+
+                <div class="stage1 centerRow">
+                    <label for="templateName">Template Name</label>
+                    <input name="templateName" type="text" value="<?= $templateName; ?>">
+                </div>
+
+
+                <div style="padding:10px; display:none;">
+                    <label for="parentUser">Parent User</label>
+                    <br>
+                    <input readonly name="parentUser" type="text" value="<?= $parentUser; ?>">
+                    <br>
+                </div>
+
+                <div class="stage2" style="padding:10px;">
+                    <label for="templateContent" style="display:none;">Template Content</label>
+                    <br>
+                    <textarea style="display:none;" id="html-output" name="templateContent" type="text" placeholder="<?= $placeholder; ?>"><?= $templateContent; ?></textarea>
+                    <br>
+                    <!-- ---------------Pell---------------- -->
+                    <div class="content">
+                        <div id="editor" class="pell"></div>
+                    </div>
+                    <!-- ---------------Pell---------------- -->
+
+                </div>
+            </div>
+            <!-- --------------------------Content and title--------------------- -->
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- --------------------------TITLES--------------------- -->
+            <div class="screen2 demoBorder flexColumn xFlexCenter yFlexTop">
+                <h2>insert Titles</h2>
+                <?php
+                $db = new db();
+                $selectTitlesSql = <<<EOD
+                SELECT * FROM esignature.titles
+                WHERE parentTemplate = ?;
+                EOD;
+                $titleListArray = $db->selectSql($selectTitlesSql, [$templateId]);
+                ?>
+
+                <div class="shadow flexColumn xFlexCenter yFlexTop" style="width:100%;max-width:400px; padding:30px; border-radius: 15px;">
+                    <h4>Add New Title</h4>
+                    <div class="flexRow yFlexCenter xFlexCenter">
+                        <input style="margin:0px; max-width:300px; margin:5px;" class="shadow" id="titleInput"></input>
+                        <div class=" shadow flexColumn xFlexCenter yFlexCenter" style="width:100px; border-radius:15px; height:50px; width:100px; margin:5px;" onclick="addNewTitle()">Add</div>
+                    </div>
+                </div>
+                <h4>Title List</h4>
+
+                <div class="list flexColumn xFlexCenter yFlexTop">
+                </div>
+            </div>
+
+            <!-- --------------------------TITLES--------------------- -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- --------------------------TAGS--------------------- -->
+            <div class="screen3 demoBorder flexColumn xFlexCenter yFlexTop">
+                <h2>insert tags</h2>
+
+                <?php
+                $db = new db();
+                $selectTagsQuery = <<<EOD
+                SELECT * FROM esignature.tags
+                WHERE parentTemplate = ?;
+                EOD;
+                $tagListArray = $db->selectSql($selectTagsQuery, [$templateId]);
+                ?>
+
+                <div class="shadow flexColumn xFlexCenter yFlexTop" style="width:100%;max-width:400px; padding:30px; border-radius: 15px;">
+                    <h4>Add New Tag</h4>
+                    <div class="flexRow yFlexCenter xFlexCenter">
+                        <input style="margin:0px; max-width:300px; margin:5px;" class="shadow" id="tagInput"></input>
+                        <div class=" shadow flexColumn xFlexCenter yFlexCenter" style="width:100px; border-radius:15px; height:50px; width:100px; margin:5px;" onclick="addNewTag()">Add</div>
+                    </div>
+                </div>
+                <h4>Tag List</h4>
+
+                <div class="list flexColumn xFlexCenter yFlexTop">
+                </div>
+            </div>
+            <!-- --------------------------TAGS--------------------- -->
+
+
+
+
+
+
+
+
+
+
             <input type="submit" value="Process All">
+
+
+
+
+
+
+
+
+
+
         </form>
 
 
