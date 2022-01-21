@@ -81,12 +81,15 @@ function createElement(spawnLocation, name, listName) {
     // create containing div
     let newElement = document.createElement('div');
     newElement.id = listName + i;
-    newElement.className = "centerColumn dbListItem customCard";
+    newElement.className = " margin dbListItem shadow flexColumn xFlexCenter yFlexSpaceBetweenY";
+    newElement.style = "width:500px; max-width:400px; height:200px; border-radius:15px; padding:30px; background:#ffffff;"
     spawnLocation.appendChild(newElement);
 
     // create text
     let Text = document.createElement('div');
     Text.innerHTML = "Tag: " + tagName;
+    Text.className = ""
+    Text.style = "font-size:20px; width:fit-content;";
     newElement.appendChild(Text);
 
 
@@ -94,14 +97,13 @@ function createElement(spawnLocation, name, listName) {
 
     // button holder
     let buttonHolder = document.createElement('div');
-    buttonHolder.className = "centerRow";
+    buttonHolder.className = " flexRow xFlexCenter yFlexSpaceEvenlyY";
     newElement.appendChild(buttonHolder);
 
 
     // create insert button div
     let button = document.createElement('div');
     button.style.padding = "10px 30px";
-    button.style.margin = "30px";
     button.className = className + " button";
     button.innerHTML = "Insert";
     button.setAttribute("onclick", `insertTextAtCursor(el, "${tagName}")`);
@@ -112,7 +114,6 @@ function createElement(spawnLocation, name, listName) {
     // create remove button div
     let remove = document.createElement('div');
     remove.style.padding = "10px 30px";
-    remove.style.margin = "30px";
     remove.className = " button";
     remove.innerHTML = "Delete";
     if (justTagId == "none") {
@@ -193,4 +194,16 @@ function deleteFlagNewItem(flagNumber) {
 
 
 getTagList();
+
+
+
+
+
+function slideOutTags() {
+    let tagsScreen = document.getElementsByClassName('screen3')[0];
+
+    tagsScreen.style.right = "-500px";
+    tagsScreen.style.width = "100px";
+
+}
 

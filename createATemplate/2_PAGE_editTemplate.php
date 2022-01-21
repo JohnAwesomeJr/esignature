@@ -126,7 +126,7 @@ error_reporting(E_ALL);
 
 
             <!-- --------------------------TITLES--------------------- -->
-            <div class="screen2 demoBorder flexColumn xFlexCenter yFlexTop">
+            <div class="screen2 flexColumn xFlexCenter yFlexTop">
                 <h2>insert Titles</h2>
                 <?php
                 $db = new db();
@@ -146,7 +146,7 @@ error_reporting(E_ALL);
                 </div>
                 <h4>Title List</h4>
 
-                <div class="list flexColumn xFlexCenter yFlexTop">
+                <div class="list flexColumn xFlexCenter yFlexTop" style="width:100%;">
                 </div>
             </div>
 
@@ -169,8 +169,8 @@ error_reporting(E_ALL);
 
 
             <!-- --------------------------TAGS--------------------- -->
-            <div class="screen3 demoBorder flexColumn xFlexCenter yFlexTop">
-                <h2>insert tags</h2>
+            <div class="screen3 slideOutPanel">
+                <h2 onclick="slideOutTags()">insert tags</h2>
 
                 <?php
                 $db = new db();
