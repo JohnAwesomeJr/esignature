@@ -112,6 +112,14 @@ error_reporting(E_ALL);
 
                 </div>
             </div>
+            <div class="flexRow xFlexCenter yFlexCenter">
+                <div class=" border padding margin shadow" style="border-radius:15px; cursor: pointer;" onclick="slideInTitles();">
+                    Show Titles
+                </div>
+                <div class=" border padding margin shadow" style="border-radius:15px; cursor: pointer;" onclick="slideInTags();">
+                    Show Tags
+                </div>
+            </div>
             <!-- --------------------------Content and title--------------------- -->
 
 
@@ -126,8 +134,8 @@ error_reporting(E_ALL);
 
 
             <!-- --------------------------TITLES--------------------- -->
-            <div class="screen2 flexColumn xFlexCenter yFlexTop">
-                <h2>insert Titles</h2>
+            <div class="screen2 slideOutPanel">
+                <h2 onclick="slideOutTitles()">insert Titles</h2>
                 <?php
                 $db = new db();
                 $selectTitlesSql = <<<EOD
@@ -145,7 +153,6 @@ error_reporting(E_ALL);
                     </div>
                 </div>
                 <h4>Title List</h4>
-
                 <div class="list flexColumn xFlexCenter yFlexTop" style="width:100%;">
                 </div>
             </div>

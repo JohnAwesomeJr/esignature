@@ -106,8 +106,10 @@ function createElement(spawnLocation, name, listName) {
     button.style.padding = "10px 30px";
     button.className = className + " button";
     button.innerHTML = "Insert";
-    button.setAttribute("onclick", `insertTextAtCursor(el, "${tagName}")`);
+    button.setAttribute("onclick", `insertTags("${tagName}")`);
     buttonHolder.appendChild(button);
+
+
 
 
 
@@ -204,6 +206,121 @@ function slideOutTags() {
 
     tagsScreen.style.right = "-500px";
     tagsScreen.style.width = "100px";
+}
+
+function slideInTags() {
+    let tagsScreen = document.getElementsByClassName('screen3')[0];
+
+    tagsScreen.style.right = "0";
+    tagsScreen.style.width = "500px";
+}
+
+
+
+
+function slideOutTitles() {
+    let titlesScreen = document.getElementsByClassName('screen2')[0];
+
+    titlesScreen.style.right = "-500px";
+    titlesScreen.style.width = "100px";
+}
+
+function slideInTitles() {
+    let titlesScreen = document.getElementsByClassName('screen2')[0];
+
+    titlesScreen.style.right = "0";
+    titlesScreen.style.width = "500px";
+}
+
+
+
+let curserPosition = 0;
+let textArea = document.querySelector('.pell-content');
+let focuseStatus = 1;
+
+textArea.focus();
+function getFocusPosition() {
+    curserPosition = getCaretIndex(textArea);
+    console.log(curserPosition);
 
 }
+setInterval(() => {
+    if (focuseStatus == 1) {
+        getFocusPosition();
+    }
+}, 300);
+
+
+
+// find the caret position
+function getCaretIndex(element) {
+    let position = 0;
+    const isSupported = typeof window.getSelection !== "undefined";
+    if (isSupported) {
+        const selection = window.getSelection();
+        if (selection.rangeCount !== 0) {
+            const range = window.getSelection().getRangeAt(0);
+            const preCaretRange = range.cloneRange();
+            preCaretRange.selectNodeContents(element);
+            preCaretRange.setEnd(range.endContainer, range.endOffset);
+            position = preCaretRange.toString().length;
+        }
+    }
+    return position;
+}
+// find the caret position
+
+
+
+
+// Check if the text edit window is in focus
+textArea.addEventListener('focus', function () {
+    this.classList.add('is-focused');
+    focuseStatus = 1;
+    console.log("focus status: " + focuseStatus);
+
+});
+
+textArea.addEventListener('blur', function () {
+    this.classList.remove('is-focused');
+    focuseStatus = 0;
+    console.log("focus status: " + focuseStatus);
+});
+// Check if the text edit window is in focus
+
+
+
+
+// inser the tag at the cursur position
+function insertTags(tagName) {
+    // textArea.focus();
+    setCursor(1);
+    insertTextAtCursor(el, tagName)
+}
+// inser the tag at the cursur position
+
+
+
+
+
+
+function setCursor(pos) {
+    var myEl = document.getElementsByClassName("pell-content")[0];
+
+
+    myEl.onfocus = e => {
+        var sel = window.getSelection()
+        var selected_node = sel.anchorNode
+        // selected_node is the text node
+        // that is inside the div
+        sel.collapse(selected_node, 3)
+    }
+}
+
+
+
+
+
+
+
 
