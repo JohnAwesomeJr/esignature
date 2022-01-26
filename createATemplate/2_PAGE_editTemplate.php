@@ -124,10 +124,10 @@ error_reporting(E_ALL);
                 </div>
             </div>
             <div class="flexRow xFlexCenter yFlexCenter">
-                <div class=" border padding margin shadow" style="border-radius:15px; cursor: pointer;" onclick="slideInTitles();">
+                <div id="showTitlesButton" class=" border padding margin shadow" style="border-radius:15px; cursor: pointer;">
                     Show Titles
                 </div>
-                <div class=" border padding margin shadow" style="border-radius:15px; cursor: pointer;" onclick="slideInTags();">
+                <div class=" border padding margin shadow" style="border-radius:15px; cursor: pointer;">
                     Show Tags
                 </div>
             </div>

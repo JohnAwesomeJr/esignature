@@ -337,3 +337,10 @@ function moveCourserToEndOfSelection(){
 // ​document.onclick = function(){
 //     grippy = rangy.saveSelection();
 //    }​
+
+
+let showTitlesButton = document.getElementById('showTitlesButton');
+showTitlesButton.addEventListener('mousedown',function (e){
+    slideInTitles();
+    e.preventDefault();
+},false);
