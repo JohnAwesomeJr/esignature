@@ -337,9 +337,3 @@ function moveCourserToEndOfSelection(){
 // ​document.onclick = function(){
 //     grippy = rangy.saveSelection();
 //    }​
-
-
-
-
-
-
