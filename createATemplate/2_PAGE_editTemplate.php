@@ -21,6 +21,17 @@ error_reporting(E_ALL);
 
 
     <script src="/node_modules/insert-text-at-cursor/dist/index.umd.js"></script>
+
+
+    <script src="/node_modules/rangy/lib/rangy-core.js"></script>
+    <script src="/node_modules/rangy/lib/rangy-classapplier.js"></script>
+    <script src="/node_modules/rangy/lib/rangy-highlighter.js"></script>
+    <script src="/node_modules/rangy/lib/rangy-selectionsaverestore.js"></script>
+    <script src="/node_modules/rangy/lib/rangy-serializer.js"></script>
+    <script src="/node_modules/rangy/lib/rangy-textrange.js"></script>
+
+
+
     <?php
     $templateId = $_GET['templateNumber'];
 

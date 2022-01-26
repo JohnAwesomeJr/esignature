@@ -12,6 +12,83 @@ error_reporting(E_ALL);
     <!-- are you the owner of the template? -->
     <?php require "/var/www/html/htmlStart.php"; ?>
     <script src="/node_modules/insert-text-at-cursor/dist/index.umd.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+
+
+
+
+    <!-- --------------------------Rangy-------------------------------------------------------------------------- -->
+    <script type="text/javascript" src="/node_modules/rangy/lib/rangy-core.js"></script>
+    <script type="text/javascript" src="/node_modules/rangy/lib/rangy-selectionsaverestore.js"></script>
+    <script type="text/javascript">
+        function gEBI(id) {
+            return document.getElementById(id);
+        }
+
+        var savedSel = null;
+        var savedSelActiveElement = null;
+
+        function saveSelection() {
+            // Remove markers for previously saved selection
+            if (savedSel) {
+                rangy.removeMarkers(savedSel);
+            }
+            savedSel = rangy.saveSelection();
+            savedSelActiveElement = document.activeElement;
+            gEBI("restoreButton").disabled = false;
+        }
+
+        function restoreSelection() {
+            if (savedSel) {
+                rangy.restoreSelection(savedSel, true);
+                savedSel = null;
+                gEBI("restoreButton").disabled = true;
+                window.setTimeout(function() {
+                    if (savedSelActiveElement && typeof savedSelActiveElement.focus != "undefined") {
+                        savedSelActiveElement.focus();
+                    }
+                }, 1);
+            }
+        }
+
+        window.onload = function() {
+            // Turn multiple selections on in IE
+            try {
+                document.execCommand("MultipleSelection", null, true);
+            } catch (ex) {}
+
+            rangy.init();
+
+            // Enable buttons
+            var saveRestoreModule = rangy.modules.SaveRestore;
+            if (rangy.supported && saveRestoreModule && saveRestoreModule.supported) {
+                var saveButton = gEBI("saveButton");
+                saveButton.disabled = false;
+                saveButton.ontouchstart = saveButton.onmousedown = function() {
+                    saveSelection();
+                    return false;
+                };
+
+                var restoreButton = gEBI("restoreButton");
+                restoreButton.ontouchstart = restoreButton.onmousedown = function() {
+                    restoreSelection();
+                    return false;
+                };
+
+                // Display the control range element in IE
+                if (rangy.features.implementsControlRange) {
+                    gEBI("controlRange").style.display = "block";
+                }
+            }
+        }
+    </script>
+    <!-- --------------------------Rangy-------------------------------------------------------------------------- -->
+
+
+
+
+
     <?php
     $templateId = $_GET['templateNumber'];
 
@@ -339,6 +416,13 @@ error_reporting(E_ALL);
 
 
 
+
+
+
+
+
+
+        <script src="/createATemplate/range_selection_save_restore.js"></script>
 
 
 

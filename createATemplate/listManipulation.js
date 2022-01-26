@@ -294,30 +294,49 @@ textArea.addEventListener('blur', function () {
 // inser the tag at the cursur position
 function insertTags(tagName) {
     // textArea.focus();
-    setCursor(1);
-    insertTextAtCursor(el, tagName)
+    setCursor();
+    insertTextAtCursor(el, tagName);
+    restoreCourser();
 }
 // inser the tag at the cursur position
 
 
 
+let grippy = null;
 
-
-
-function setCursor(pos) {
-    var myEl = document.getElementsByClassName("pell-content")[0];
-
-
-    myEl.onfocus = e => {
-        var sel = window.getSelection()
-        var selected_node = sel.anchorNode
-        // selected_node is the text node
-        // that is inside the div
-        sel.collapse(selected_node, 3)
-    }
+function setCursor() {
+    grippy = rangy.saveSelection();
 }
 
+function restoreCourser() {
+    moveCourserToEndOfSelection();
+    rangy.restoreSelection(grippy);
+    // grippy = null;
+}
 
+function moveCourserToEndOfSelection(){
+    //get the browser selection object - it may or may not have a selected range
+    var selection = rangy.getSelection();
+
+    //create a range object to set the caret positioning for
+    var range = rangy.createRange();
+
+    //get the node of the element you wish to put the caret after
+    var startNode = grippy;
+
+    //set the caret after the node for this range
+    range.setStartAfter(startNode);
+    range.setEndAfter(startNode);
+
+    //apply this range to the selection object
+    selection.removeAllRanges();
+    selection.addRange(range);
+
+}
+
+// ​document.onclick = function(){
+//     grippy = rangy.saveSelection();
+//    }​
 
 
 
