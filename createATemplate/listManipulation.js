@@ -102,12 +102,16 @@ function createElement(spawnLocation, name, listName) {
 
 
     // create insert button div
+    let removeSpaces = justName.replace(/\s/g, '');
     let button = document.createElement('div');
+    let buttonId = `insert${removeSpaces}${justTagId}`;
     button.style.padding = "10px 30px";
     button.className = className + " button";
     button.innerHTML = "Insert";
-    button.setAttribute("onclick", `insertTags("${tagName}")`);
+    // button.setAttribute("mousedown", `insertTags("${tagName}")`);
+    button.id = buttonId
     buttonHolder.appendChild(button);
+    setupEventListener(buttonId,tagName);
 
 
 
@@ -291,16 +295,22 @@ textArea.addEventListener('blur', function () {
 
 
 
+
+
 // inser the tag at the cursur position
 function insertTags(tagName) {
     // textArea.focus();
     setCursor();
     insertTextAtCursor(el, tagName);
-    restoreCourser();
+    // restoreCourser();
+    slideOutTitles();
+    slideOutTags();
+
+
+    // e.preventDefault();
+
 }
 // inser the tag at the cursur position
-
-
 
 let grippy = null;
 
@@ -311,7 +321,7 @@ function setCursor() {
 function restoreCourser() {
     moveCourserToEndOfSelection();
     rangy.restoreSelection(grippy);
-    // grippy = null;
+    grippy = null;
 }
 
 function moveCourserToEndOfSelection(){
@@ -334,13 +344,45 @@ function moveCourserToEndOfSelection(){
 
 }
 
-// ​document.onclick = function(){
-//     grippy = rangy.saveSelection();
-//    }​
 
 
+
+
+
+// SHow titles and tags when you press the button.
 let showTitlesButton = document.getElementById('showTitlesButton');
 showTitlesButton.addEventListener('mousedown',function (e){
     slideInTitles();
     e.preventDefault();
 },false);
+
+
+let showTagsButton = document.getElementById('showTagsButton');
+showTagsButton.addEventListener('mousedown',function (e){
+    slideInTags();
+    e.preventDefault();
+},false);
+// SHow titles and tags when you press the button.
+
+
+
+
+
+
+
+
+function setupEventListener(strButtonId,tagName){
+    // SHow titles and tags when you press the button.
+    let button = document.getElementById(strButtonId);
+    button.addEventListener('mousedown',function (e){
+        insertTags(tagName);
+        e.preventDefault();
+    },false);
+
+}
+
+// keep scrolling to top
+setInterval(()=>{
+    window.scrollTo(0,0);
+},100);
+// keep scrolling to top

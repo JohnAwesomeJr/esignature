@@ -15,6 +15,10 @@ error_reporting(E_ALL);
         .jasonHolder {
             display: none;
         }
+
+        .pell-content {
+            width: 100%;
+        }
     </style>
 
     <link rel="stylesheet" href="/newStyles.css">
@@ -29,6 +33,11 @@ error_reporting(E_ALL);
     <script src="/node_modules/rangy/lib/rangy-selectionsaverestore.js"></script>
     <script src="/node_modules/rangy/lib/rangy-serializer.js"></script>
     <script src="/node_modules/rangy/lib/rangy-textrange.js"></script>
+
+
+
+
+
 
 
 
@@ -73,7 +82,17 @@ error_reporting(E_ALL);
             }
         </style>
 
-        <form class="demoBorder flexColumn xFlexCenter yFlexTop" style="width:100vw; height:100vh; overflow-x: hidden; overflow-y: scroll;" method="post" action="/createATemplate/3_DB_updateTemplate.php?templateNumber=<?= $templateId; ?>">
+        <form class=" demoBorder flexColumn xFlexCenter yFlexTop" method="post" action="/createATemplate/3_DB_updateTemplate.php?templateNumber=<?= $templateId; ?>">
+            <input type="submit" value="Process All">
+            <div class="flexRow xFlexCenter yFlexCenter">
+                <div id="showTitlesButton" class=" border padding margin shadow" style="border-radius:15px; cursor: pointer;">
+                    Show Titles
+                </div>
+                <div id="showTagsButton" class=" border padding margin shadow" style="border-radius:15px; cursor: pointer;">
+                    Show Tags
+                </div>
+            </div>
+
 
 
 
@@ -88,7 +107,7 @@ error_reporting(E_ALL);
 
 
             <!-- --------------------------Content and title--------------------- -->
-            <div class="screen1 demoBorder" style="width:100%; max-width:700px;">
+            <div class="screen1 demoBorder" style="width:100vw; height:calc(50vh - 160px); overflow-x: hidden; overflow-y: scroll;">
                 <h2>contract info</h2>
                 <div style="padding:10px; display:none;">
                     <label for="templateId">Template ID</label>
@@ -123,14 +142,7 @@ error_reporting(E_ALL);
 
                 </div>
             </div>
-            <div class="flexRow xFlexCenter yFlexCenter">
-                <div id="showTitlesButton" class=" border padding margin shadow" style="border-radius:15px; cursor: pointer;">
-                    Show Titles
-                </div>
-                <div class=" border padding margin shadow" style="border-radius:15px; cursor: pointer;">
-                    Show Tags
-                </div>
-            </div>
+
             <!-- --------------------------Content and title--------------------- -->
 
 
@@ -145,7 +157,7 @@ error_reporting(E_ALL);
 
 
             <!-- --------------------------TITLES--------------------- -->
-            <div class="screen2 slideOutPanel">
+            <div class="screen2 shadow slideOutPanel">
                 <h2 onclick="slideOutTitles()">insert Titles</h2>
                 <?php
                 $db = new db();
@@ -222,7 +234,6 @@ error_reporting(E_ALL);
 
 
 
-            <input type="submit" value="Process All">
 
 
 
@@ -292,7 +303,9 @@ error_reporting(E_ALL);
 
 
 
-
+        <!-- javascript iphone test -->
+        <!-- <script src="/createATemplate/testing.js"></script> -->
+        <!-- javascript iphone test -->
 
 
 
