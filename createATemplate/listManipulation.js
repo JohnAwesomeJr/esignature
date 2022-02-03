@@ -82,7 +82,7 @@ function createElement(spawnLocation, name, listName) {
     let newElement = document.createElement('div');
     newElement.id = listName + i;
     newElement.className = " margin dbListItem shadow flexColumn xFlexCenter yFlexSpaceBetweenY";
-    newElement.style = "width:500px; max-width:400px; height:200px; border-radius:15px; padding:30px; background:#ffffff;"
+    newElement.style = "width:320px; max-width:400px; height:200px; border-radius:15px; padding:30px; background:#ffffff;"
     spawnLocation.appendChild(newElement);
 
     // create text
@@ -208,7 +208,7 @@ getTagList();
 function slideOutTags() {
     let tagsScreen = document.getElementsByClassName('screen3')[0];
 
-    tagsScreen.style.right = "-500px";
+    tagsScreen.style.right = "-360px";
     tagsScreen.style.width = "100px";
 }
 
@@ -216,7 +216,7 @@ function slideInTags() {
     let tagsScreen = document.getElementsByClassName('screen3')[0];
 
     tagsScreen.style.right = "0";
-    tagsScreen.style.width = "500px";
+    tagsScreen.style.width = "360px";
 }
 
 
@@ -225,7 +225,7 @@ function slideInTags() {
 function slideOutTitles() {
     let titlesScreen = document.getElementsByClassName('screen2')[0];
 
-    titlesScreen.style.right = "-500px";
+    titlesScreen.style.right = "-360px";
     titlesScreen.style.width = "100px";
 }
 
@@ -233,7 +233,7 @@ function slideInTitles() {
     let titlesScreen = document.getElementsByClassName('screen2')[0];
 
     titlesScreen.style.right = "0";
-    titlesScreen.style.width = "500px";
+    titlesScreen.style.width = "360px";
 }
 
 
@@ -382,7 +382,11 @@ function setupEventListener(strButtonId,tagName){
 }
 
 // keep scrolling to top
+// setInterval(()=>{
+//     window.scrollTo(0,0);
+// },100);
+// keep scrolling to top
+
 setInterval(()=>{
     window.scrollTo(0,0);
-},100);
-// keep scrolling to top
+},100)

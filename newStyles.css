@@ -94,4 +94,15 @@
   height: calc(50vh - 160px);
   transition: all 1s;
   box-shadow: inset -7px -20px 20px 0px rgb(23 47 90 / 25%);
+  padding: 20px;
+}
+
+.smallButton {
+  padding: 5px !important;
+  margin: 5px !important;
+  width: 100px !important;
+  height: 50px !important;
+  border-radius: 15px;
+  cursor: pointer;
+  overflow: hidden;
 }

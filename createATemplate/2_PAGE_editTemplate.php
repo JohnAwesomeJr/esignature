@@ -73,7 +73,6 @@ error_reporting(E_ALL);
         }
         ?>
 
-        You are the owner and are qualified to modify this contract
 
         <style>
             td {
@@ -82,15 +81,15 @@ error_reporting(E_ALL);
             }
         </style>
 
-        <form class=" demoBorder flexColumn xFlexCenter yFlexTop" method="post" action="/createATemplate/3_DB_updateTemplate.php?templateNumber=<?= $templateId; ?>">
-            <input type="submit" value="Process All">
+        <form class="all flexColumn xFlexCenter yFlexTop" method="post" action="/createATemplate/3_DB_updateTemplate.php?templateNumber=<?= $templateId; ?>">
             <div class="flexRow xFlexCenter yFlexCenter">
-                <div id="showTitlesButton" class=" border padding margin shadow" style="border-radius:15px; cursor: pointer;">
+                <div id="showTitlesButton" class=" smallButton shadow flexRow xFlexCenter yFlexCenter">
                     Show Titles
                 </div>
-                <div id="showTagsButton" class=" border padding margin shadow" style="border-radius:15px; cursor: pointer;">
+                <div id="showTagsButton" class="smallButton shadow flexRow xFlexCenter yFlexCenter">
                     Show Tags
                 </div>
+                <input type="submit" value="Save" class="smallButton">
             </div>
 
 
@@ -107,8 +106,7 @@ error_reporting(E_ALL);
 
 
             <!-- --------------------------Content and title--------------------- -->
-            <div class="screen1 demoBorder" style="width:100vw; height:calc(50vh - 160px); overflow-x: hidden; overflow-y: scroll;">
-                <h2>contract info</h2>
+            <div class="screen1" style="width:100vw; height:calc(50vh - 30px); overflow-x: hidden; overflow-y: scroll;">
                 <div style="padding:10px; display:none;">
                     <label for="templateId">Template ID</label>
                     <br>
@@ -168,7 +166,7 @@ error_reporting(E_ALL);
                 $titleListArray = $db->selectSql($selectTitlesSql, [$templateId]);
                 ?>
 
-                <div class="shadow flexColumn xFlexCenter yFlexTop" style="width:100%;max-width:400px; padding:30px; border-radius: 15px;">
+                <div class="shadow flexColumn xFlexCenter yFlexTop" style="width:100%;max-width:400px; padding:30px; border-radius: 15px; background:#9ed9e6;">
                     <h4>Add New Title</h4>
                     <div class="flexRow yFlexCenter xFlexCenter">
                         <input style="margin:0px; max-width:300px; margin:5px;" class="shadow" id="titleInput"></input>
@@ -211,7 +209,7 @@ error_reporting(E_ALL);
                 $tagListArray = $db->selectSql($selectTagsQuery, [$templateId]);
                 ?>
 
-                <div class="shadow flexColumn xFlexCenter yFlexTop" style="width:100%;max-width:400px; padding:30px; border-radius: 15px;">
+                <div class="shadow flexColumn xFlexCenter yFlexTop" style="width:100%;max-width:400px; padding:30px; border-radius: 15px; background:#9ed9e6;">
                     <h4>Add New Tag</h4>
                     <div class="flexRow yFlexCenter xFlexCenter">
                         <input style="margin:0px; max-width:300px; margin:5px;" class="shadow" id="tagInput"></input>
@@ -220,7 +218,7 @@ error_reporting(E_ALL);
                 </div>
                 <h4>Tag List</h4>
 
-                <div class="list flexColumn xFlexCenter yFlexTop">
+                <div class="list flexColumn xFlexCenter yFlexTop" style="width:100%;">
                 </div>
             </div>
             <!-- --------------------------TAGS--------------------- -->
