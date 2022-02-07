@@ -34,14 +34,13 @@ windowHeight = window.innerHeight;
 
 content.addEventListener('focus', (event) => {
     setTimeout(()=>{
-        // window.scrollTo(0,document.body.scrollHeight);
-        window.scrollTo(0,document.body.scrollHeight);
-        let scrollPosition = window.scrollY;
-        iosDisplayBox.innerHTML = scrollPosition;
-        iosDisplayBox.style.height = scrollPosition + "px";
-        iosDisplayBox.style.removeProperty('top');
-        iosDisplayBox.style.bottom = "0px"
-        window.scrollTo(0,0);
+        iosDisplayBox.style.removeProperty('bottom');
+        iosDisplayBox.style.top = "0px";
+        setTimeout(()=>{
+            newWinHeight = window.visualViewport.height;
+            iosDisplayBox.style.height = newWinHeight + "px";
+        },1000);
+        
     },1000)
 
 

@@ -381,12 +381,38 @@ function setupEventListener(strButtonId,tagName){
 
 }
 
-// keep scrolling to top
-// setInterval(()=>{
-//     window.scrollTo(0,0);
-// },100);
-// keep scrolling to top
 
+
+// keep scrolling to top
 setInterval(()=>{
     window.scrollTo(0,0);
-},100)
+},100);
+// keep scrolling to top
+
+
+
+
+// shrink view when keyboard is present
+ContainerAll = document.getElementById('ContainerAll');
+pellFocus = document.getElementsByClassName('pell-content')[0];
+sliedOut1 = document.getElementsByClassName('screen2')[0];
+sliedOut2 = document.getElementsByClassName('screen3')[0];
+pellFocus.addEventListener('focus', (event) => {
+    setTimeout(()=>{
+        // ContainerAll.style.removeProperty('bottom');
+        // ContainerAll.style.top = "0px";
+            newWinHeight = window.visualViewport.height;
+            ContainerAll.style.height = newWinHeight + "px";
+
+            newHeightPanel = "calc(" + newWinHeight + "px - 50px)"
+
+
+            sliedOut1.style.height = newHeightPanel;
+            sliedOut2.style.height = newHeightPanel;
+
+    },700);
+});
+// shrink view when keyboard is present
+
+slideOutTitles();
+slideOutTags();

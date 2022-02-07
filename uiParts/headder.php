@@ -69,7 +69,7 @@
     </a>
 
 
-    <a href="https://www.google.com">
+    <a href="/templatesAndContracts.php?screen=templates">
         <p>Main Menu</p>
     </a>
 

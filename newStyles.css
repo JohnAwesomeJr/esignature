@@ -91,10 +91,11 @@
   overflow-y: scroll;
   overflow-x: hidden;
   width: 360px;
-  height: calc(50vh - 160px);
+  height: calc(100vh - 50px);
   transition: all 1s;
-  box-shadow: inset -7px -20px 20px 0px rgb(23 47 90 / 25%);
+  box-shadow: -7px -20px 20px 0px rgb(23 47 90 / 25%);
   padding: 20px;
+  border-radius: 20px 20px 20px 20px;
 }
 
 .smallButton {

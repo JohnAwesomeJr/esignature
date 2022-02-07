@@ -81,7 +81,7 @@ error_reporting(E_ALL);
             }
         </style>
 
-        <form class="all flexColumn xFlexCenter yFlexTop" method="post" action="/createATemplate/3_DB_updateTemplate.php?templateNumber=<?= $templateId; ?>">
+        <form id="ContainerAll" class=" all flexColumn xFlexCenter yFlexTop" method="post" action="/createATemplate/3_DB_updateTemplate.php?templateNumber=<?= $templateId; ?>">
             <div class="flexRow xFlexCenter yFlexCenter">
                 <div id="showTitlesButton" class=" smallButton shadow flexRow xFlexCenter yFlexCenter">
                     Show Titles
@@ -106,7 +106,7 @@ error_reporting(E_ALL);
 
 
             <!-- --------------------------Content and title--------------------- -->
-            <div class="screen1" style="width:100vw; height:calc(50vh - 30px); overflow-x: hidden; overflow-y: scroll;">
+            <div class="screen1" style="width:100vw; height:100%; overflow-x: hidden; overflow-y: scroll;">
                 <div style="padding:10px; display:none;">
                     <label for="templateId">Template ID</label>
                     <br>
@@ -166,11 +166,11 @@ error_reporting(E_ALL);
                 $titleListArray = $db->selectSql($selectTitlesSql, [$templateId]);
                 ?>
 
-                <div class="shadow flexColumn xFlexCenter yFlexTop" style="width:100%;max-width:400px; padding:30px; border-radius: 15px; background:#9ed9e6;">
+                <div class="shadow flexColumn xFlexCenter yFlexTop" style="width:100%;max-width:400px; padding:30px; border-radius: 15px; background:White;">
                     <h4>Add New Title</h4>
                     <div class="flexRow yFlexCenter xFlexCenter">
                         <input style="margin:0px; max-width:300px; margin:5px;" class="shadow" id="titleInput"></input>
-                        <div class=" shadow flexColumn xFlexCenter yFlexCenter" style="width:100px; border-radius:15px; height:50px; width:100px; margin:5px;" onclick="addNewTitle()">Add</div>
+                        <div class=" shadow flexColumn xFlexCenter yFlexCenter" style="width:100px; border-radius:15px; height:50px; width:100px; margin:5px; background:#2fe478;" onclick="addNewTitle()">Add</div>
                     </div>
                 </div>
                 <h4>Title List</h4>
@@ -209,11 +209,11 @@ error_reporting(E_ALL);
                 $tagListArray = $db->selectSql($selectTagsQuery, [$templateId]);
                 ?>
 
-                <div class="shadow flexColumn xFlexCenter yFlexTop" style="width:100%;max-width:400px; padding:30px; border-radius: 15px; background:#9ed9e6;">
+                <div class="shadow flexColumn xFlexCenter yFlexTop" style="width:100%;max-width:400px; padding:30px; border-radius: 15px; background:White;">
                     <h4>Add New Tag</h4>
                     <div class="flexRow yFlexCenter xFlexCenter">
                         <input style="margin:0px; max-width:300px; margin:5px;" class="shadow" id="tagInput"></input>
-                        <div class=" shadow flexColumn xFlexCenter yFlexCenter" style="width:100px; border-radius:15px; height:50px; width:100px; margin:5px;" onclick="addNewTag()">Add</div>
+                        <div class=" shadow flexColumn xFlexCenter yFlexCenter" style="width:100px; border-radius:15px; height:50px; width:100px; margin:5px; background:#2fe478;" onclick="addNewTag()">Add</div>
                     </div>
                 </div>
                 <h4>Tag List</h4>
