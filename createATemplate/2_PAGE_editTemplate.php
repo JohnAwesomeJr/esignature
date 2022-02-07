@@ -22,6 +22,8 @@ error_reporting(E_ALL);
     </style>
 
     <link rel="stylesheet" href="/newStyles.css">
+    <link rel="stylesheet" href="/createATemplate/page2Styles.css">
+
 
 
     <script src="/node_modules/insert-text-at-cursor/dist/index.umd.js"></script>
@@ -106,7 +108,7 @@ error_reporting(E_ALL);
 
 
             <!-- --------------------------Content and title--------------------- -->
-            <div class="screen1" style="width:100vw; height:100%; overflow-x: hidden; overflow-y: scroll;">
+            <div class="screen1 flexColumn xFlexCenter yFlexTop" style="width:100vw; height:100%; overflow-x: hidden; overflow-y: hidden;">
                 <div style="padding:10px; display:none;">
                     <label for="templateId">Template ID</label>
                     <br>
@@ -114,8 +116,8 @@ error_reporting(E_ALL);
                     <br>
                 </div>
 
-                <div class="stage1 centerRow">
-                    <label for="templateName">Template Name</label>
+                <div class="stage1 flexRow xFlexCenter">
+                    <label style="width:150px;" for="templateName">Template Name</label>
                     <input name="templateName" type="text" value="<?= $templateName; ?>">
                 </div>
 
@@ -127,11 +129,9 @@ error_reporting(E_ALL);
                     <br>
                 </div>
 
-                <div class="stage2" style="padding:10px;">
+                <div class="stage2">
                     <label for="templateContent" style="display:none;">Template Content</label>
-                    <br>
                     <textarea style="display:none;" id="html-output" name="templateContent" type="text" placeholder="<?= $placeholder; ?>"><?= $templateContent; ?></textarea>
-                    <br>
                     <!-- ---------------Pell---------------- -->
                     <div class="content">
                         <div id="editor" class="pell"></div>

@@ -1,0 +1,36 @@
+.content {
+  width: 90vw !important;
+}
+#editor {
+  width: 100% !important;
+}
+.pell-button-selected {
+  background: orange !important;
+}
+
+.pell-actionbar {
+  width: 100% !important;
+}
+
+.pell-button:nth-child(3) {
+  display: none;
+}
+
+.pell-button:nth-child(4) {
+  display: none;
+}
+.pell-button:nth-child(8) {
+  display: none;
+}
+.pell-button:nth-child(11) {
+  display: none;
+}
+.pell-button:nth-child(12) {
+  display: none;
+}
+.pell-button:nth-child(13) {
+  display: none;
+}
+.pell-button:nth-child(14) {
+  display: none;
+}

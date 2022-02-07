@@ -403,6 +403,7 @@ pellFocus.addEventListener('focus', (event) => {
         // ContainerAll.style.top = "0px";
             newWinHeight = window.visualViewport.height;
             ContainerAll.style.height = newWinHeight + "px";
+            pellFocus.style.height = newWinHeight - 200 + "px";
 
             newHeightPanel = "calc(" + newWinHeight + "px - 50px)"
 
