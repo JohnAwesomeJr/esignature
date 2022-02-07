@@ -203,13 +203,15 @@ getTagList();
 
 
 
-
+// const darkMenuCover = document.getElementById('darkMenuCover');
 
 function slideOutTags() {
     let tagsScreen = document.getElementsByClassName('screen3')[0];
-
     tagsScreen.style.right = "-360px";
     tagsScreen.style.width = "100px";
+    darkMenuCover.style.backdropFilter = "blur(0px) saturate(0%) brightness(100%)";
+    darkMenuCover.style.background = "#00000000";
+
 }
 
 function slideInTags() {
@@ -217,6 +219,9 @@ function slideInTags() {
 
     tagsScreen.style.right = "0";
     tagsScreen.style.width = "360px";
+    darkMenuCover.style.backdropFilter = "blur(5px) saturate(30%) brightness(80%)";
+    darkMenuCover.style.background = "#00000091";
+
 }
 
 
