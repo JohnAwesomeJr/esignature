@@ -133,7 +133,7 @@ error_reporting(E_ALL);
 
 
 
-    // header("location: /templatesAndContracts.php")
+    header("location: /templatesAndContracts.php")
     ?>
 
 
