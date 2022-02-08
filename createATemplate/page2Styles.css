@@ -71,7 +71,9 @@
   width: 100vw;
   height: 100vh;
 
-  backdrop-filter: blur(0px) saturate(0%) brightness(100%);
+  /* backdrop-filter: blur(0px) saturate(0%) brightness(100%); */
+  -webkit-backdrop-filter: blur(0px);
+
   transition: all 1s;
   pointer-events: none;
 }

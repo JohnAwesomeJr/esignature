@@ -209,7 +209,7 @@ function slideOutTags() {
     let tagsScreen = document.getElementsByClassName('screen3')[0];
     tagsScreen.style.right = "-360px";
     tagsScreen.style.width = "100px";
-    darkMenuCover.style.backdropFilter = "blur(0px) saturate(0%) brightness(100%)";
+    darkMenuCover.style.backdropFilter = "blur(0px)";
     darkMenuCover.style.background = "#00000000";
 
 }
@@ -219,7 +219,7 @@ function slideInTags() {
 
     tagsScreen.style.right = "0";
     tagsScreen.style.width = "360px";
-    darkMenuCover.style.backdropFilter = "blur(5px) saturate(30%) brightness(80%)";
+    darkMenuCover.style.backdropFilter = "blur(5px)";
     darkMenuCover.style.background = "#00000091";
 
 }
@@ -232,6 +232,8 @@ function slideOutTitles() {
 
     titlesScreen.style.right = "-360px";
     titlesScreen.style.width = "100px";
+    darkMenuCover.style.backdropFilter = "blur(0px)";
+    darkMenuCover.style.background = "#00000000";
 }
 
 function slideInTitles() {
@@ -239,6 +241,8 @@ function slideInTitles() {
 
     titlesScreen.style.right = "0";
     titlesScreen.style.width = "360px";
+    darkMenuCover.style.backdropFilter = "blur(5px)";
+    darkMenuCover.style.background = "#00000091";
 }
 
 
