@@ -33,6 +33,20 @@ function addNewTag() {
     } else {
         createElement(placeTagIn, insideInput, "tag");
         document.getElementById('tagInput').value = "";
+        document.getElementsByClassName('screen3')[0].scrollTop = 100000000;
+        let Container = document.getElementsByClassName('screen3')[0]
+        let lastElement = document.querySelectorAll('.list')[1].lastChild;
+        lastElement.style.transition = "all 0s";
+        lastElement.style.background = "#99cdfa";
+        setTimeout(()=>{
+            lastElement.style.transition = "all 3s";
+            lastElement.style.background = "White";
+        },1)
+        restoreCourser();
+
+
+        // lastElement.style.background = "red";
+
     }
 }
 
@@ -328,7 +342,7 @@ function setCursor() {
 }
 
 function restoreCourser() {
-    moveCourserToEndOfSelection();
+    // moveCourserToEndOfSelection();
     rangy.restoreSelection(grippy);
     grippy = null;
 }
@@ -426,3 +440,13 @@ pellFocus.addEventListener('focus', (event) => {
 
 slideOutTitles();
 slideOutTags();
+
+
+
+// capture caret position before creating a new tag
+    let tagInputFocus = document.getElementById('tagInput');
+    tagInputFocus.addEventListener('mousedown',function (e){
+        setCursor();
+        tagInputFocus.focus();
+        e.preventDefault();
+    },false);
