@@ -52,5 +52,5 @@
 <?php else : ?>
     you are not logged in
 <?php endif; ?>
-<?php require "/var/www/html/arrayVisualizer.php";
+<?php // require "/var/www/html/arrayVisualizer.php";
 ?>

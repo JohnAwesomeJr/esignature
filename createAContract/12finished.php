@@ -1,7 +1,8 @@
 <?php session_start(); ?>
 <?php require "/var/www/html/.env"; ?>
 <?php require "/var/www/html/htmlStart.php"; ?>
-<?php require "/var/www/html/arrayVisualizer.php"; ?>
+<?php // require "/var/www/html/arrayVisualizer.php"; 
+?>
 <?php require "/var/www/html/colors.php"; ?>
 
 

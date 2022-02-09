@@ -98,4 +98,5 @@
 <?php endif; ?>
 
 
-<?php require "/var/www/html/arrayVisualizer.php"; ?>
+<?php // require "/var/www/html/arrayVisualizer.php"; 
+?>

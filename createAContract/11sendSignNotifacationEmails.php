@@ -4,7 +4,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 ?>
 <?php
-require "/var/www/html/arrayVisualizer.php";
+// require "/var/www/html/arrayVisualizer.php";
 require "/var/www/html/classes/db.php";
 require "/var/www/html/.env";
 
