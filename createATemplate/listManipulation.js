@@ -34,7 +34,6 @@ function addNewTag() {
         createElement(placeTagIn, insideInput, "tag");
         document.getElementById('tagInput').value = "";
         document.getElementsByClassName('screen3')[0].scrollTop = 100000000;
-        let Container = document.getElementsByClassName('screen3')[0]
         let lastElement = document.querySelectorAll('.list')[1].lastChild;
         lastElement.style.transition = "all 0s";
         lastElement.style.background = "#99cdfa";
@@ -57,6 +56,18 @@ function addNewTitle() {
     } else {
         createElement(placeTitleIn, insideInput, "title");
         document.getElementById('titleInput').value = "";
+        document.getElementsByClassName('screen2')[0].scrollTop = 100000000;
+        let lastElement = document.querySelectorAll('.list')[0].lastChild;
+        lastElement.style.transition = "all 0s";
+        lastElement.style.background = "#99cdfa";
+        setTimeout(()=>{
+            lastElement.style.transition = "all 3s";
+            lastElement.style.background = "White";
+        },1)
+        restoreCourser();
+
+
+
     }
 }
 
@@ -448,5 +459,15 @@ slideOutTags();
     tagInputFocus.addEventListener('mousedown',function (e){
         setCursor();
         tagInputFocus.focus();
+        e.preventDefault();
+    },false);
+
+
+
+    
+    let titleInputFocus = document.getElementById('titleInput');
+    titleInputFocus.addEventListener('mousedown',function (e){
+        setCursor();
+        titleInputFocus.focus();
         e.preventDefault();
     },false);
