@@ -1,18 +1,18 @@
 <?php session_start(); ?>
 <?php if ($_SESSION) : ?>
-    <?php require "/var/www/html/.env"; ?>
-    <?php require "/var/www/html/colors.php"; ?>
-    <?php require "/var/www/html/uiParts/card.php"; ?>
-    <?php require "/var/www/html/uiParts/footer.php"; ?>
+    <?php require "/var/www/html/esign/.env"; ?>
+    <?php require "/var/www/html/esign/colors.php"; ?>
+    <?php require "/var/www/html/esign/uiParts/card.php"; ?>
+    <?php require "/var/www/html/esign/uiParts/footer.php"; ?>
 
     <!-- Start of base CONTAINER -->
-    <?php require "/var/www/html/htmlStart.php"; ?>
-    <?php require "/var/www/html/uiParts/baseContainer.php"; ?>
+    <?php require "/var/www/html/esign/htmlStart.php"; ?>
+    <?php require "/var/www/html/esign/uiParts/baseContainer.php"; ?>
     <div id="bodyCentering">
         <?php
         $backButton = false;
         $backLink1 = "http://www.youtube.com";
-        require "/var/www/html/uiParts/headder.php";
+        require "/var/www/html/esign/uiParts/headder.php";
         ?>
 
         <div style="height:100px;"></div>
@@ -67,7 +67,7 @@
                         </div>
                         <div>
                             <?php $iconSize = 80; ?>
-                            <?php require "/var/www/html/uiImages/contractIconColor.php"; ?>
+                            <?php require "/var/www/html/esign/uiImages/contractIconColor.php"; ?>
                         </div>
                     </a>
 
@@ -110,7 +110,7 @@
                                 </div>
                                 <div>
                                     <?php $iconSize = 80; ?>
-                                    <?php require "/var/www/html/uiImages/templateIcon.svg"; ?>
+                                    <?php require "/var/www/html/esign/uiImages/templateIcon.svg"; ?>
                                 </div>
                             </div>
                             <div class="centerRow" style="justify-content:flex-start;">

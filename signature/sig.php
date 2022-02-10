@@ -1,6 +1,6 @@
-<?php require "/var/www/html/colors.php"; ?>
-<?php require "/var/www/html/uiParts/card.php"; ?>
-<?php require "/var/www/html/htmlStart.php"; ?>
+<?php require "/var/www/html/esign/colors.php"; ?>
+<?php require "/var/www/html/esign/uiParts/card.php"; ?>
+<?php require "/var/www/html/esign/htmlStart.php"; ?>
 
 <head>
     <link rel="stylesheet" href="signature-pad.css">
@@ -88,7 +88,7 @@
 <body>
 
     <!-- start of the base container -->
-    <?php require "/var/www/html/uiParts/baseContainer.php"; ?>
+    <?php require "/var/www/html/esign/uiParts/baseContainer.php"; ?>
 
 
 
@@ -99,7 +99,7 @@
                     <canvas style="touch-action: none;" width="1328" height="738"></canvas>
                     <div id="signPrompt">
                         <div id="fade">
-                            <?php require "/var/www/html/uiImages/signPromptIcon.svg"; ?>
+                            <?php require "/var/www/html/esign/uiImages/signPromptIcon.svg"; ?>
                         </div>
                         <div id="grayLine"></div>
                     </div>
@@ -133,11 +133,11 @@
 
         <div id="rotateScreen">
             <div>Please rotate your device.</div>
-            <?php require "/var/www/html/uiImages/rotateIcon.svg"; ?>
+            <?php require "/var/www/html/esign/uiImages/rotateIcon.svg"; ?>
         </div>
         <!-- Add the footer -->
         <?php
-        require "/var/www/html/uiParts/footer.php";
+        require "/var/www/html/esign/uiParts/footer.php";
         $allButtons = [
             //$button1 = ["templatesButton", "http://www.google.com"],
             //$button2 = ["contractsButton", "http://www.google.com"],
@@ -193,7 +193,7 @@
 
 
     <div id="screen">
-        <?php require "/var/www/html/uiImages/loading/loading.php"; ?>
+        <?php require "/var/www/html/esign/uiImages/loading/loading.php"; ?>
     </div>
 
     <script>

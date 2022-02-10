@@ -17,7 +17,7 @@ if ($_SESSION > 0) :
 
     <?php
     // are you the owner of the contract?
-    require "/var/www/html/classes/db.php";
+    require "/var/www/html/esign/classes/db.php";
     $db = new db();
     $contractOwnerSql = <<<EOD
     SELECT * 

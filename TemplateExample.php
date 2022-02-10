@@ -1,4 +1,4 @@
-<?php require "/var/www/html/.env"; ?>
+<?php require "/var/www/html/esign/.env"; ?>
 <?php session_start(); ?>
 <!-- are you logged in? -->
 <?php if ($_SESSION) : ?>
@@ -21,7 +21,7 @@
     ?>
 
     <?php if ($_SESSION['userId'] == $rows[0]['contractParentUser']) : ?>
-        <?php require "/var/www/html/htmlStart.php"; ?>
+        <?php require "/var/www/html/esign/htmlStart.php"; ?>
         <!-- PLACE CODE HERE -->
 
 
@@ -52,5 +52,5 @@
 <?php else : ?>
     you are not logged in
 <?php endif; ?>
-<?php // require "/var/www/html/arrayVisualizer.php";
+<?php // require "/var/www/html/esign/arrayVisualizer.php";
 ?>

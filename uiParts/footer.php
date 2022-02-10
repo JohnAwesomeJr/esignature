@@ -32,7 +32,7 @@
  * 
  * 
  */
-require "/var/www/html/uiParts/button.php";
+require "/var/www/html/esign/uiParts/button.php";
 function footer($button1 = NULL, $button2 = NULL, $button3 = NULL)
 {; ?>
 
@@ -46,7 +46,7 @@ function footer($button1 = NULL, $button2 = NULL, $button3 = NULL)
         echo $link;
         echo "' ";
         echo ">";
-        button("/var/www/html/uiImages/plus.svg", "", 0, 1);
+        button("/var/www/html/esign/uiImages/plus.svg", "", 0, 1);
         echo "</a>";
     }
     function plusButtonWide($link)
@@ -56,7 +56,7 @@ function footer($button1 = NULL, $button2 = NULL, $button3 = NULL)
         echo $link;
         echo "' ";
         echo ">";
-        button("/var/www/html/uiImages/plus.svg", "", 0, 0);
+        button("/var/www/html/esign/uiImages/plus.svg", "", 0, 0);
         echo "</a>";
     }
     function contractsButton($link)

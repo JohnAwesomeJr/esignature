@@ -1,6 +1,6 @@
 <?php
 // enviroment variables
-require "/var/www/html/.env";
+require "/var/www/html/esign/.env";
 ?>
 <?php
 $fileName = uniqid();

@@ -10,6 +10,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed&display=swap" rel="stylesheet">
-    <?php require "/var/www/html/colors.php"; ?>
+    <?php require "/var/www/html/esign/colors.php"; ?>
     <link rel="stylesheet" href="/allStyles.css">
 </head>

@@ -5,13 +5,13 @@ error_reporting(E_ALL);
 ?>
 <?php
 // enviroment variables
-require "/var/www/html/.env";
+require "/var/www/html/esign/.env";
 ?>
 <?php
 //top level php mailer class
-require "/var/www/html/vendor/phpmailer/phpmailer/src/PHPMailer.php";
-require "/var/www/html/vendor/phpmailer/phpmailer/src/SMTP.php";
-require "/var/www/html/vendor/phpmailer/phpmailer/src/Exception.php";
+require "/var/www/html/esign/vendor/phpmailer/phpmailer/src/PHPMailer.php";
+require "/var/www/html/esign/vendor/phpmailer/phpmailer/src/SMTP.php";
+require "/var/www/html/esign/vendor/phpmailer/phpmailer/src/Exception.php";
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -77,7 +77,7 @@ $emailStatus = $stmt->fetchAll();
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$id]);
         $rows = $stmt->fetchAll();
-        $filePath = '/var/www/html' . urldecode($_GET['downloadLink']);
+        $filePath = '/var/www/html/esign' . urldecode($_GET['downloadLink']);
         chmod($filePath, 0777);
 
         $mail->isSMTP();
@@ -103,10 +103,10 @@ $emailStatus = $stmt->fetchAll();
 <?php endif; ?>
 
 
-<?php require "/var/www/html/uiParts/footer.php"; ?>
-<?php require "/var/www/html/colors.php"; ?>
-<?php require "/var/www/html/uiParts/card.php"; ?>
-<?php require "/var/www/html/htmlStart.php"; ?>
+<?php require "/var/www/html/esign/uiParts/footer.php"; ?>
+<?php require "/var/www/html/esign/colors.php"; ?>
+<?php require "/var/www/html/esign/uiParts/card.php"; ?>
+<?php require "/var/www/html/esign/htmlStart.php"; ?>
 
 <?php $content = <<<EOD
 <p>The signed document has been sent back to the contract creater.</p>
@@ -115,11 +115,11 @@ EOD; ?>
 
 <body>
     <!-- start of the base container -->
-    <?php require "/var/www/html/uiParts/baseContainer.php"; ?>
+    <?php require "/var/www/html/esign/uiParts/baseContainer.php"; ?>
     <div id="bodyCentering">
         <?= $backLink1 = "yourMom!" ?>
         <?php $backButton = true; ?>
-        <?php require "/var/www/html/uiParts/headder.php"; ?>
+        <?php require "/var/www/html/esign/uiParts/headder.php"; ?>
         <div style="height:85px;"></div>
 
         <?php

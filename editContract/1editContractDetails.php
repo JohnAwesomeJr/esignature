@@ -17,7 +17,7 @@ if ($_SESSION > 0) :
 
     <?php
     // are you the owner of the contract?
-    require "/var/www/html/classes/db.php";
+    require "/var/www/html/esign/classes/db.php";
     $db = new db();
     $contractOwnerSql = <<<EOD
     SELECT * 
@@ -70,8 +70,8 @@ if ($_SESSION > 0) :
 
 
 
-            <?php require "/var/www/html/htmlStart.php"; ?>
-            <?php require "/var/www/html/colors.php" ?>
+            <?php require "/var/www/html/esign/htmlStart.php"; ?>
+            <?php require "/var/www/html/esign/colors.php" ?>
 
             <body class="centerColomn" style="overflow-y: scroll; background:<?= $background; ?>">
 
@@ -163,5 +163,5 @@ if ($_SESSION > 0) :
 
 
 
-<?php //require "/var/www/html/arrayVisualizer.php"; 
+<?php //require "/var/www/html/esign/arrayVisualizer.php"; 
 ?>

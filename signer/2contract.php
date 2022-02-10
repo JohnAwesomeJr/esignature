@@ -1,10 +1,10 @@
 <?php
 // enviroment variables
-require "/var/www/html/.env";
+require "/var/www/html/esign/.env";
 ?>
-<?php require "/var/www/html/colors.php"; ?>
-<?php require "/var/www/html/uiParts/card.php"; ?>
-<?php require "/var/www/html/htmlStart.php"; ?>
+<?php require "/var/www/html/esign/colors.php"; ?>
+<?php require "/var/www/html/esign/uiParts/card.php"; ?>
+<?php require "/var/www/html/esign/htmlStart.php"; ?>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,14 +28,14 @@ $rows = $stmt->fetchAll();
 
 <body>
     <!-- start of the base container -->
-    <?php require "/var/www/html/uiParts/baseContainer.php"; ?>
+    <?php require "/var/www/html/esign/uiParts/baseContainer.php"; ?>
 
 
     <div id="bodyCentering">
         <?php
         $backButton = true;
         $backLink1 = "/signer/1instructions.php?contractNumber={$_GET['contractNumber']}&contractSigner={$_GET['contractSigner']}";
-        require "/var/www/html/uiParts/headder.php";
+        require "/var/www/html/esign/uiParts/headder.php";
         ?>
         <div style="height:85px;"></div>
         <?php makeCard("<p>please read the contract and press (NEXT) when you are ready to sign.</p>", "", 1); ?>
@@ -46,7 +46,7 @@ $rows = $stmt->fetchAll();
 
         <!-- Add the footer -->
         <?php
-        require "/var/www/html/uiParts/footer.php";
+        require "/var/www/html/esign/uiParts/footer.php";
         $allButtons = [
             //$button1 = ["templatesButton", "http://www.google.com"],
             //$button2 = ["contractsButton", "http://www.google.com"],

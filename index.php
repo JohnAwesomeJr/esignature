@@ -23,11 +23,11 @@ if (ini_get("session.use_cookies")) {
 session_destroy();
 ?>
 
-<?php require "/var/www/html/colors.php"; ?>
-<?php require "/var/www/html/htmlStart.php"; ?>
+<?php require "/var/www/html/esign/colors.php"; ?>
+<?php require "/var/www/html/esign/htmlStart.php"; ?>
 
 <body style="font-size:40px;">
-    <?php require "/var/www/html/uiParts/baseContainer.php"; ?>
+    <?php require "/var/www/html/esign/uiParts/baseContainer.php"; ?>
     <div id="centering">
         <div class="customCard" style="font-size:10px; max-width:300px;">
             <?php

@@ -1,5 +1,5 @@
-<?php require "/var/www/html/.env"; ?>
-<?php require "/var/www/html/colors.php"; ?>
+<?php require "/var/www/html/esign/.env"; ?>
+<?php require "/var/www/html/esign/colors.php"; ?>
 
 <?php session_start(); ?>
 <!-- are you logged in? -->
@@ -23,13 +23,13 @@
     ?>
 
     <?php if ($_SESSION['userId'] == $rows[0]['contractParentUser']) : ?>
-        <?php require "/var/www/html/htmlStart.php"; ?>
-        <?php require "/var/www/html/uiParts/baseContainer.php"; ?>
+        <?php require "/var/www/html/esign/htmlStart.php"; ?>
+        <?php require "/var/www/html/esign/uiParts/baseContainer.php"; ?>
         <div id="bodyCentering">
             <?php
             $backButton = true;
             $backLink1 = "/templatesAndContracts.php?screen=contracts";
-            require "/var/www/html/uiParts/headder.php";
+            require "/var/www/html/esign/uiParts/headder.php";
             ?>
             <div style="height:85px;"></div>
             <?php if ($_POST) : ?>
@@ -57,7 +57,7 @@
                         <h3>Type the name of the contract</h3>
                         <div>
                             <?php $iconSize = 80; ?>
-                            <?php require "/var/www/html/uiImages/contractIconColor.php"; ?>
+                            <?php require "/var/www/html/esign/uiImages/contractIconColor.php"; ?>
                         </div>
                         <form method="post">
                             <!-- pull contract name into textbox if it exsists -->
@@ -96,7 +96,7 @@
             <div style="height:100px;"></div>
             <!-- Add the footer -->
             <?php
-            require "/var/www/html/uiParts/footer.php";
+            require "/var/www/html/esign/uiParts/footer.php";
             $allButtons = [
                 //$button1 = ["templatesButton", "http://www.google.com"],
                 //$button2 = ["contractsButton", "http://www.google.com"],

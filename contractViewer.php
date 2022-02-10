@@ -1,18 +1,18 @@
 <?php session_start(); ?>
 <?php if ($_SESSION) : ?>
-    <?php require "/var/www/html/.env"; ?>
-    <?php require "/var/www/html/colors.php"; ?>
-    <?php require "/var/www/html/uiParts/card.php"; ?>
+    <?php require "/var/www/html/esign/.env"; ?>
+    <?php require "/var/www/html/esign/colors.php"; ?>
+    <?php require "/var/www/html/esign/uiParts/card.php"; ?>
 
     <!-- Start of base CONTAINER -->
-    <?php require "/var/www/html/htmlStart.php"; ?>
-    <?php require "/var/www/html/uiParts/baseContainer.php"; ?>
+    <?php require "/var/www/html/esign/htmlStart.php"; ?>
+    <?php require "/var/www/html/esign/uiParts/baseContainer.php"; ?>
 
     <div id="bodyCentering">
         <?php
         $backButton = true;
         $backLink1 = "/templatesAndContracts.php?screen=contracts";
-        require "/var/www/html/uiParts/headder.php";
+        require "/var/www/html/esign/uiParts/headder.php";
         ?>
 
         <div style="height:100px;"></div>
@@ -89,7 +89,7 @@
                             <div class="imageIcon centerRow">
                                 <div>
                                     <?php $iconSize = 80; ?>
-                                    <?php require "/var/www/html/uiImages/personIcon.php"; ?>
+                                    <?php require "/var/www/html/esign/uiImages/personIcon.php"; ?>
                                 </div>
                             </div>
                             <div class="name centerRow" style="justify-content:flex-start;">

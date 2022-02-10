@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 <?php
-require "/var/www/html/classes/db.php";
+require "/var/www/html/esign/classes/db.php";
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -10,7 +10,7 @@ error_reporting(E_ALL);
 <!-- are you logged in? -->
 <?php if ($_SESSION) : ?>
     <!-- are you the owner of the template? -->
-    <?php require "/var/www/html/htmlStart.php"; ?>
+    <?php require "/var/www/html/esign/htmlStart.php"; ?>
     <script src="/node_modules/insert-text-at-cursor/dist/index.umd.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 

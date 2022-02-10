@@ -1,22 +1,22 @@
 <?php session_start(); ?>
-<?php require "/var/www/html/.env"; ?>
-<?php require "/var/www/html/htmlStart.php"; ?>
-<?php // require "/var/www/html/arrayVisualizer.php"; 
+<?php require "/var/www/html/esign/.env"; ?>
+<?php require "/var/www/html/esign/htmlStart.php"; ?>
+<?php // require "/var/www/html/esign/arrayVisualizer.php"; 
 ?>
-<?php require "/var/www/html/colors.php"; ?>
+<?php require "/var/www/html/esign/colors.php"; ?>
 
 
 
 <body>
     <!-- start of the base container -->
-    <?php require "/var/www/html/uiParts/baseContainer.php"; ?>
+    <?php require "/var/www/html/esign/uiParts/baseContainer.php"; ?>
 
 
     <div id="bodyCentering">
         <?php
         $backButton = true;
         $backLink1 = "/templatesAndContracts.php?screen=contracts";
-        require "/var/www/html/uiParts/headder.php";
+        require "/var/www/html/esign/uiParts/headder.php";
         ?>
         <div style="height:85px;"></div>
         <div class="customCard">
@@ -28,7 +28,7 @@
 
         <!-- Add the footer -->
         <?php
-        require "/var/www/html/uiParts/footer.php";
+        require "/var/www/html/esign/uiParts/footer.php";
         $allButtons = [
             $button1 = ["homeButton", "/templatesAndContracts.php?screen=contracts"],
             // $button2 = ["contractsButton", "http://www.google.com"]

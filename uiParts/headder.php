@@ -50,14 +50,14 @@
 <div id="headder">
     <?php if ($backButton == true) : ?>
         <a href="<?= $backLink1; ?>">
-            <?php require "/var/www/html/uiImages/backButton.svg"; ?>
+            <?php require "/var/www/html/esign/uiImages/backButton.svg"; ?>
         </a>
     <?php else : ?>
         <div></div>
     <?php endif; ?>
 
     <div onclick="showMenu()">
-        <?php require "/var/www/html/uiImages/hamburgerMenu.svg"; ?>
+        <?php require "/var/www/html/esign/uiImages/hamburgerMenu.svg"; ?>
     </div>
 
 </div>

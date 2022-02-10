@@ -1,6 +1,6 @@
 <?php
 
-require "/var/www/html/.env";
+require "/var/www/html/esign/.env";
 
 class db
 {

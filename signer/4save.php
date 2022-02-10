@@ -1,8 +1,8 @@
 <?php
 // enviroment variables
-require "/var/www/html/.env";
+require "/var/www/html/esign/.env";
 ?>
-<?php require "/var/www/html/colors.php"; ?>
+<?php require "/var/www/html/esign/colors.php"; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +44,7 @@ require "/var/www/html/.env";
         $signers = "";
         foreach ($rows as $value => $id) {
             $signatureCss = "style=\"width:300px;\" ";
-            $pathToSignature = "/var/www/html/signature" . $rows[$value]['signerImagePath'];
+            $pathToSignature = "/var/www/html/esign/signature" . $rows[$value]['signerImagePath'];
             $svgImage = "<img class=sig {$signatureCss} src=\"{$pathToSignature}\">";
             $signatureDate = $rows[$value]['signDate'];
             $signerEmail = $rows[$value]['signerEmail'];
@@ -98,14 +98,14 @@ require "/var/www/html/.env";
 
 
 
-        // require "/var/www/html/testBlog.php";
+        // require "/var/www/html/esign/testBlog.php";
 
         require_once __DIR__ . "/.." . '/vendor/autoload.php';
         $mpdf = new \Mpdf\Mpdf();
         $mpdf->WriteHTML($title . $content . $signers);
         // $mpdf->Output();
         $fileId = uniqid('', true) . ".pdf";
-        $mpdf->Output('/var/www/html/pdfFiles/' . $fileId);
+        $mpdf->Output('/var/www/html/esign/pdfFiles/' . $fileId);
         $email = "yes";
     } else {
         echo "we will email you when everyone has signed the contract.";

@@ -4,12 +4,12 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 ?>
 
-<?php require "/var/www/html/colors.php"; ?>
-<?php require "/var/www/html/uiParts/card.php"; ?>
-<?php require "/var/www/html/htmlStart.php"; ?>
+<?php require "/var/www/html/esign/colors.php"; ?>
+<?php require "/var/www/html/esign/uiParts/card.php"; ?>
+<?php require "/var/www/html/esign/htmlStart.php"; ?>
 <?php
 // enviroment variables
-require "/var/www/html/.env";
+require "/var/www/html/esign/.env";
 ?>
 
 <?php
@@ -62,7 +62,7 @@ $rows = $stmt->fetchAll();
 
 
     <!-- start of the base container -->
-    <?php require "/var/www/html/uiParts/baseContainer.php"; ?>
+    <?php require "/var/www/html/esign/uiParts/baseContainer.php"; ?>
 
 
 
@@ -70,7 +70,7 @@ $rows = $stmt->fetchAll();
         <?php
         $backButton = false;
         $backLink1 = "http://www.youtube.com";
-        require "/var/www/html/uiParts/headder.php";
+        require "/var/www/html/esign/uiParts/headder.php";
         ?>
 
         <div style="height:85px;"></div>
@@ -81,7 +81,7 @@ $rows = $stmt->fetchAll();
         <?php
         if ($rows[0]['signDate'] == 0) {
 
-            require "/var/www/html/uiParts/footer.php";
+            require "/var/www/html/esign/uiParts/footer.php";
             $allButtons = [
                 //$button1 = ["templatesButton", "http://www.google.com"],
                 //$button2 = ["contractsButton", "http://www.google.com"],
