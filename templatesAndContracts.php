@@ -84,11 +84,11 @@ EOD;
 
             <?php
 
-            $sql = <<<EOD
-            SELECT * 
-            FROM esignature.template
-            WHERE parentUser = ?;
-            EOD;
+$sql = <<<EOD
+SELECT * 
+FROM esignature.template
+WHERE parentUser = ?;
+EOD;
 
             $user = $_SESSION['userId'];
 

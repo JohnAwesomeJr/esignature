@@ -19,12 +19,12 @@
 
         <?php
 
-        $sql = <<<EOD
-        SELECT contractId, contractParentUser
-        FROM esignature.contract
-        WHERE contractId = ?
-        AND contractParentUser = ?;
-        EOD;
+$sql = <<<EOD
+SELECT contractId, contractParentUser
+FROM esignature.contract
+WHERE contractId = ?
+AND contractParentUser = ?;
+EOD;
 
         $userEmail = $_SESSION['userId'];
         $contractNumber = $_GET['contractNumber'];
@@ -43,22 +43,22 @@
 
             $contractId = $_GET['contractNumber'];
 
-            $sql = <<<EOD
-            SELECT 
-            signers.signerId as signerId,
-            signers.signerTitle as signerTitle,
-            signers.signerName as signerName,
-            signers.signDate as signStatus,
-            signers.signerEmail as signerEmail,
-            signers.signerImagePath,
-            users.userEmail as contractOwner
-            FROM esignature.signers
-            LEFT JOIN esignature.contract
-            ON signers.signerParentContract = contract.contractId
-            RIGHT JOIN esignature.users
-            ON users.userId = contract.contractParentUser
-            WHERE contract.contractId = ?;
-            EOD;
+$sql = <<<EOD
+SELECT 
+signers.signerId as signerId,
+signers.signerTitle as signerTitle,
+signers.signerName as signerName,
+signers.signDate as signStatus,
+signers.signerEmail as signerEmail,
+signers.signerImagePath,
+users.userEmail as contractOwner
+FROM esignature.signers
+LEFT JOIN esignature.contract
+ON signers.signerParentContract = contract.contractId
+RIGHT JOIN esignature.users
+ON users.userId = contract.contractParentUser
+WHERE contract.contractId = ?;
+EOD;
 
             $userEmail = $_SESSION['userName'];
 
@@ -113,11 +113,11 @@
 
             <?php
 
-            $sql = <<<EOD
-            SELECT contractName, contractContent, draft
-            FROM esignature.contract
-            WHERE contractId = ?;
-            EOD;
+$sql = <<<EOD
+SELECT contractName, contractContent, draft
+FROM esignature.contract
+WHERE contractId = ?;
+EOD;
 
             $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
             $stmt = $pdo->prepare($sql);

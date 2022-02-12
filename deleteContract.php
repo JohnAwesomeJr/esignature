@@ -19,11 +19,11 @@ if ($_SESSION > 0) :
     // are you the owner of the contract?
     require "/{$rootD}/classes/db.php";
     $db = new db();
-    $contractOwnerSql = <<<EOD
-    SELECT * 
-    FROM esignature.contract
-    WHERE contractId = ?;
-    EOD;
+$contractOwnerSql = <<<EOD
+SELECT * 
+FROM esignature.contract
+WHERE contractId = ?;
+EOD;
     $contractArray = $db->selectSql($contractOwnerSql, [$_GET['contractNumber']]);
     $loggedInUser = $_SESSION['userId'];
     $contractOwner = $contractArray[0]['contractParentUser'];
@@ -60,16 +60,16 @@ if ($_SESSION > 0) :
             <?php
             if ($_POST['delete'] == 'yes') {
                 echo "it is deleted";
-                $deleteExample = <<<EOD
-                DELETE FROM `esignature`.`contract` 
-                WHERE (`contractId` = ?);
-                EOD;
-                $db->deleteSql($deleteExample, [$_GET['contractNumber']]);
+$deleteExample = <<<EOD
+DELETE FROM `esignature`.`contract` 
+WHERE (`contractId` = ?);
+EOD;
+$db->deleteSql($deleteExample, [$_GET['contractNumber']]);
 
-                $deleteSigners = <<<EOD
-                DELETE FROM `esignature`.`signers` 
-                WHERE (`signerParentContract` = ?);
-                EOD;
+$deleteSigners = <<<EOD
+DELETE FROM `esignature`.`signers` 
+WHERE (`signerParentContract` = ?);
+EOD;
                 $db->deleteSql($deleteSigners, [$_GET['contractNumber']]);
                 header("Location: {$rootFolder}templatesAndContracts.php?screen=contracts");
             } else {
