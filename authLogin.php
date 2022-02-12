@@ -34,6 +34,7 @@ echo <<<EOD
 <script>
 document.getElementById("submit").click();
 </script>
+
 EOD;
 
 } else {
