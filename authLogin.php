@@ -1,6 +1,6 @@
 <?php
 require "/var/www/html/esignature/.env";
-require "/{$rootD}/.env";
+require "/{$rootD}/arrayVisualizer.php";
 session_start();
 require "/{$rootD}/htmlStart.php";
 $errors = [];
