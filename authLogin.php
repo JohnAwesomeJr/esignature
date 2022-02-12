@@ -1,7 +1,7 @@
 <?php
+require "/var/www/html/.env";
 session_start();
 require "/{$rootD}/htmlStart.php";
-require "/{$rootD}/.env";
 $errors = [];
 
 

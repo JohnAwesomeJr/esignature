@@ -1,3 +1,4 @@
+<?php require "/var/www/html/.env"; ?>
 <?php ob_start(); ?>
 <?php
 require "/{$rootD}/classes/db.php";

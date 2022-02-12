@@ -1,3 +1,4 @@
+<?php require "/var/www/html/.env"; ?>
 <?php session_start(); ?>
 
 <?php

@@ -1,4 +1,4 @@
-<?php require "/{$rootD}/.env"; ?>
+<?php require "/var/www/html/.env"; ?>
 <?php session_start(); ?>
 <!-- are you logged in? -->
 <?php if ($_SESSION) : ?>

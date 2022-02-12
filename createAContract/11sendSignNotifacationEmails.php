@@ -3,11 +3,11 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 ?>
+<?php require "/var/www/html/.env"; ?>
+
 <?php
 // require "/{$rootD}/arrayVisualizer.php";
 require "/{$rootD}/classes/db.php";
-require "/{$rootD}/.env";
-
 // SELECT
 $db = new db();
 $selectExample = <<<EOD

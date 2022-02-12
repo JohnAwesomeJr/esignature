@@ -1,6 +1,6 @@
 <?php
 // enviroment variables
-require "/{$rootD}/.env";
+require "/var/www/html/.env";
 ?>
 <?php
 $fileName = uniqid();
@@ -16,7 +16,7 @@ file_put_contents($newFilePath, $decoded_image);
 $completeFilePath = "/" . $newFilePath;
 ?>
 <?php $todaysDate = date("Y-m-d"); ?>
-<?php $urlPath = "/signer/4save.php?" . "contractNumber=" . $_GET['contractNumber'] . "&" . "contractSigner=" . $_GET['contractSigner']; ?>
+<?php $urlPath = $rootFolder . "signer/4save.php?" . "contractNumber=" . $_GET['contractNumber'] . "&" . "contractSigner=" . $_GET['contractSigner']; ?>
 
 <?php
 $sql = <<<EOD

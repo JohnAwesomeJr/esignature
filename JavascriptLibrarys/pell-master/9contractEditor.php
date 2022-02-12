@@ -1,3 +1,4 @@
+<?php require "/var/www/html/.env"; ?>
 <?php
 require "/{$rootD}/classes/db.php";
 ini_set('display_errors', 1);

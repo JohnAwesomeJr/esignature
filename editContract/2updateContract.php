@@ -3,7 +3,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 ?>
-
+<?php require "/var/www/html/.env"; ?>
 <?php
 // are you logged in?
 session_start();

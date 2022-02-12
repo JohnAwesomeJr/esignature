@@ -1,6 +1,11 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+?>
+<?php
 // enviroment variables
-require "/{$rootD}/.env";
+require "/var/www/html/.env";
 ?>
 <?php require "/{$rootD}/colors.php"; ?>
 
@@ -105,7 +110,7 @@ require "/{$rootD}/.env";
         $mpdf->WriteHTML($title . $content . $signers);
         // $mpdf->Output();
         $fileId = uniqid('', true) . ".pdf";
-        $mpdf->Output('/{$rootD}/pdfFiles/' . $fileId);
+        $mpdf->Output("/{$rootD}/pdfFiles/" . $fileId);
         $email = "yes";
     } else {
         echo "we will email you when everyone has signed the contract.";

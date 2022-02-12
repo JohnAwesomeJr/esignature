@@ -1,6 +1,6 @@
 <?php
 // enviroment variables
-require "/{$rootD}/.env";
+require "/var/www/html/.env";
 ?>
 <?php require "/{$rootD}/colors.php"; ?>
 <?php require "/{$rootD}/uiParts/card.php"; ?>

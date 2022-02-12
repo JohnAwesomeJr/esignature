@@ -46,7 +46,7 @@ function footer($button1 = NULL, $button2 = NULL, $button3 = NULL)
         echo $link;
         echo "' ";
         echo ">";
-        button("/{$rootD}/uiImages/plus.svg", "", 0, 1);
+        button("/{$GLOBALS['rootD']}/uiImages/plus.svg", "", 0, 1);
         echo "</a>";
     }
     function plusButtonWide($link)
@@ -56,7 +56,7 @@ function footer($button1 = NULL, $button2 = NULL, $button3 = NULL)
         echo $link;
         echo "' ";
         echo ">";
-        button("/{$rootD}/uiImages/plus.svg", "", 0, 0);
+        button("/{$GLOBALS['rootD']}/uiImages/plus.svg", "", 0, 0);
         echo "</a>";
     }
     function contractsButton($link)

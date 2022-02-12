@@ -1,5 +1,5 @@
 <?php session_start(); ?>
-<?php require "/{$rootD}/.env"; ?>
+<?php require "/var/www/html/.env"; ?>
 <!-- are you logged in? -->
 <?php if ($_SESSION) : ?>
 

@@ -1,5 +1,5 @@
 <?php session_start(); ?>
-<?php require "/{$rootD}/.env"; ?>
+<?php require "/var/www/html/.env"; ?>
 <?php require "/{$rootD}/htmlStart.php"; ?>
 <?php // require "/{$rootD}/arrayVisualizer.php"; 
 ?>

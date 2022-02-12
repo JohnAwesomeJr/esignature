@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 ?>
 <?php
 // enviroment variables
-require "/{$rootD}/.env";
+require "/var/www/html/.env";
 ?>
 <?php
 //top level php mailer class

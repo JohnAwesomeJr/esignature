@@ -1,6 +1,6 @@
 <?php
 
-require "/{$rootD}/.env";
+require "/var/www/html/.env";
 
 class db
 {

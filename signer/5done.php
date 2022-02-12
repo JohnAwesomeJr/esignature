@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 ?>
 <?php
 // enviroment variables
-require "/{$rootD}/.env";
+require "/var/www/html/.env";
 ?>
 <?php
 //top level php mailer class
@@ -77,7 +77,7 @@ $emailStatus = $stmt->fetchAll();
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$id]);
         $rows = $stmt->fetchAll();
-        $filePath = '/{$rootD}' . urldecode($_GET['downloadLink']);
+        $filePath = "/{$rootD}" . urldecode($_GET['downloadLink']);
         chmod($filePath, 0777);
 
         $mail->isSMTP();

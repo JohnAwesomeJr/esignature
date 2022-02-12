@@ -1,6 +1,6 @@
 <?php session_start(); ?>
 <?php if ($_SESSION) : ?>
-    <?php require "/{$rootD}/.env"; ?>
+    <?php require "/var/www/html/.env"; ?>
     <?php require "/{$rootD}/colors.php"; ?>
     <?php require "/{$rootD}/uiParts/card.php"; ?>
 
