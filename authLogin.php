@@ -58,6 +58,7 @@ if ($userName == "" | $userPassword == "") {
             <script>
                 document.getElementById("submit").click();
             </script>
+            
             EOD;
         } else {
             $_SESSION['userName'] = $userName;
