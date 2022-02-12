@@ -1,7 +1,6 @@
 <?php
 echo "working";
 require "/var/www/html/esignature/.env";
-require "/{$rootD}/arrayVisualizer.php";
 session_start();
 require "/{$rootD}/htmlStart.php";
 $errors = [];
@@ -18,6 +17,7 @@ $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassw
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$userName,]);
 $rows = $stmt->fetchAll();
+echo $rows;
 
 $HashedPassword = hash("sha512", $_POST['password'] . $rows[0]['salt']);
 
@@ -75,6 +75,8 @@ $HashedPassword = hash("sha512", $_POST['password'] . $rows[0]['salt']);
 //     }
 // }
 // 
+require "/{$rootD}/arrayVisualizer.php";
+
 ?>
 
 <body>
