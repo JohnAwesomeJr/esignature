@@ -21,17 +21,17 @@
 
             <?php
 
-            $sql = <<<EOD
-            SELECT contract.contractId as contractId, 
-            contract.contractName as contractName,
-            contract.emailSent as contractStatus,
-            contract.draft as draftStatus
-            FROM esignature.contract
-            RIGHT JOIN esignature.users
-            ON  contract.contractParentUser = users.userId
-            WHERE users.userId =  ?
-            ORDER BY contractId DESC;
-            EOD;
+$sql = <<<EOD
+SELECT contract.contractId as contractId, 
+contract.contractName as contractName,
+contract.emailSent as contractStatus,
+contract.draft as draftStatus
+FROM esignature.contract
+RIGHT JOIN esignature.users
+ON  contract.contractParentUser = users.userId
+WHERE users.userId =  ?
+ORDER BY contractId DESC;
+EOD;
 
             $userEmail = $_SESSION['userId'];
 
