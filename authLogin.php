@@ -24,7 +24,7 @@ $HashedPassword = hash("sha512", $_POST['password'] . $rows[0]['salt']);
 
 if ($userName == "" | $userPassword == "") {
     $errorText = "Please Correct User Name Or Password.";
-    
+
     echo <<<EOD
     <form method="post" action="{$rootFolder}">
         <input type="hidden" name="error" value="{$errorText}">
@@ -34,6 +34,7 @@ if ($userName == "" | $userPassword == "") {
     <script>
         document.getElementById("submit").click();
     </script>
+    
     EOD;
 
 
@@ -50,6 +51,7 @@ if ($userName == "" | $userPassword == "") {
         <script>
             document.getElementById("submit").click();
         </script>
+
         EOD;
 
 
@@ -66,6 +68,7 @@ if ($userName == "" | $userPassword == "") {
             <script>
                 document.getElementById("submit").click();
             </script>
+
             EOD;
 
 
@@ -81,6 +84,7 @@ if ($userName == "" | $userPassword == "") {
             <script>
                  document.getElementById("submit").click();
             </script>
+
             EOD;
 
 
