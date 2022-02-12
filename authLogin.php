@@ -34,8 +34,7 @@ if ($userName == "" | $userPassword == "") {
     <script>
         document.getElementById("submit").click();
     </script>
-    
-    EOD;
+EOD;
 
 
 } else {
@@ -51,8 +50,7 @@ if ($userName == "" | $userPassword == "") {
         <script>
             document.getElementById("submit").click();
         </script>
-
-        EOD;
+EOD;
 
 
     } else {
@@ -68,8 +66,7 @@ if ($userName == "" | $userPassword == "") {
             <script>
                 document.getElementById("submit").click();
             </script>
-
-            EOD;
+EOD;
 
 
         } else {
@@ -84,8 +81,7 @@ if ($userName == "" | $userPassword == "") {
             <script>
                  document.getElementById("submit").click();
             </script>
-
-            EOD;
+EOD;
 
 
         }
