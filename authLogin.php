@@ -19,7 +19,7 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute([$userName,]);
 $rows = $stmt->fetchAll();
 
-// $HashedPassword = hash("sha512", $_POST['password'] . $rows[0]['salt']);
+$HashedPassword = hash("sha512", $_POST['password'] . $rows[0]['salt']);
 
 // if ($userName == "" | $userPassword == "") {
 //     $errorText = "Please Correct User Name Or Password.";
