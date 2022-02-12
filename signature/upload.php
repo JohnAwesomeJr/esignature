@@ -1,6 +1,6 @@
 <?php
 // enviroment variables
-require "/var/www/html/peak/.env";
+require "/var/www/html/esignature/.env";
 ?>
 <?php
 $fileName = uniqid();

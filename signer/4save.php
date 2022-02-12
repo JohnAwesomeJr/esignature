@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 ?>
 <?php
 // enviroment variables
-require "/var/www/html/peak/.env";
+require "/var/www/html/esignature/.env";
 ?>
 <?php require "/{$rootD}/colors.php"; ?>
 

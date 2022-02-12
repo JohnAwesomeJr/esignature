@@ -3,13 +3,13 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 ?>
-<?php require "/var/www/html/peak/.env"; ?>
+<?php require "/var/www/html/esignature/.env"; ?>
 <?php require "/{$rootD}/colors.php"; ?>
 <?php require "/{$rootD}/uiParts/card.php"; ?>
 <?php require "/{$rootD}/htmlStart.php"; ?>
 <?php
 // enviroment variables
-require "/var/www/html/peak/.env";
+require "/var/www/html/esignature/.env";
 ?>
 
 <?php

@@ -1,5 +1,5 @@
 <?php session_start(); ?>
-<?php require "/var/www/html/peak/.env"; ?>
+<?php require "/var/www/html/esignature/.env"; ?>
 <?php require "/{$rootD}/htmlStart.php"; ?>
 <?php // require "/{$rootD}/arrayVisualizer.php"; 
 ?>

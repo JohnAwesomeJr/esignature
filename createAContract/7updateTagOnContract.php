@@ -1,4 +1,4 @@
-<?php require "/var/www/html/peak/.env"; ?>
+<?php require "/var/www/html/esignature/.env"; ?>
 <?php ob_start(); ?>
 <?php session_start(); ?>
 <?php
