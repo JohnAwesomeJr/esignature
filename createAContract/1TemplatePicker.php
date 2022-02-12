@@ -1,5 +1,5 @@
-<?php require "/var/www/html/.env"; ?>
-<?php require "/var/www/html/colors.php"; ?>
+<?php require "/{$rootD}/.env"; ?>
+<?php require "/{$rootD}/colors.php"; ?>
 
 <?php session_start(); ?>
 <!-- are you logged in? -->
@@ -23,13 +23,13 @@
     ?>
 
     <?php if ($_SESSION['userId'] == $rows[0]['contractParentUser']) : ?>
-        <?php require "/var/www/html/htmlStart.php"; ?>
-        <?php require "/var/www/html/uiParts/baseContainer.php"; ?>
+        <?php require "/{$rootD}/htmlStart.php"; ?>
+        <?php require "/{$rootD}/uiParts/baseContainer.php"; ?>
         <div id="bodyCentering">
             <?php
             $backButton = true;
             $backLink1 = "/templatesAndContracts.php?screen=contracts";
-            require "/var/www/html/uiParts/headder.php";
+            require "/{$rootD}/uiParts/headder.php";
             ?>
             <div style="height:85px;"></div>
 
@@ -61,7 +61,7 @@
                         </div>
                         <div>
                             <?php $iconSize = 80; ?>
-                            <?php require "/var/www/html/uiImages/templateIcon.svg"; ?>
+                            <?php require "/{$rootD}/uiImages/templateIcon.svg"; ?>
                         </div>
                     </a>
                 <?php endforeach; ?>

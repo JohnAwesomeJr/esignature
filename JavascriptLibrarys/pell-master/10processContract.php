@@ -1,6 +1,6 @@
 <?php
 ob_start();
-require "/var/www/html/htmlStart.php";
+require "/{$rootD}/htmlStart.php";
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -9,8 +9,8 @@ error_reporting(E_ALL);
 <body>
     <html>
     <?php
-    require "/var/www/html/classes/db.php";
-    require "/var/www/html/.env";
+    require "/{$rootD}/classes/db.php";
+    require "/{$rootD}/.env";
 
     $origanal = $_POST['output'];
     $removeLineBreak = str_replace(["\r", "\n"], '', $origanal);

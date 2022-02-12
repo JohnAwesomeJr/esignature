@@ -4,9 +4,9 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 ?>
 <?php
-// require "/var/www/html/arrayVisualizer.php";
-require "/var/www/html/classes/db.php";
-require "/var/www/html/.env";
+// require "/{$rootD}/arrayVisualizer.php";
+require "/{$rootD}/classes/db.php";
+require "/{$rootD}/.env";
 
 // SELECT
 $db = new db();
@@ -24,9 +24,9 @@ echo "</pre>";
 
 
 //top level php mailer class
-require "/var/www/html/vendor/phpmailer/phpmailer/src/PHPMailer.php";
-require "/var/www/html/vendor/phpmailer/phpmailer/src/SMTP.php";
-require "/var/www/html/vendor/phpmailer/phpmailer/src/Exception.php";
+require "/{$rootD}/vendor/phpmailer/phpmailer/src/PHPMailer.php";
+require "/{$rootD}/vendor/phpmailer/phpmailer/src/SMTP.php";
+require "/{$rootD}/vendor/phpmailer/phpmailer/src/Exception.php";
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;

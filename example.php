@@ -1,6 +1,6 @@
-<?php require "/var/www/html/colors.php"; ?>
+<?php require "/{$rootD}/colors.php"; ?>
 
-<?php require "/var/www/html/uiParts/card.php"; ?>
+<?php require "/{$rootD}/uiParts/card.php"; ?>
 <?php $content = "I am thinking that I want to do somthing fun. I am thinking that I want to do somthing fun. I am thinking that I want to do somthing fun. I am thinking that I want to do somthing fun."; ?>
 
 <!DOCTYPE html>
@@ -19,11 +19,11 @@
 
 <body>
     <!-- start of the base container -->
-    <?php require "/var/www/html/uiParts/baseContainer.php"; ?>
+    <?php require "/{$rootD}/uiParts/baseContainer.php"; ?>
 
 
     <div id="bodyCentering">
-        <?php require "/var/www/html/uiParts/headder.php"; ?>
+        <?php require "/{$rootD}/uiParts/headder.php"; ?>
         <div style="height:85px;"></div>
         <?php makeCard($content, "", 1); ?>
         <?php makeCard($content); ?>
@@ -36,7 +36,7 @@
 
         <!-- Add the footer -->
         <?php
-        require "/var/www/html/uiParts/footer.php";
+        require "/{$rootD}/uiParts/footer.php";
         $allButtons = [
             $button1 = ["templatesButton", "http://www.google.com"],
             $button2 = ["contractsButton", "http://www.google.com"],

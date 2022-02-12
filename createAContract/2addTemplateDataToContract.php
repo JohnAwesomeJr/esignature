@@ -1,4 +1,4 @@
-<?php require "/var/www/html/.env"; ?>
+<?php require "/{$rootD}/.env"; ?>
 <?php session_start(); ?>
 <!-- are you logged in? -->
 <?php if ($_SESSION) : ?>
@@ -21,7 +21,7 @@
     ?>
 
     <?php if ($_SESSION['userId'] == $rows[0]['contractParentUser']) : ?>
-        <?php require "/var/www/html/htmlStart.php"; ?>
+        <?php require "/{$rootD}/htmlStart.php"; ?>
         <!-- PLACE CODE HERE -->
 
         <!-- get a list of all the titles to from the template-->

@@ -5,13 +5,13 @@ error_reporting(E_ALL);
 ?>
 <?php
 // enviroment variables
-require "/var/www/html/.env";
+require "/{$rootD}/.env";
 ?>
 <?php
 //top level php mailer class
-require "/var/www/html/vendor/phpmailer/phpmailer/src/PHPMailer.php";
-require "/var/www/html/vendor/phpmailer/phpmailer/src/SMTP.php";
-require "/var/www/html/vendor/phpmailer/phpmailer/src/Exception.php";
+require "/{$rootD}/vendor/phpmailer/phpmailer/src/PHPMailer.php";
+require "/{$rootD}/vendor/phpmailer/phpmailer/src/SMTP.php";
+require "/{$rootD}/vendor/phpmailer/phpmailer/src/Exception.php";
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -53,7 +53,7 @@ $emailStatus = $stmt->fetchAll();
 
 
         <?php
-        $filePath = '/var/www/html/pdfFiles/618c6a4366bc79.46793694.pdf';
+        $filePath = '/{$rootD}/pdfFiles/618c6a4366bc79.46793694.pdf';
 
         $emailToAdresses = array();
         foreach ($rows as $key => $value) {

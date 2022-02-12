@@ -1,6 +1,6 @@
 <?php
 // enviroment variables
-require "/var/www/html/.env";
+require "/{$rootD}/.env";
 ?>
 <?php
 $fileName = uniqid();

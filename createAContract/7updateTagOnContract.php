@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
 <?php session_start(); ?>
 <?php
-require "/var/www/html/classes/db.php";
+require "/{$rootD}/classes/db.php";
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
