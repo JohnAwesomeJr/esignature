@@ -1,5 +1,4 @@
 <?php
-echo "working";
 require "/var/www/html/esignature/.env";
 session_start();
 require "/{$rootD}/htmlStart.php";
@@ -17,7 +16,9 @@ $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassw
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$userName,]);
 $rows = $stmt->fetchAll();
+echo "<pre>";
 print_r($rows);
+echo "</pre>";
 
 $HashedPassword = hash("sha512", $_POST['password'] . $rows[0]['salt']);
 
