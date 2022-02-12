@@ -47,10 +47,10 @@ error_reporting(E_ALL);
     <?php
     $templateId = $_GET['templateNumber'];
 
-    $sql = <<<EOD
-    SELECT * FROM esignature.template
-    WHERE templateId = ?;
-    EOD;
+$sql = <<<EOD
+SELECT * FROM esignature.template
+WHERE templateId = ?;
+EOD;
 
     $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
     $stmt = $pdo->prepare($sql);
@@ -161,10 +161,10 @@ error_reporting(E_ALL);
                 <h2 onclick="slideOutTitles()">insert Titles</h2>
                 <?php
                 $db = new db();
-                $selectTitlesSql = <<<EOD
-                SELECT * FROM esignature.titles
-                WHERE parentTemplate = ?;
-                EOD;
+$selectTitlesSql = <<<EOD
+SELECT * FROM esignature.titles
+WHERE parentTemplate = ?;
+EOD;
                 $titleListArray = $db->selectSql($selectTitlesSql, [$templateId]);
                 ?>
 
@@ -204,10 +204,10 @@ error_reporting(E_ALL);
 
                 <?php
                 $db = new db();
-                $selectTagsQuery = <<<EOD
-                SELECT * FROM esignature.tags
-                WHERE parentTemplate = ?;
-                EOD;
+$selectTagsQuery = <<<EOD
+SELECT * FROM esignature.tags
+WHERE parentTemplate = ?;
+EOD;
                 $tagListArray = $db->selectSql($selectTagsQuery, [$templateId]);
                 ?>
 

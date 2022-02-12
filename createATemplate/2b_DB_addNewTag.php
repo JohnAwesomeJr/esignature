@@ -14,10 +14,10 @@ error_reporting(E_ALL);
     <?php
     $templateId = $_GET['templateNumber'];
 
-    $sql = <<<EOD
-    SELECT * FROM esignature.template
-    WHERE templateId = ?;
-    EOD;
+$sql = <<<EOD
+SELECT * FROM esignature.template
+WHERE templateId = ?;
+EOD;
 
 
     $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
@@ -59,10 +59,10 @@ error_reporting(E_ALL);
 
             //INSERT
             $db = new db();
-            $insertExample = <<<EOD
-            INSERT INTO `esignature`.`tags` (`parentTemplate`, `tagName`) 
-            VALUES (?, ?);
-            EOD;
+$insertExample = <<<EOD
+INSERT INTO `esignature`.`tags` (`parentTemplate`, `tagName`) 
+VALUES (?, ?);
+EOD;
             // use echo to see the key of the last inserted 
             echo $db->createSql($insertExample, [$templateId, $newTagName]);
         }

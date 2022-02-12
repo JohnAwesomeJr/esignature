@@ -22,10 +22,10 @@ error_reporting(E_ALL);
 
 
 
-    $sql = <<<EOD
-    SELECT * FROM esignature.template
-    WHERE templateId = ?;
-    EOD;
+$sql = <<<EOD
+SELECT * FROM esignature.template
+WHERE templateId = ?;
+EOD;
 
 
     $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
@@ -48,13 +48,13 @@ error_reporting(E_ALL);
 
         /// DELETE
         $db = new db();
-        $deleteExample = <<<EOD
-        DELETE FROM `esignature`.`template` WHERE (`templateId` = ?);
+$deleteExample = <<<EOD
+DELETE FROM `esignature`.`template` WHERE (`templateId` = ?);
 
-        DELETE FROM `esignature`.`titles` WHERE (`parentTemplate` = ?);
+DELETE FROM `esignature`.`titles` WHERE (`parentTemplate` = ?);
 
-        DELETE FROM `esignature`.`tags` WHERE (`parentTemplate` = ?);
-        EOD;
+DELETE FROM `esignature`.`tags` WHERE (`parentTemplate` = ?);
+EOD;
         $db->deleteSql($deleteExample, [$itemToDelete, $itemToDelete, $itemToDelete]);
 
         header("Location: {$rootFolder}templatesAndContracts.php")

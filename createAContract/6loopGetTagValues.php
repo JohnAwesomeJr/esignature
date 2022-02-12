@@ -8,11 +8,11 @@
     <!-- are you the owner of the contract? -->
     <?php
 
-    $sql = <<<EOD
-    SELECT contractParentUser
-    FROM esignature.contract
-    WHERE contractId = ?;
-    EOD;
+$sql = <<<EOD
+SELECT contractParentUser
+FROM esignature.contract
+WHERE contractId = ?;
+EOD;
 
     $contractNumber = $_GET['contractNumber'];
 
@@ -37,20 +37,20 @@
             <?php
             // SELECT
             $db = new db();
-            $selectExample = <<<EOD
-            SELECT * 
-            FROM esignature.signers 
-            WHERE signerParentContract=?;
-            EOD;
+$selectExample = <<<EOD
+SELECT * 
+FROM esignature.signers 
+WHERE signerParentContract=?;
+EOD;
             $currentSigner = $db->selectSql($selectExample, [$_GET['contractNumber']]);
 
 
 
-            $selectTags = <<<EOD
-            SELECT * 
-            FROM esignature.tags
-            WHERE parentTemplate = ?;
-            EOD;
+$selectTags = <<<EOD
+SELECT * 
+FROM esignature.tags
+WHERE parentTemplate = ?;
+EOD;
             $tagList = $db->selectSql($selectTags, [$_GET['templateNumber']]);
             ?>
 

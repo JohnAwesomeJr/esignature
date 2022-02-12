@@ -13,11 +13,11 @@ error_reporting(E_ALL);
     <!-- are you the owner of the contract? -->
     <?php
 
-    $sql = <<<EOD
-    SELECT contractParentUser
-    FROM esignature.contract
-    WHERE contractId = ?;
-    EOD;
+$sql = <<<EOD
+SELECT contractParentUser
+FROM esignature.contract
+WHERE contractId = ?;
+EOD;
 
     $contractNumber = $_GET['contractNumber'];
 
@@ -60,11 +60,11 @@ error_reporting(E_ALL);
 
 
         // SELECT
-        $getTags = <<<EOD
-        SELECT signerId,signerName, signerTitle
-        FROM esignature.signers
-        WHERE signerParentContract = ?;
-        EOD;
+$getTags = <<<EOD
+SELECT signerId,signerName, signerTitle
+FROM esignature.signers
+WHERE signerParentContract = ?;
+EOD;
         $tagArray = $db->selectSql($getTags, [$_GET['contractNumber']]);
 
         echo "<pre>";
@@ -82,11 +82,11 @@ error_reporting(E_ALL);
 
 
         // SELECT
-        $getContract = <<<EOD
-        SELECT contractContent
-        FROM esignature.contract
-        WHERE contractId = ?;
-        EOD;
+$getContract = <<<EOD
+SELECT contractContent
+FROM esignature.contract
+WHERE contractId = ?;
+EOD;
         $contractArray = $db->selectSql($getContract, [$_GET['contractNumber']]);
         $contractContent = $contractArray[0]['contractContent'];
         $contractWithReplacedTag = str_replace($replaceTag, $replaceWith, $contractContent);
@@ -106,11 +106,11 @@ error_reporting(E_ALL);
 
 
         // UPDATE
-        $updateContractWithTag = <<<EOD
-        UPDATE `esignature`.`contract` 
-        SET contractContent = ?
-        WHERE (`contractId` = ?);
-        EOD;
+$updateContractWithTag = <<<EOD
+UPDATE `esignature`.`contract` 
+SET contractContent = ?
+WHERE (`contractId` = ?);
+EOD;
         $db->updateSql($updateContractWithTag, [$contractWithReplacedTag, $_GET['contractNumber']]);
 
         $numberOfTags = count($tagArray) - 1;

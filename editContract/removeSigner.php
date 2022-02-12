@@ -19,11 +19,11 @@ if ($_SESSION > 0) :
     // are you the owner of the contract?
     require "/{$rootD}/classes/db.php";
     $db = new db();
-    $contractOwnerSql = <<<EOD
-    SELECT * 
-    FROM esignature.contract
-    WHERE contractId = ?;
-    EOD;
+$contractOwnerSql = <<<EOD
+SELECT * 
+FROM esignature.contract
+WHERE contractId = ?;
+EOD;
     $contractArray = $db->selectSql($contractOwnerSql, [$_GET['contractNumber']]);
     $loggedInUser = $_SESSION['userId'];
     $contractOwner = $contractArray[0]['contractParentUser'];
@@ -45,11 +45,10 @@ if ($_SESSION > 0) :
 
         <?php
 
-        $deleteExample = <<<EOD
-        DELETE FROM `esignature`.`signers` 
-        WHERE (`signerId` = ?);
-
-        EOD;
+$deleteExample = <<<EOD
+DELETE FROM `esignature`.`signers` 
+WHERE (`signerId` = ?);
+EOD;
         $db->deleteSql($deleteExample, [$_GET['signerId']]);
 
         ?>

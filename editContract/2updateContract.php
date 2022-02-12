@@ -19,11 +19,11 @@ if ($_SESSION > 0) :
     // are you the owner of the contract?
     require "/{$rootD}/classes/db.php";
     $db = new db();
-    $contractOwnerSql = <<<EOD
-    SELECT * 
-    FROM esignature.contract
-    WHERE contractId = ?;
-    EOD;
+$contractOwnerSql = <<<EOD
+SELECT * 
+FROM esignature.contract
+WHERE contractId = ?;
+EOD;
     $contractArray = $db->selectSql($contractOwnerSql, [$_GET['contractNumber']]);
     $loggedInUser = $_SESSION['userId'];
     $contractOwner = $contractArray[0]['contractParentUser'];
@@ -38,13 +38,13 @@ if ($_SESSION > 0) :
 
 
         <?php
-        $updateContractName = <<<EOD
+$updateContractName = <<<EOD
 
-        UPDATE `esignature`.`contract` 
-        SET `contractName` = ?
-        WHERE (`contractId` = ?);
+UPDATE `esignature`.`contract` 
+SET `contractName` = ?
+WHERE (`contractId` = ?);
 
-        EOD;
+EOD;
         $db->updateSql($updateContractName, [$_POST['ContractName'], $_GET['contractNumber']]);
         ?>
 
@@ -56,11 +56,11 @@ if ($_SESSION > 0) :
         if (!empty($_POST['contractSigners'])) {
             foreach ($_POST['contractSigners'] as $key => $value) {
 
-                $addToString = <<<EOD
-                UPDATE `esignature`.`signers` 
-                SET `signerName` = ?, `signerEmail` = ? 
-                WHERE (`signerId` = ?);
-                EOD;
+$addToString = <<<EOD
+UPDATE `esignature`.`signers` 
+SET `signerName` = ?, `signerEmail` = ? 
+WHERE (`signerId` = ?);
+EOD;
 
                 $updateSignersSqlStatment = $updateSignersSqlStatment . $addToString;
 

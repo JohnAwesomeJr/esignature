@@ -13,11 +13,11 @@ error_reporting(E_ALL);
     <!-- are you the owner of the contract? -->
     <?php
 
-    $sql = <<<EOD
-    SELECT contractParentUser
-    FROM esignature.contract
-    WHERE contractId = ?;
-    EOD;
+$sql = <<<EOD
+SELECT contractParentUser
+FROM esignature.contract
+WHERE contractId = ?;
+EOD;
 
     $contractNumber = $_POST['contractNumber'];
 
@@ -48,20 +48,20 @@ error_reporting(E_ALL);
         <?php
         // SELECT
         $db = new db();
-        $selectExample = <<<EOD
-        SELECT contractContent 
-        FROM esignature.contract
-        WHERE contractId =?;
-        EOD;
+$selectExample = <<<EOD
+SELECT contractContent 
+FROM esignature.contract
+WHERE contractId =?;
+EOD;
         $contract = $db->selectSql($selectExample, [$_POST['contractNumber']])[0]['contractContent'];
 
 
         // SELECT
-        $selectTags = <<<EOD
-        SELECT * 
-        FROM esignature.tags
-        WHERE parentTemplate = ?;
-        EOD;
+$selectTags = <<<EOD
+SELECT * 
+FROM esignature.tags
+WHERE parentTemplate = ?;
+EOD;
         $tagList = $db->selectSql($selectTags, [$_POST['templateNumber']]);
         $numberInArray = count($tagList) - 1;
 
@@ -73,11 +73,11 @@ error_reporting(E_ALL);
 
 
         // UPDATE
-        $updateExample = <<<EOD
-        UPDATE `esignature`.`contract` 
-        SET `contractContent` = ? 
-        WHERE (`contractId` = ?);
-        EOD;
+$updateExample = <<<EOD
+UPDATE `esignature`.`contract` 
+SET `contractContent` = ? 
+WHERE (`contractId` = ?);
+EOD;
         $db->updateSql($updateExample, [$contentReplaced, $_POST['contractNumber']]);
 
 

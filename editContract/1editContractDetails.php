@@ -20,11 +20,11 @@ if ($_SESSION > 0) :
     // are you the owner of the contract?
     require "/{$rootD}/classes/db.php";
     $db = new db();
-    $contractOwnerSql = <<<EOD
-    SELECT * 
-    FROM esignature.contract
-    WHERE contractId = ?;
-    EOD;
+$contractOwnerSql = <<<EOD
+SELECT * 
+FROM esignature.contract
+WHERE contractId = ?;
+EOD;
     $contractArray = $db->selectSql($contractOwnerSql, [$_GET['contractNumber']]);
     $loggedInUser = $_SESSION['userId'];
     $contractOwner = $contractArray[0]['contractParentUser'];
@@ -37,11 +37,11 @@ if ($_SESSION > 0) :
         <br>
 
         <?php
-        $signersSql = <<<EOD
-        SELECT * 
-        FROM esignature.signers
-        WHERE signerParentContract = ?;
-        EOD;
+$signersSql = <<<EOD
+SELECT * 
+FROM esignature.signers
+WHERE signerParentContract = ?;
+EOD;
         $signersArray = $db->selectSql($signersSql, [$_GET['contractNumber']]);
         ?>
 

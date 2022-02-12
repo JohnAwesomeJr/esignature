@@ -39,11 +39,11 @@ $emailStatus = $stmt->fetchAll();
 
     <?php
     // sql get a list of signers
-    $sql = <<<EOD
-     SELECT * 
-     FROM esignature.signers 
-     WHERE signerParentContract=?; 
-     EOD;
+$sql = <<<EOD
+SELECT * 
+FROM esignature.signers 
+WHERE signerParentContract=?; 
+EOD;
     $id = 2;
     $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
     $stmt = $pdo->prepare($sql);

@@ -22,11 +22,11 @@ require "/var/www/html/esignature/.env";
 <body>
     <?php
 
-    $sql = <<<EOD
-    SELECT * 
-    FROM esignature.signers
-    WHERE signerParentContract =?;
-    EOD;
+$sql = <<<EOD
+SELECT * 
+FROM esignature.signers
+WHERE signerParentContract =?;
+EOD;
 
     $id = $_GET['contractNumber'];
 
@@ -55,41 +55,41 @@ require "/var/www/html/esignature/.env";
             $signerEmail = $rows[$value]['signerEmail'];
             $signerTitle = $rows[$value]['signerTitle'];
             $signatureName = $rows[$value]['signerName'];
-            $html = <<<EOD
-            <br>
-            <table style="page-break-inside: avoid;">
-            <tr>
-            <td>
-            <div style="width: 100%; border-radius: 15px; padding:30px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); ">
-            <div align="left" style="width: 50%;float: left;">
-            <h2>{$signerTitle}</h2>
-            <h4>{$signatureName}</h4>
-            <h4>{$signerEmail}</h4>
-            </div>
-            <div align="left" style="width: 50%;float: left;">
-            <div style="width: 100%;">
-            <img style="width:400px;" src="{$pathToSignature}">
-            <p>Signed: {$signatureDate}</p>
-            </div>
-            </div>
-            </div>
-            </td>
-            </tr>
-            </table>
-            <hr>
-            <br>
-            <br>
-        EOD;
+$html = <<<EOD
+<br>
+<table style="page-break-inside: avoid;">
+<tr>
+<td>
+<div style="width: 100%; border-radius: 15px; padding:30px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); ">
+<div align="left" style="width: 50%;float: left;">
+<h2>{$signerTitle}</h2>
+<h4>{$signatureName}</h4>
+<h4>{$signerEmail}</h4>
+</div>
+<div align="left" style="width: 50%;float: left;">
+<div style="width: 100%;">
+<img style="width:400px;" src="{$pathToSignature}">
+<p>Signed: {$signatureDate}</p>
+</div>
+</div>
+</div>
+</td>
+</tr>
+</table>
+<hr>
+<br>
+<br>
+EOD;
 
             $signers = $signers . $html;
         }
 
 
-        $sql = <<<EOD
-        SELECT contractContent, contractName
-        FROM esignature.contract
-        WHERE contractId = ?;
-        EOD;
+$sql = <<<EOD
+SELECT contractContent, contractName
+FROM esignature.contract
+WHERE contractId = ?;
+EOD;
 
         $id = $_GET['contractNumber'];
 

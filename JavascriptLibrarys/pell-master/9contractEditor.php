@@ -13,11 +13,11 @@ error_reporting(E_ALL);
 
   <?php
 
-  $sql = <<<EOD
-  SELECT contractParentUser
-  FROM esignature.contract
-  WHERE contractId = ?;
-  EOD;
+$sql = <<<EOD
+SELECT contractParentUser
+FROM esignature.contract
+WHERE contractId = ?;
+EOD;
 
   $contractNumber = $_GET['contractNumber'];
 
@@ -57,11 +57,11 @@ error_reporting(E_ALL);
 
     // SELECT
     $db = new db();
-    $selectExample = <<<EOD
-    SELECT * 
-    FROM esignature.contract
-    WHERE contractId = ?;
-    EOD;
+$selectExample = <<<EOD
+SELECT * 
+FROM esignature.contract
+WHERE contractId = ?;
+EOD;
 
     $content = html_entity_decode($db->selectSql($selectExample, [$_GET['contractNumber']])[0]['contractContent']);
 

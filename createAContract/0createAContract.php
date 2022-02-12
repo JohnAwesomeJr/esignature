@@ -5,11 +5,11 @@
 
     <!-- Add a new contract to database -->
     <?php
-    $sql = <<<EOD
-    INSERT INTO
-    contract(contractParentUser,draft)
-    VALUES (?,1); 
-    EOD;
+$sql = <<<EOD
+INSERT INTO
+contract(contractParentUser,draft)
+VALUES (?,1); 
+EOD;
     $contractOwner = $_SESSION['userId'];
     $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
     $stmt = $pdo->prepare($sql);

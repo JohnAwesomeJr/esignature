@@ -24,10 +24,10 @@ error_reporting(E_ALL);
 
     //INSERT
     $db = new db();
-    $insertExample = <<<EOD
-    INSERT INTO `esignature`.`template` (`parentUser`) 
-    VALUES (?);
-    EOD;
+$insertExample = <<<EOD
+INSERT INTO `esignature`.`template` (`parentUser`) 
+VALUES (?);
+EOD;
     // use echo to see the key of the last inserted 
     $newTemplateId = $db->createSql($insertExample, [$userId]);
 

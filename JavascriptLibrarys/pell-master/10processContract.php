@@ -23,11 +23,11 @@ error_reporting(E_ALL);
 
     // UPDATE
     $db = new db();
-    $updateExample = <<<EOD
-    UPDATE `esignature`.`contract` 
-    SET `contractContent` = ?, draft = ?
-    WHERE (`contractId` = ?);
-    EOD;
+$updateExample = <<<EOD
+UPDATE `esignature`.`contract` 
+SET `contractContent` = ?, draft = ?
+WHERE (`contractId` = ?);
+EOD;
 
     $db->updateSql($updateExample, [$escape, $draft, $_GET['contractNumber']]);
 

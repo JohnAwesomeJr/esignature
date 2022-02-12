@@ -32,28 +32,28 @@ $rows = $stmt->fetchAll();
 
     <?php
     if ($rows[0]['signDate'] == 0) {
-        $content = <<<EODCONTENTTHINGS
-        <div class="flexCentering">
-            <div>
-                <div class="numberTextContainer">
-                    <img src="{$rootFolder}uiImages/1.svg">
-                    <h4>&nbsp;&nbsp;&nbsp;Read The Contract</h4>
-                </div>
-                <div class="numberTextContainer">
-                    <img src="{$rootFolder}uiImages/2.svg">
-                    <h4>&nbsp;&nbsp;&nbsp;Sign The Contract</h4>
-                </div>
-                <div class="numberTextContainer">
-                    <img src="{$rootFolder}uiImages/3.svg">
-                    <h4>&nbsp;&nbsp;&nbsp;Send a copy to the owner</h4>
-                </div>
-                <div class="numberTextContainer">
-                    <img src="{$rootFolder}uiImages/4.svg">
-                    <h4>&nbsp;&nbsp;&nbsp;Save Your Copy</h4>
-                </div>
-            </div>
-        </div>
-    EODCONTENTTHINGS;
+$content = <<<EODCONTENTTHINGS
+<div class="flexCentering">
+<div>
+<div class="numberTextContainer">
+<img src="{$rootFolder}uiImages/1.svg">
+<h4>&nbsp;&nbsp;&nbsp;Read The Contract</h4>
+</div>
+<div class="numberTextContainer">
+<img src="{$rootFolder}uiImages/2.svg">
+<h4>&nbsp;&nbsp;&nbsp;Sign The Contract</h4>
+</div>
+<div class="numberTextContainer">
+<img src="{$rootFolder}uiImages/3.svg">
+<h4>&nbsp;&nbsp;&nbsp;Send a copy to the owner</h4>
+</div>
+<div class="numberTextContainer">
+<img src="{$rootFolder}uiImages/4.svg">
+<h4>&nbsp;&nbsp;&nbsp;Save Your Copy</h4>
+</div>
+</div>
+</div>
+EODCONTENTTHINGS;
     } else {
         $content = "<p>You have alredy signed this contract</p>";
     }

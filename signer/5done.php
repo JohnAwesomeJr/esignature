@@ -43,11 +43,11 @@ $emailStatus = $stmt->fetchAll();
 
     <?php
     // sql get a list of signers
-    $sql = <<<EOD
-     SELECT * 
-     FROM esignature.signers 
-     WHERE signerParentContract=?; 
-     EOD;
+$sql = <<<EOD
+SELECT * 
+FROM esignature.signers 
+WHERE signerParentContract=?; 
+EOD;
     $id = $_GET['contractNumber'];
     $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
     $stmt = $pdo->prepare($sql);
@@ -65,11 +65,11 @@ $emailStatus = $stmt->fetchAll();
         }
 
 
-        $sql = <<<EOD
-        UPDATE esignature.contract 
-        SET emailSent=1
-        WHERE contractId=?;
-        EOD;
+$sql = <<<EOD
+UPDATE esignature.contract 
+SET emailSent=1
+WHERE contractId=?;
+EOD;
 
         $id = $_GET['contractNumber'];
 
@@ -124,22 +124,22 @@ EOD; ?>
 
         <?php
         $fileDownload = urldecode($_GET['downloadLink']);
-        $stringWithButton = <<<EOD
+$stringWithButton = <<<EOD
 
-        <div class="outerBox" style="height:100%;">
-        
-            <div class="innerBox">
-                <a href="{$rootFolder}{$fileDownload}" download>
-                    <div class="button" style="position:static; background:{$secondColor}; color:white; padding:30px 70px;">SAVE</div>
-                </a>
-            </div>
+<div class="outerBox" style="height:100%;">
 
-            <div class="innerBox">
-                <img src="{$rootFolder}/uiImages/contractIcon.svg" style="width:60px;">
-            </div>
+<div class="innerBox">
+<a href="{$rootFolder}{$fileDownload}" download>
+<div class="button" style="position:static; background:{$secondColor}; color:white; padding:30px 70px;">SAVE</div>
+</a>
+</div>
 
-        </div>
-        EOD;
+<div class="innerBox">
+<img src="{$rootFolder}/uiImages/contractIcon.svg" style="width:60px;">
+</div>
+
+</div>
+EOD;
 
         $everyoneNotSigned = "<p>It looks like we are still waiting for signatures from everyone else who needs to sign. <br> We will send you an email with a copy of the contract once everyone else signs the contract.</p>"
         ?>

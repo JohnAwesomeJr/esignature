@@ -7,11 +7,11 @@
     <!-- are you the owner of the contract? -->
     <?php
 
-    $sql = <<<EOD
-    SELECT contractParentUser
-    FROM esignature.contract
-    WHERE contractId = ?;
-    EOD;
+$sql = <<<EOD
+SELECT contractParentUser
+FROM esignature.contract
+WHERE contractId = ?;
+EOD;
 
     $contractNumber = $_GET['contractNumber'];
 
@@ -34,11 +34,11 @@
             <div style="height:85px;"></div>
             <?php if ($_POST) : ?>
                 <?php
-                $sql = <<<EOD
-                UPDATE esignature.contract
-                SET contractName=?
-                WHERE contractId=?;        
-                EOD;
+$sql = <<<EOD
+UPDATE esignature.contract
+SET contractName=?
+WHERE contractId=?;        
+EOD;
 
                 $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
                 $stmt = $pdo->prepare($sql);
@@ -64,11 +64,11 @@
 
                             <?php
 
-                            $sql = <<<EOD
-                        SELECT contractName
-                        FROM esignature.contract
-                        WHERE contractId = ?;
-                        EOD;
+$sql = <<<EOD
+SELECT contractName
+FROM esignature.contract
+WHERE contractId = ?;
+EOD;
 
                             $contractNumber = $_GET['contractNumber'];
 

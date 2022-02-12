@@ -7,11 +7,11 @@
     <!-- are you the owner of the contract? -->
     <?php
 
-    $sql = <<<EOD
-    SELECT contractParentUser
-    FROM esignature.contract
-    WHERE contractId = ?;
-    EOD;
+$sql = <<<EOD
+SELECT contractParentUser
+FROM esignature.contract
+WHERE contractId = ?;
+EOD;
 
     $contractNumber = $_GET['contractNumber'];
 
@@ -37,11 +37,11 @@
 
             <?php
 
-            $sql = <<<EOD
-            SELECT * 
-            FROM esignature.template
-            WHERE parentUser = ?;
-            EOD;
+$sql = <<<EOD
+SELECT * 
+FROM esignature.template
+WHERE parentUser = ?;
+EOD;
 
             $user = $_SESSION['userId'];
 

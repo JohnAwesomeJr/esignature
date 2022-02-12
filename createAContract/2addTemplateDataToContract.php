@@ -27,11 +27,11 @@
         <!-- get a list of all the titles to from the template-->
         <?php
 
-        $sql = <<<EOD
-        SELECT *
-        FROM esignature.titles
-        WHERE parentTemplate = ?;
-        EOD;
+$sql = <<<EOD
+SELECT *
+FROM esignature.titles
+WHERE parentTemplate = ?;
+EOD;
 
         $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
         $stmt = $pdo->prepare($sql);
@@ -45,11 +45,11 @@
         <?php
 
         foreach ($listOfTitles as $key => $value) {
-            $sql = <<<EOD
-            INSERT INTO
-            signers(signerTitle, signerParentContract)
-            VALUES (?, ?); 
-            EOD;
+$sql = <<<EOD
+INSERT INTO
+signers(signerTitle, signerParentContract)
+VALUES (?, ?); 
+EOD;
             $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$listOfTitles[$key]['titleName'], $_GET['contractNumber']]);
@@ -62,11 +62,11 @@
 
         <?php
 
-        $sql = <<<EOD
-        SELECT templateContent
-        FROM esignature.template
-        WHERE templateId = ?;
-        EOD;
+$sql = <<<EOD
+SELECT templateContent
+FROM esignature.template
+WHERE templateId = ?;
+EOD;
 
         $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
         $stmt = $pdo->prepare($sql);
@@ -78,11 +78,11 @@
         <!-- update the content based on the template -->
 
         <?php
-        $sql = <<<EOD
-        UPDATE esignature.contract
-        SET contractContent=?
-        WHERE contractId=?;     
-        EOD;
+$sql = <<<EOD
+UPDATE esignature.contract
+SET contractContent=?
+WHERE contractId=?;     
+EOD;
 
         $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
         $stmt = $pdo->prepare($sql);

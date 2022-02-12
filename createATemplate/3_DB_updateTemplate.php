@@ -29,11 +29,11 @@ error_reporting(E_ALL);
     $userId = $_SESSION['userId'];
 
     $db = new db();
-    $insertExample = <<<EOD
-    UPDATE `esignature`.`template` 
-    SET `templateName` = ?, `templateContent` = ? 
-    WHERE (`templateId` = ?);
-    EOD;
+$insertExample = <<<EOD
+UPDATE `esignature`.`template` 
+SET `templateName` = ?, `templateContent` = ? 
+WHERE (`templateId` = ?);
+EOD;
     $db->createSql($insertExample, [$_POST['templateName'], $escape, $_GET['templateNumber']]);
 
 
@@ -62,10 +62,10 @@ error_reporting(E_ALL);
             $q1 = $_POST['tag'][$key]["'tagId'"];
             array_push($prepairedQueryQuestionsListUpdate, $q1);
 
-            $sqlupdate = <<<EOD
-            UPDATE `esignature`.`tags` 
-            SET `tagName` = ? WHERE (`tagId` = ?);
-            EOD;
+$sqlupdate = <<<EOD
+UPDATE `esignature`.`tags` 
+SET `tagName` = ? WHERE (`tagId` = ?);
+EOD;
 
             $tagUpdateQUery = $tagUpdateQUery . $sqlupdate;
         } else {
@@ -76,10 +76,10 @@ error_reporting(E_ALL);
             $q1 = $_GET['templateNumber'];
             array_push($prepairedQueryQuestionsListAddNew, $q1);
 
-            $sqlAddNew = <<<EOD
-            INSERT INTO `esignature`.`tags` (`tagName` ,`parentTemplate`) 
-            VALUES (?, ?);
-            EOD;
+$sqlAddNew = <<<EOD
+INSERT INTO `esignature`.`tags` (`tagName` ,`parentTemplate`) 
+VALUES (?, ?);
+EOD;
 
             $tagAddNewQUery = $tagAddNewQUery . $sqlAddNew;
         }
@@ -89,9 +89,9 @@ error_reporting(E_ALL);
             $q1 = $_POST['tag'][$key]["'tagId'"];
             array_push($prepairedQueryQuestionsListDelete, $q1);
 
-            $deleteSql = <<<EOD
-            DELETE FROM `esignature`.`tags` WHERE (`tagId` = ?);
-            EOD;
+$deleteSql = <<<EOD
+DELETE FROM `esignature`.`tags` WHERE (`tagId` = ?);
+EOD;
 
             $tagDeleteQUery = $tagDeleteQUery . $deleteSql;
         }
