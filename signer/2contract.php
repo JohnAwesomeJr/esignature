@@ -1,6 +1,6 @@
 <?php
 // enviroment variables
-require "/var/www/html/.env";
+require "/var/www/html/peak/.env";
 ?>
 <?php require "/{$rootD}/colors.php"; ?>
 <?php require "/{$rootD}/uiParts/card.php"; ?>
@@ -50,7 +50,7 @@ $rows = $stmt->fetchAll();
         $allButtons = [
             //$button1 = ["templatesButton", "http://www.google.com"],
             //$button2 = ["contractsButton", "http://www.google.com"],
-            $button3 = ["nextButtonOrange", "/signer/3signature.php?" . "contractNumber=" . $_GET['contractNumber'] . "&" . "contractSigner=" . $_GET['contractSigner']]
+            $button3 = ["nextButtonOrange", "{$rootFolder}signer/3signature.php?" . "contractNumber=" . $_GET['contractNumber'] . "&" . "contractSigner=" . $_GET['contractSigner']]
         ];
         footer(...$allButtons);
         ?>

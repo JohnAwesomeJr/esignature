@@ -3,7 +3,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 ?>
-<?php require "/var/www/html/.env"; ?>
+<?php require "/var/www/html/peak/.env"; ?>
 <?php
 // are you logged in?
 session_start();
@@ -88,7 +88,7 @@ if ($_SESSION > 0) :
 
         $getContractNumber = $_GET['contractNumber'];
         $db->updateSql($updateSignersSqlStatment, $prepairedVariablesArray);
-        header("Location: /JavascriptLibrarys/pell-master/9contractEditor.php?contractNumber={$getContractNumber}")
+        header("Location: {$rootFolder}JavascriptLibrarys/pell-master/9contractEditor.php?contractNumber={$getContractNumber}")
         ?>
 
 

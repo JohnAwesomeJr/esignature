@@ -1,4 +1,4 @@
-<?php require "/var/www/html/.env"; ?>
+<?php require "/var/www/html/peak/.env"; ?>
 <?php
 require "/{$rootD}/classes/db.php";
 ini_set('display_errors', 1);
@@ -435,12 +435,12 @@ error_reporting(E_ALL);
         document.getElementById('sendToDatabase').innerHTML = startingOutput;
 
         function send() {
-          document.getElementById('formInput').action = "/JavascriptLibrarys/pell-master/10processContract.php?contractNumber=<?= $_GET['contractNumber']; ?>&draft=0&arrayPosition=0";
+          document.getElementById('formInput').action = "<?= $rootFolder; ?>JavascriptLibrarys/pell-master/10processContract.php?contractNumber=<?= $_GET['contractNumber']; ?>&draft=0&arrayPosition=0";
           process();
         }
 
         function draft() {
-          document.getElementById('formInput').action = "/JavascriptLibrarys/pell-master/10processContract.php?contractNumber=<?= $_GET['contractNumber']; ?>&draft=1&arrayPosition=0";
+          document.getElementById('formInput').action = "<?= $rootFolder; ?>JavascriptLibrarys/pell-master/10processContract.php?contractNumber=<?= $_GET['contractNumber']; ?>&draft=1&arrayPosition=0";
           process();
         }
 

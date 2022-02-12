@@ -1,4 +1,4 @@
-<?php require "/var/www/html/.env"; ?>
+<?php require "/var/www/html/peak/.env"; ?>
 <?php require "/{$rootD}/colors.php"; ?>
 <?php require "/{$rootD}/uiParts/card.php"; ?>
 <?php require "/{$rootD}/htmlStart.php"; ?>

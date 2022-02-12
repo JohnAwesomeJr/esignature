@@ -1,4 +1,4 @@
-<?php require "/var/www/html/.env"; ?>
+<?php require "/var/www/html/peak/.env"; ?>
 <?php
 require "/{$rootD}/classes/db.php";
 ini_set('display_errors', 1);
@@ -65,11 +65,11 @@ error_reporting(E_ALL);
         $numberOfItemsInArray = count($numberOfTitles);
 
         if ($_POST['arrayPosition'] == $numberOfItemsInArray - 1) {
-            $urlPath = "/createAContract/6loopGetTagValues.php?contractNumber=" . $_POST['contractNumber'] . "&arrayPosition=0&templateNumber=" . $_POST['templateNumber'];
+            $urlPath = "{$rootFolder}createAContract/6loopGetTagValues.php?contractNumber=" . $_POST['contractNumber'] . "&arrayPosition=0&templateNumber=" . $_POST['templateNumber'];
             header("Location: {$urlPath}");
         } else {
             $addToArray = (int)$_POST['arrayPosition'] + 1;
-            $urlPath = "/createAContract/4loopEditContractTitles.php?contractNumber=" . $_POST['contractNumber'] . "&totalTitleList=" . $addToArray . "&templateNumber=" . $_POST['templateNumber'];
+            $urlPath = "{$rootFolder}createAContract/4loopEditContractTitles.php?contractNumber=" . $_POST['contractNumber'] . "&totalTitleList=" . $addToArray . "&templateNumber=" . $_POST['templateNumber'];
             header("Location: {$urlPath}");
         }
 

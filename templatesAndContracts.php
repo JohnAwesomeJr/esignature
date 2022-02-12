@@ -1,4 +1,4 @@
-<?php require "/var/www/html/.env"; ?>
+<?php require "/var/www/html/peak/.env"; ?>
 <?php session_start(); ?>
 <?php if ($_SESSION) : ?>
     <?php require "/{$rootD}/colors.php"; ?>
@@ -50,7 +50,7 @@
             <?php else : ?>
 
                 <?php foreach ($rows as $key => $value) : ?>
-                    <a href="/contractViewer.php?contractNumber=<?= $rows[$key]['contractId']; ?>" class="customCard centerRow" style="justify-content: space-between;">
+                    <a href="<?= $rootFolder; ?>contractViewer.php?contractNumber=<?= $rows[$key]['contractId']; ?>" class="customCard centerRow" style="justify-content: space-between;">
                         <div class=" centerColomn" style="height:100px; margin-right:15px; overflow:hidden; align-items: flex-start; justify-content: space-between; ">
                             <div style="font-size: 30px; white-space: nowrap;"><?= $rows[$key]['contractName']; ?></div>
                             <?php
@@ -114,10 +114,10 @@
                                 </div>
                             </div>
                             <div class="centerRow" style="justify-content:flex-start;">
-                                <a href="/createATemplate/deleteTemplate/deleteTemplate.php?templateNumber=<?= $templateId; ?>">
+                                <a href="<?= $rootFolder; ?>createATemplate/deleteTemplate/deleteTemplate.php?templateNumber=<?= $templateId; ?>">
                                     <div class=" centerRow status" style=" background: #D65050; margin:5px;">Delete</div>
                                 </a>
-                                <a href="/createATemplate/2_PAGE_editTemplate.php?templateNumber=<?= $templateId; ?>">
+                                <a href="<?= $rootFolder; ?>createATemplate/2_PAGE_editTemplate.php?templateNumber=<?= $templateId; ?>">
                                     <div class=" centerRow status" style=" background: #5075D6; margin:5px;">Edit</div>
                                 </a>
                             </div>
@@ -139,15 +139,15 @@
         <?php
 
         $allButtons = [
-            $button1 = ["contractsButton", "/templatesAndContracts.php?screen=contracts"],
-            $button2 = ["templatesButton", "/templatesAndContracts.php?screen=templates"]
+            $button1 = ["contractsButton", $rootFolder . "templatesAndContracts.php?screen=contracts"],
+            $button2 = ["templatesButton", $rootFolder . "templatesAndContracts.php?screen=templates"]
         ];
         if ($_GET['screen'] == "contracts") {
             //URL to the create contracts page!!!!!!!!!!!!!!!!
-            $button3 = ["plusButtonShort", "/createAContract/0createAContract.php"];
+            $button3 = ["plusButtonShort", $rootFolder . "createAContract/0createAContract.php"];
         } else {
             //URL to the create templates page!!!!!!!!!!!!!!!!
-            $button3 = ["plusButtonShort", "/createATemplate/1_DB_createATemplate.php"];
+            $button3 = ["plusButtonShort", $rootFolder . "createATemplate/1_DB_createATemplate.php"];
         }
         array_push($allButtons, $button3);
         footer(...$allButtons);

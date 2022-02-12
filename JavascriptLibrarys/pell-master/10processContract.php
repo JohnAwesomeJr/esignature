@@ -1,4 +1,4 @@
-<?php require "/var/www/html/.env"; ?>
+<?php require "/var/www/html/peak/.env"; ?>
 
 <?php
 ob_start();
@@ -37,9 +37,9 @@ error_reporting(E_ALL);
 
 </html>
 <?php if ($draft == 0) : ?>
-    <?php header('Location: /createAContract/11sendSignNotifacationEmails.php?arrayPosition=0&contractNumber=' . $_GET['contractNumber']); ?>
+    <?php header("Location: {$rootFolder}createAContract/11sendSignNotifacationEmails.php?arrayPosition=0&contractNumber=" . $_GET['contractNumber']); ?>
 <?php else : ?>
-    <?php header('Location: /templatesAndContracts.php?screen=contracts'); ?>
+    <?php header("Location: {$rootFolder}templatesAndContracts.php?screen=contracts"); ?>
 <?php endif; ?>
 
 <?php ob_end_flush(); ?>

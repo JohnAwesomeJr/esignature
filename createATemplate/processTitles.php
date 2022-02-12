@@ -1,3 +1,4 @@
+<?php require "/var/www/html/peak/.env"; ?>
 <?php
 
 // update variables

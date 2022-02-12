@@ -1,4 +1,4 @@
-<?php require "/var/www/html/.env"; ?>
+<?php require "/var/www/html/peak/.env"; ?>
 <?php require "/{$rootD}/colors.php"; ?>
 
 <?php session_start(); ?>
@@ -28,7 +28,7 @@
         <div id="bodyCentering">
             <?php
             $backButton = true;
-            $backLink1 = "/templatesAndContracts.php?screen=contracts";
+            $backLink1 = "{$rootFolder}templatesAndContracts.php?screen=contracts";
             require "/{$rootD}/uiParts/headder.php";
             ?>
             <div style="height:85px;"></div>
@@ -45,7 +45,7 @@
                 $stmt->execute([$_POST['updatedName'], $_GET['contractNumber']]);
                 $rows = $stmt->fetchAll();
                 ?>
-                <a id="redirect" href="/createAContract/4loopEditContractTitles.php?contractNumber=<?= $_GET['contractNumber']; ?>&totalTitleList=0&templateNumber=<?= $_GET['templateNumber']; ?>"></a>
+                <a id="redirect" href="<?= $rootFolder; ?>createAContract/4loopEditContractTitles.php?contractNumber=<?= $_GET['contractNumber']; ?>&totalTitleList=0&templateNumber=<?= $_GET['templateNumber']; ?>"></a>
                 <script>
                     document.getElementById('redirect').click();
                 </script>

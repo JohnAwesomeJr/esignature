@@ -1,4 +1,4 @@
-<?php require "/var/www/html/.env"; ?>
+<?php require "/var/www/html/peak/.env"; ?>
 <?php
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -76,7 +76,7 @@ if ($_SESSION > 0) :
 
             <body class="centerColomn" style="overflow-y: scroll; background:<?= $background; ?>">
 
-                <form class="centerColomn" style="width:100%; max-width: 700px;" method="post" action="/editContract/2updateContract.php?contractNumber=<?= $_GET['contractNumber']; ?>">
+                <form class="centerColomn" style="width:100%; max-width: 700px;" method="post" action="<?= $rootFolder; ?>editContract/2updateContract.php?contractNumber=<?= $_GET['contractNumber']; ?>">
                     <fieldset class="customCard">
                         <legend>Contract Title: <?= $contractTitle; ?></legend>
                         <br>
@@ -100,7 +100,7 @@ if ($_SESSION > 0) :
                                 <input name="contractSigners['<?= $signersArray[$key]['signerId']; ?>']['signerName']" value="<?= $signersArray[$key]['signerName']; ?>">
                                 <br>
                             </div>
-                            <a href="/editContract/removeSigner.php?signerId=<?= $signersArray[$key]['signerId']; ?>&contractNumber=<?= $_GET['contractNumber']; ?>">Remove Signer</a>
+                            <a href="<?= $rootFolder; ?>editContract/removeSigner.php?signerId=<?= $signersArray[$key]['signerId']; ?>&contractNumber=<?= $_GET['contractNumber']; ?>">Remove Signer</a>
                         </fieldset>
                     <?php endforeach; ?>
 

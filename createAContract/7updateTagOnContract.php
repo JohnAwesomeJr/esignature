@@ -1,4 +1,4 @@
-<?php require "/var/www/html/.env"; ?>
+<?php require "/var/www/html/peak/.env"; ?>
 <?php ob_start(); ?>
 <?php session_start(); ?>
 <?php
@@ -85,13 +85,13 @@ error_reporting(E_ALL);
         ?>
         <?php if ($_POST['arrayPosition'] == $numberInArray) : ?>
             <?php
-            $urlPath = "/createAContract/8placeNameTagsInContract.php?" . "contractNumber=" . (int)$_POST['contractNumber'] . "&arrayPosition=0";
+            $urlPath = "{$rootFolder}createAContract/8placeNameTagsInContract.php?" . "contractNumber=" . (int)$_POST['contractNumber'] . "&arrayPosition=0";
             header("Location: {$urlPath}");
             ?>
         <?php else : ?>
             <?php
             $newPosition = (int)$_POST['arrayPosition'] + 1;
-            $urlPath = "/createAContract/6loopGetTagValues.php?contractNumber=" . (int)$_POST['contractNumber'] . "&arrayPosition=" . $newPosition . "&templateNumber=" . (int)$_POST['templateNumber'];
+            $urlPath = "{$rootFolder}createAContract/6loopGetTagValues.php?contractNumber=" . (int)$_POST['contractNumber'] . "&arrayPosition=" . $newPosition . "&templateNumber=" . (int)$_POST['templateNumber'];
             header("Location: {$urlPath}");
             ?>
         <?php endif; ?>

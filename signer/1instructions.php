@@ -3,13 +3,13 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 ?>
-<?php require "/var/www/html/.env"; ?>
+<?php require "/var/www/html/peak/.env"; ?>
 <?php require "/{$rootD}/colors.php"; ?>
 <?php require "/{$rootD}/uiParts/card.php"; ?>
 <?php require "/{$rootD}/htmlStart.php"; ?>
 <?php
 // enviroment variables
-require "/var/www/html/.env";
+require "/var/www/html/peak/.env";
 ?>
 
 <?php
@@ -36,19 +36,19 @@ $rows = $stmt->fetchAll();
         <div class="flexCentering">
             <div>
                 <div class="numberTextContainer">
-                    <img src="/uiImages/1.svg">
+                    <img src="{$rootFolder}uiImages/1.svg">
                     <h4>&nbsp;&nbsp;&nbsp;Read The Contract</h4>
                 </div>
                 <div class="numberTextContainer">
-                    <img src="/uiImages/2.svg">
+                    <img src="{$rootFolder}uiImages/2.svg">
                     <h4>&nbsp;&nbsp;&nbsp;Sign The Contract</h4>
                 </div>
                 <div class="numberTextContainer">
-                    <img src="/uiImages/3.svg">
+                    <img src="{$rootFolder}uiImages/3.svg">
                     <h4>&nbsp;&nbsp;&nbsp;Send a copy to the owner</h4>
                 </div>
                 <div class="numberTextContainer">
-                    <img src="/uiImages/4.svg">
+                    <img src="{$rootFolder}uiImages/4.svg">
                     <h4>&nbsp;&nbsp;&nbsp;Save Your Copy</h4>
                 </div>
             </div>
@@ -85,7 +85,7 @@ $rows = $stmt->fetchAll();
             $allButtons = [
                 //$button1 = ["templatesButton", "http://www.google.com"],
                 //$button2 = ["contractsButton", "http://www.google.com"],
-                $button3 = ["nextButtonOrange", "/signer/2contract.php?" . "contractNumber=" . $_GET['contractNumber'] . "&" . "contractSigner=" . $_GET['contractSigner']]
+                $button3 = ["nextButtonOrange", "{$rootFolder}signer/2contract.php?" . "contractNumber=" . $_GET['contractNumber'] . "&" . "contractSigner=" . $_GET['contractSigner']]
             ];
             footer(...$allButtons);
         }

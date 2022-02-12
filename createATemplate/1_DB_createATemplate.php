@@ -1,4 +1,4 @@
-<?php require "/var/www/html/.env"; ?>
+<?php require "/var/www/html/peak/.env"; ?>
 <?php ob_start(); ?>
 <?php
 require "/{$rootD}/classes/db.php";
@@ -34,7 +34,7 @@ error_reporting(E_ALL);
 
     echo $newTemplateId;
 
-    header("location: /createATemplate/2_PAGE_editTemplate.php?templateNumber={$newTemplateId}")
+    header("location: {$rootFolder}createATemplate/2_PAGE_editTemplate.php?templateNumber={$newTemplateId}")
     ?>
 
 

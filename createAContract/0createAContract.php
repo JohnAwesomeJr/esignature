@@ -1,5 +1,5 @@
 <?php session_start(); ?>
-<?php require "/var/www/html/.env"; ?>
+<?php require "/var/www/html/peak/.env"; ?>
 <!-- are you logged in? -->
 <?php if ($_SESSION) : ?>
 
@@ -21,7 +21,7 @@
 
 
     <!-- go to edit contract page -->
-    <?php header("Location: /createAContract/1TemplatePicker.php?contractNumber={$rows}"); ?>
+    <?php header("Location: {$rootFolder}createAContract/1TemplatePicker.php?contractNumber={$rows}"); ?>
     <!-- if you are not logged in -->
 <?php else : ?>
     you are not logged in

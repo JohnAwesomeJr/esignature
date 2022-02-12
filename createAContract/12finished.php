@@ -1,5 +1,5 @@
 <?php session_start(); ?>
-<?php require "/var/www/html/.env"; ?>
+<?php require "/var/www/html/peak/.env"; ?>
 <?php require "/{$rootD}/htmlStart.php"; ?>
 <?php // require "/{$rootD}/arrayVisualizer.php"; 
 ?>
@@ -15,7 +15,7 @@
     <div id="bodyCentering">
         <?php
         $backButton = true;
-        $backLink1 = "/templatesAndContracts.php?screen=contracts";
+        $backLink1 = "{$rootFolder}templatesAndContracts.php?screen=contracts";
         require "/{$rootD}/uiParts/headder.php";
         ?>
         <div style="height:85px;"></div>
@@ -30,7 +30,7 @@
         <?php
         require "/{$rootD}/uiParts/footer.php";
         $allButtons = [
-            $button1 = ["homeButton", "/templatesAndContracts.php?screen=contracts"],
+            $button1 = ["homeButton", "{$rootFolder}templatesAndContracts.php?screen=contracts"],
             // $button2 = ["contractsButton", "http://www.google.com"]
             // $button3 = ["plusButtonShort", "http://www.google.com"]
         ];

@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 ?>
 <?php
 // enviroment variables
-require "/var/www/html/.env";
+require "/var/www/html/peak/.env";
 ?>
 <?php require "/{$rootD}/colors.php"; ?>
 
@@ -121,7 +121,7 @@ require "/var/www/html/.env";
 
     ?>
 
-    <?php $urlPath = "/signer/5done.php?" . "contractNumber=" . $_GET['contractNumber'] . "&" . "contractSigner=" . $_GET['contractSigner']  . "&" . "email=" . $email . "&" . "downloadLink=" . urlencode("/pdfFiles/" . $fileId); ?>
+    <?php $urlPath = "{$rootFolder}signer/5done.php?" . "contractNumber=" . $_GET['contractNumber'] . "&" . "contractSigner=" . $_GET['contractSigner']  . "&" . "email=" . $email . "&" . "downloadLink=" . urlencode("/pdfFiles/" . $fileId); ?>
     <?php header("Location: {$urlPath}"); ?>
 
 

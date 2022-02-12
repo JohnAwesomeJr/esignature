@@ -3,7 +3,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 ?>
-<?php require "/var/www/html/.env"; ?>
+<?php require "/var/www/html/peak/.env"; ?>
 <?php
 // are you logged in?
 session_start();
@@ -71,7 +71,7 @@ if ($_SESSION > 0) :
                 WHERE (`signerParentContract` = ?);
                 EOD;
                 $db->deleteSql($deleteSigners, [$_GET['contractNumber']]);
-                header("Location: /templatesAndContracts.php?screen=contracts");
+                header("Location: {$rootFolder}templatesAndContracts.php?screen=contracts");
             } else {
                 echo "going back";
             }

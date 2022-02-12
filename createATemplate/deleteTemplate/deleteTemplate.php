@@ -1,4 +1,4 @@
-<?php require "/var/www/html/.env"; ?>
+<?php require "/var/www/html/peak/.env"; ?>
 <?php ob_start(); ?>
 <?php
 require "/{$rootD}/classes/db.php";
@@ -11,7 +11,7 @@ error_reporting(E_ALL);
 <!-- are you logged in? -->
 <?php if ($_SESSION) : ?>
     <!-- are you the owner of the template? -->
-    <script src="/node_modules/insert-text-at-cursor/dist/index.umd.js"></script>
+    <script src="<?= $rootFolder; ?>node_modules/insert-text-at-cursor/dist/index.umd.js"></script>
     <?php
     $templateId = $_GET['templateNumber'];
 
@@ -57,7 +57,7 @@ error_reporting(E_ALL);
         EOD;
         $db->deleteSql($deleteExample, [$itemToDelete, $itemToDelete, $itemToDelete]);
 
-        header('Location: /templatesAndContracts.php')
+        header("Location: {$rootFolder}templatesAndContracts.php")
         ?>
 
 

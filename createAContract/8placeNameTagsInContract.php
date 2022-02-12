@@ -1,4 +1,4 @@
-<?php require "/var/www/html/.env"; ?>
+<?php require "/var/www/html/peak/.env"; ?>
 <?php ob_start(); ?>
 <?php
 require "/{$rootD}/classes/db.php";
@@ -123,11 +123,11 @@ error_reporting(E_ALL);
         $link = "";
 
         if ($numberOfTags == $arrayPosition) {
-            $link = "/JavascriptLibrarys/pell-master/9contractEditor.php?contractNumber={$_GET['contractNumber']}";
+            $link = "{$rootFolder}JavascriptLibrarys/pell-master/9contractEditor.php?contractNumber={$_GET['contractNumber']}";
             echo "<br>" . $link;
         } else {
             $nextArrayPosition = $arrayPosition + 1;
-            $link = "/createAContract/8placeNameTagsInContract.php?contractNumber={$_GET['contractNumber']}&arrayPosition={$nextArrayPosition}";
+            $link = "{$rootFolder}createAContract/8placeNameTagsInContract.php?contractNumber={$_GET['contractNumber']}&arrayPosition={$nextArrayPosition}";
             echo "<br>" . $link;
         }
 

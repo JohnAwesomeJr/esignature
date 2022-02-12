@@ -1,4 +1,4 @@
-<?php require "/var/www/html/.env"; ?>
+<?php require "/var/www/html/peak/.env"; ?>
 <?php session_start(); ?>
 <!-- are you logged in? -->
 <?php if ($_SESSION) : ?>
@@ -92,7 +92,7 @@
 
 
 
-        <?php header("Location: /createAContract/3editContractName.php?contractNumber={$_GET['contractNumber']}&templateNumber={$_GET['templateNumber']}");
+        <?php header("Location: {$rootFolder}createAContract/3editContractName.php?contractNumber={$_GET['contractNumber']}&templateNumber={$_GET['templateNumber']}");
         ?>
 
 

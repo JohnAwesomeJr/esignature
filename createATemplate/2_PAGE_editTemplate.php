@@ -1,4 +1,4 @@
-<?php require "/var/www/html/.env"; ?>
+<?php require "/var/www/html/peak/.env"; ?>
 <?php ob_start(); ?>
 <?php
 require "/{$rootD}/classes/db.php";
@@ -22,20 +22,20 @@ error_reporting(E_ALL);
         }
     </style>
 
-    <link rel="stylesheet" href="/newStyles.css">
-    <link rel="stylesheet" href="/createATemplate/page2Styles.css">
+    <link rel="stylesheet" href="<?= $rootFolder; ?>newStyles.css">
+    <link rel="stylesheet" href="<?= $rootFolder; ?>createATemplate/page2Styles.css">
 
 
 
-    <script src="/node_modules/insert-text-at-cursor/dist/index.umd.js"></script>
+    <script src="<?= $rootFolder; ?>node_modules/insert-text-at-cursor/dist/index.umd.js"></script>
 
 
-    <script src="/node_modules/rangy/lib/rangy-core.js"></script>
-    <script src="/node_modules/rangy/lib/rangy-classapplier.js"></script>
-    <script src="/node_modules/rangy/lib/rangy-highlighter.js"></script>
-    <script src="/node_modules/rangy/lib/rangy-selectionsaverestore.js"></script>
-    <script src="/node_modules/rangy/lib/rangy-serializer.js"></script>
-    <script src="/node_modules/rangy/lib/rangy-textrange.js"></script>
+    <script src="<?= $rootFolder; ?>node_modules/rangy/lib/rangy-core.js"></script>
+    <script src="<?= $rootFolder; ?>node_modules/rangy/lib/rangy-classapplier.js"></script>
+    <script src="<?= $rootFolder; ?>node_modules/rangy/lib/rangy-highlighter.js"></script>
+    <script src="<?= $rootFolder; ?>node_modules/rangy/lib/rangy-selectionsaverestore.js"></script>
+    <script src="<?= $rootFolder; ?>node_modules/rangy/lib/rangy-serializer.js"></script>
+    <script src="<?= $rootFolder; ?>node_modules/rangy/lib/rangy-textrange.js"></script>
 
 
 
@@ -84,7 +84,7 @@ error_reporting(E_ALL);
             }
         </style>
 
-        <form id="ContainerAll" class=" all flexColumn xFlexCenter yFlexTop" method="post" action="/createATemplate/3_DB_updateTemplate.php?templateNumber=<?= $templateId; ?>">
+        <form id="ContainerAll" class=" all flexColumn xFlexCenter yFlexTop" method="post" action="<?= $rootFolder; ?>createATemplate/3_DB_updateTemplate.php?templateNumber=<?= $templateId; ?>">
             <div class="flexRow xFlexCenter yFlexCenter">
                 <div id="showTitlesButton" class=" smallButton shadow flexRow xFlexCenter yFlexCenter">
                     Show Titles
@@ -257,7 +257,7 @@ error_reporting(E_ALL);
             const el = document.getElementById('editor');
         </script>
 
-        <link rel="stylesheet" type="text/css" href="/JavascriptLibrarys/pell-master/dist/pell.css">
+        <link rel="stylesheet" type="text/css" href="<?= $rootFolder; ?>JavascriptLibrarys/pell-master/dist/pell.css">
 
 
         <div class="outputs">
@@ -269,7 +269,7 @@ error_reporting(E_ALL);
         </div>
 
 
-        <script src="/JavascriptLibrarys/pell-master/dist/pell.js"></script>
+        <script src="<?= $rootFolder; ?>JavascriptLibrarys/pell-master/dist/pell.js"></script>
         <script>
             document.querySelectorAll('.outputs')[0].style.display = "none";
         </script>
@@ -296,16 +296,8 @@ error_reporting(E_ALL);
             var titlessArray = <?= json_encode($titleListArray); ?>;
             // convert titles array to be used with javascript
         </script>
-        <script src="/createATemplate/listManipulation.js"></script>
+        <script src="<?= $rootFolder; ?>createATemplate/listManipulation.js"></script>
 
-
-
-
-
-
-        <!-- javascript iphone test -->
-        <!-- <script src="/createATemplate/testing.js"></script> -->
-        <!-- javascript iphone test -->
 
 
 

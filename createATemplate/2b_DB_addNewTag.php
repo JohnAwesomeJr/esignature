@@ -10,7 +10,7 @@ error_reporting(E_ALL);
 <!-- are you logged in? -->
 <?php if ($_SESSION) : ?>
     <!-- are you the owner of the template? -->
-    <script src="/node_modules/insert-text-at-cursor/dist/index.umd.js"></script>
+    <script src="<?= $rootFolder; ?>node_modules/insert-text-at-cursor/dist/index.umd.js"></script>
     <?php
     $templateId = $_GET['templateNumber'];
 

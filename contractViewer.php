@@ -1,6 +1,6 @@
 <?php session_start(); ?>
 <?php if ($_SESSION) : ?>
-    <?php require "/var/www/html/.env"; ?>
+    <?php require "/var/www/html/peak/.env"; ?>
     <?php require "/{$rootD}/colors.php"; ?>
     <?php require "/{$rootD}/uiParts/card.php"; ?>
 
@@ -11,7 +11,7 @@
     <div id="bodyCentering">
         <?php
         $backButton = true;
-        $backLink1 = "/templatesAndContracts.php?screen=contracts";
+        $backLink1 = "{$rootFolder}templatesAndContracts.php?screen=contracts";
         require "/{$rootD}/uiParts/headder.php";
         ?>
 
@@ -97,7 +97,7 @@
                             </div>
                             <div class="signature centerRow"> <?php if ($rows[$key]['signerImagePath'] > "") : ?>
                                     <div>
-                                        <img src="<?= "/signature" . $rows[$key]['signerImagePath']; ?>" width=100px>
+                                        <img src="<?= $rootFolder . "/signature" . $rows[$key]['signerImagePath']; ?>" width=100px>
                                     </div>
                                 <?php else : ?>
                                     <h4 style="color:gainsboro;">Waiting for Signature</h4>
@@ -105,8 +105,8 @@
                             </div>
                         </div>
                     </div>
-                    <a href="/signer/1instructions.php?contractNumber=<?= $_GET['contractNumber']; ?>&contractSigner=<?= $rows[$key]['signerId']; ?>">
-                        /signer/1instructions.php?contractNumber=<?= $_GET['contractNumber']; ?>&contractSigner=<?= $rows[$key]['signerId']; ?>
+                    <a href="<?= $rootFolder; ?>signer/1instructions.php?contractNumber=<?= $_GET['contractNumber']; ?>&contractSigner=<?= $rows[$key]['signerId']; ?>">
+                        <?= $rootFolder; ?>signer/1instructions.php?contractNumber=<?= $_GET['contractNumber']; ?>&contractSigner=<?= $rows[$key]['signerId']; ?>
                     </a>
                 </div>
             <?php endforeach; ?>
@@ -126,10 +126,10 @@
             ?>
             <?php if ($rows[0]["draft"] == 1) : ?>
                 <div class="customCard">
-                    <a href="/editContract/1editContractDetails.php?contractNumber=<?= $_GET['contractNumber']; ?>" style="display:inline-block; ">
+                    <a href="<?= $rootFolder; ?>editContract/1editContractDetails.php?contractNumber=<?= $_GET['contractNumber']; ?>" style="display:inline-block; ">
                         <div class="centerRow status " style="background:#5075D6; font-size:20px; width: 100px;">Edit Draft</div>
                     </a>
-                    <a href="/deleteContract.php?contractNumber=<?= $_GET['contractNumber']; ?>" style="display:inline-block;">
+                    <a href="<?= $rootFolder; ?>deleteContract.php?contractNumber=<?= $_GET['contractNumber']; ?>" style="display:inline-block;">
                         <div class="centerRow status" style="background:#f54242; font-size:20px; width: 150px;">DELETE DRAFT</div>
                     </a>
                 </div>

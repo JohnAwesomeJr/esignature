@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 ?>
 <?php
 // enviroment variables
-require "/var/www/html/.env";
+require "/var/www/html/peak/.env";
 ?>
 <?php
 //top level php mailer class
@@ -129,13 +129,13 @@ EOD; ?>
         <div class="outerBox" style="height:100%;">
         
             <div class="innerBox">
-                <a href="{$fileDownload}" download>
+                <a href="{$rootFolder}{$fileDownload}" download>
                     <div class="button" style="position:static; background:{$secondColor}; color:white; padding:30px 70px;">SAVE</div>
                 </a>
             </div>
 
             <div class="innerBox">
-                <img src="/uiImages/contractIcon.svg" style="width:60px;">
+                <img src="{$rootFolder}/uiImages/contractIcon.svg" style="width:60px;">
             </div>
 
         </div>

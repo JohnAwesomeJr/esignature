@@ -1,4 +1,4 @@
-<?php require "/var/www/html/.env"; ?>
+<?php require "/var/www/html/peak/.env"; ?>
 <?php require "/{$rootD}/colors.php"; ?>
 
 <?php session_start(); ?>
@@ -28,7 +28,7 @@
         <div id="bodyCentering">
             <?php
             $backButton = true;
-            $backLink1 = "/templatesAndContracts.php?screen=contracts";
+            $backLink1 = "{$rootFolder}templatesAndContracts.php?screen=contracts";
             require "/{$rootD}/uiParts/headder.php";
             ?>
             <div style="height:85px;"></div>
@@ -55,7 +55,7 @@
             <?php if ($rows[0]['parentUser'] == $_SESSION['userId']) : ?>
                 <?php foreach ($rows as $key => $value) : ?>
 
-                    <a href="/createAContract/2addTemplateDataToContract.php?contractNumber=<?= $_GET['contractNumber']; ?>&templateNumber=<?= $rows[$key]['templateId']; ?>" class="customCard centerRow" style="justify-content: space-between;">
+                    <a href="<?= $rootFolder; ?>createAContract/2addTemplateDataToContract.php?contractNumber=<?= $_GET['contractNumber']; ?>&templateNumber=<?= $rows[$key]['templateId']; ?>" class="customCard centerRow" style="justify-content: space-between;">
                         <div class=" centerColomn" style="height:100px; margin-right:15px; overflow:hidden; align-items: flex-start; justify-content: space-between; ">
                             <div style="font-size: 30px; white-space: nowrap;"><?= strtoupper($rows[$key]['templateName']); ?></div>
                         </div>

@@ -1,4 +1,4 @@
-<?php require "/var/www/html/.env"; ?>
+<?php require "/var/www/html/peak/.env"; ?>
 <?php ob_start(); ?>
 <?php
 require "/{$rootD}/classes/db.php";
@@ -134,7 +134,7 @@ error_reporting(E_ALL);
 
 
 
-    header("location: /templatesAndContracts.php")
+    header("location: {$rootFolder}templatesAndContracts.php")
     ?>
 
 

@@ -1,4 +1,4 @@
-<?php require "/var/www/html/.env"; ?>
+<?php require "/var/www/html/peak/.env"; ?>
 <?php session_start(); ?>
 
 <?php
@@ -38,7 +38,7 @@ session_destroy();
             }
             ?>
             <p style="text-align:center; margin: 10px;">Login</p>
-            <form action="authLogin.php" method="post">
+            <form action="<?= $rootFolder; ?>authLogin.php" method="post">
                 <input type="email" name="userName" placeholder="email" value="<?php if ($_POST) {
                                                                                     echo $_POST['lastTypedEmail'];
                                                                                 }; ?>">
@@ -49,11 +49,6 @@ session_destroy();
             <a href="http://www.google.com"> Create An Account </a>
         </div>
     </div>
-    <!-- <div class="sideWindow">
-        <a href="/signer/1instructions.php?contractNumber=2&contractSigner=1">JJ</a>
-        <a href="/signer/1instructions.php?contractNumber=2&contractSigner=2">Jessica</a>
-        <a href="/signer/1instructions.php?contractNumber=2&contractSigner=5">Jenny</a>
-    </div> -->
     </div><!-- endo of base container -->
 
 </body>

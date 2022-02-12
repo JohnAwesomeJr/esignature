@@ -64,12 +64,12 @@
 
 <div id="menu">
 
-    <a href="/">
+    <a href="<?= $rootFolder; ?>">
         <p>login</p>
     </a>
 
 
-    <a href="/templatesAndContracts.php?screen=templates">
+    <a href="<?= $rootFolder; ?>templatesAndContracts.php?screen=templates">
         <p>Main Menu</p>
     </a>
 

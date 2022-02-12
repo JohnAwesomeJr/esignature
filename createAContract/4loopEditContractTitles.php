@@ -1,4 +1,4 @@
-<?php require "/var/www/html/.env"; ?>
+<?php require "/var/www/html/peak/.env"; ?>
 <?php require "/{$rootD}/colors.php"; ?>
 <?php require "/{$rootD}/classes/db.php"; ?>
 
@@ -29,7 +29,7 @@
         <div id="bodyCentering">
             <?php
             $backButton = true;
-            $backLink1 = "/templatesAndContracts.php?screen=contracts";
+            $backLink1 = "{$rootFolder}templatesAndContracts.php?screen=contracts";
             require "/{$rootD}/uiParts/headder.php";
             ?>
             <div style="height:85px;"></div>
@@ -52,7 +52,7 @@
                     <?php $iconSize = 100; ?>
                     <?php require "/{$rootD}/uiImages/personIcon.php"; ?>
                 </div>
-                <form method="post" action="/createAContract/5processTitles.php">
+                <form method="post" action="<?= $rootFolder; ?>createAContract/5processTitles.php">
                     <input hidden name="templateNumber" type="text" value="<?= $_GET['templateNumber']; ?>">
                     <input hidden name="signerId" type="text" value="<?= $currentSigner[$_GET['totalTitleList']]['signerId']; ?>">
                     <input hidden name="contractNumber" type="text" value="<?= $currentSigner[$_GET['totalTitleList']]['signerParentContract']; ?>">
