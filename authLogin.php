@@ -26,14 +26,14 @@ if ($userName == "" | $userPassword == "") {
     $errorText = "Please Correct User Name Or Password.";
 
     echo <<<EOD
-    <form method="post" action="{$rootFolder}">
-        <input type="hidden" name="error" value="{$errorText}">
-        <input type="hidden" name="lastTypedEmail" value="{$userName}">
-        <input id="submit" type="submit" hidden>
-    </form>
-    <script>
-        document.getElementById("submit").click();
-    </script>
+<form method="post" action="{$rootFolder}">
+    <input type="hidden" name="error" value="{$errorText}">
+    <input type="hidden" name="lastTypedEmail" value="{$userName}">
+    <input id="submit" type="submit" hidden>
+</form>
+<script>
+    document.getElementById("submit").click();
+</script>
 EOD;
 
 
@@ -41,15 +41,15 @@ EOD;
     if ($rows != true) {
         $errorText = "No Account Found";
 
-        echo <<<EOD
-        <form method="post" action="{$rootFolder}">
-            <input type="hidden" name="error" value="{$errorText}">
-            <input type="hidden" name="lastTypedEmail" value="{$userName}">
-            <input id="submit" type="submit" hidden>
-        </form>
-        <script>
-            document.getElementById("submit").click();
-        </script>
+echo <<<EOD
+<form method="post" action="{$rootFolder}">
+    <input type="hidden" name="error" value="{$errorText}">
+    <input type="hidden" name="lastTypedEmail" value="{$userName}">
+    <input id="submit" type="submit" hidden>
+</form>
+<script>
+    document.getElementById("submit").click();
+</script>
 EOD;
 
 
@@ -57,15 +57,15 @@ EOD;
         if ($HashedPassword != $rows[0]['userPassword']) {
             $errorText = "that is not the right password for that account.";
 
-            echo <<<EOD
-            <form method="post" action="{$rootFolder}">
-                <input type="hidden" name="error" value="{$errorText}">
-                <input type="hidden" name="lastTypedEmail" value="{$userName}">
-                <input id="submit" type="submit" hidden>
-            </form>
-            <script>
-                document.getElementById("submit").click();
-            </script>
+echo <<<EOD
+<form method="post" action="{$rootFolder}">
+    <input type="hidden" name="error" value="{$errorText}">
+    <input type="hidden" name="lastTypedEmail" value="{$userName}">
+    <input id="submit" type="submit" hidden>
+</form>
+<script>
+    document.getElementById("submit").click();
+</script>
 EOD;
 
 
@@ -74,13 +74,13 @@ EOD;
             $_SESSION['userId'] = $rows[0]['userId'];
             $errorText = "You are now qualified to login!";
 
-            echo <<<EOD
-            <form method="post" action="{$rootFolder}templatesAndContracts.php">
-                <input id="submit" type="submit" hidden>
-            </form>
-            <script>
-                 document.getElementById("submit").click();
-            </script>
+echo <<<EOD
+<form method="post" action="{$rootFolder}templatesAndContracts.php">
+    <input id="submit" type="submit" hidden>
+</form>
+<script>
+        document.getElementById("submit").click();
+</script>
 EOD;
 
 
