@@ -14,10 +14,10 @@ EOD;
 $userName = $_POST['userName'];
 $userPassword = $_POST['password'];
 
-// $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
-// $stmt = $pdo->prepare($sql);
-// $stmt->execute([$userName,]);
-// $rows = $stmt->fetchAll();
+$pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$userName,]);
+$rows = $stmt->fetchAll();
 
 // $HashedPassword = hash("sha512", $_POST['password'] . $rows[0]['salt']);
 
