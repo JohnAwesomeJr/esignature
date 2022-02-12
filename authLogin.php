@@ -17,7 +17,7 @@ $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassw
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$userName,]);
 $rows = $stmt->fetchAll();
-echo $rows;
+print_r($rows);
 
 $HashedPassword = hash("sha512", $_POST['password'] . $rows[0]['salt']);
 
