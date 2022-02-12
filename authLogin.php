@@ -22,8 +22,9 @@ echo "</pre>";
 
 $HashedPassword = hash("sha512", $_POST['password'] . $rows[0]['salt']);
 
-
+if ($userName != "" | $userPassword != "") {
     echo "hi";
+}
 
 // if ($userName == "" | $userPassword == "") {
 //     $errorText = "Please Correct User Name Or Password.";
