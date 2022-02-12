@@ -34,7 +34,7 @@ if ($userName == "" | $userPassword == "") {
     <script>
         document.getElementById("submit").click();
     </script>
-    EOD;
+EOD;
 
 } else {
     if ($rows != true) {
@@ -49,7 +49,7 @@ if ($userName == "" | $userPassword == "") {
         <script>
             document.getElementById("submit").click();
         </script>
-        EOD;
+EOD;
 
     } else {
         if ($HashedPassword != $rows[0]['userPassword']) {
@@ -64,7 +64,7 @@ if ($userName == "" | $userPassword == "") {
             <script>
                 document.getElementById("submit").click();
             </script>
-            EOD;
+EOD;
 
         } else {
             $_SESSION['userName'] = $userName;
@@ -78,8 +78,8 @@ if ($userName == "" | $userPassword == "") {
             <script>
                     document.getElementById("submit").click();
             </script>
-            EOD;
-            
+EOD;
+
         }
     }
 }
