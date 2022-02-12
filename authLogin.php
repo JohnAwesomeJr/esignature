@@ -41,6 +41,7 @@ EOD;
         $errorText = "No Account Found";
 
 echo <<<EOD
+
 <form method="post" action="{$rootFolder}">
 <input type="hidden" name="error" value="{$errorText}">
 <input type="hidden" name="lastTypedEmail" value="{$userName}">
