@@ -34,9 +34,7 @@ echo <<<EOD
 <script>
 document.getElementById("submit").click();
 </script>
-
 EOD;
-
 } else {
     if ($rows != true) {
         $errorText = "No Account Found";
