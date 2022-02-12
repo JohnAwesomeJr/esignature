@@ -1,4 +1,5 @@
 <?php
+echo "working";
 require "/var/www/html/esignature/.env";
 require "/{$rootD}/arrayVisualizer.php";
 session_start();
@@ -10,7 +11,6 @@ $sql = <<<EOD
 SELECT * FROM esignature.users
 WHERE userEmail=?;
 EOD;
-echo "working";
 $userName = $_POST['userName'];
 $userPassword = $_POST['password'];
 
