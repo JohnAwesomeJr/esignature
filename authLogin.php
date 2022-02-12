@@ -22,20 +22,18 @@ echo "</pre>";
 
 $HashedPassword = hash("sha512", $_POST['password'] . $rows[0]['salt']);
 
-if ($userName == "" | $userPassword == "") {
-    $errorText = "Please Correct User Name Or Password.";
-    echo <<<EOD
-    <form method="post" action="{$rootFolder}">
-        <input type="hidden" name="error" value="{$errorText}">
-        <input type="hidden" name="lastTypedEmail" value="{$userName}">
-        <input id="submit" type="submit" hidden>
-    </form>
-    <script>
-        document.getElementById("submit").click();
-    </script>
-    EOD;
-    
-}
+// if ($userName == "" | $userPassword == "") {
+//     $errorText = "Please Correct User Name Or Password.";
+//     echo <<<EOD
+//     <form method="post" action="{$rootFolder}">
+//         <input type="hidden" name="error" value="{$errorText}">
+//         <input type="hidden" name="lastTypedEmail" value="{$userName}">
+//         <input id="submit" type="submit" hidden>
+//     </form>
+//     <script>
+//         document.getElementById("submit").click();
+//     </script>
+//     EOD;
 // } else {
 //     if ($rows != true) {
 //         $errorText = "No Account Found";
