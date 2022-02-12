@@ -3,8 +3,8 @@ echo "working";
 require "/var/www/html/esignature/.env";
 require "/{$rootD}/arrayVisualizer.php";
 session_start();
-// require "/{$rootD}/htmlStart.php";
-// $errors = [];
+require "/{$rootD}/htmlStart.php";
+$errors = [];
 
 
 // $sql = <<<EOD
