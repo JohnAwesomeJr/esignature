@@ -35,6 +35,7 @@ if ($userName == "" | $userPassword == "") {
         document.getElementById("submit").click();
     </script>
     EOD;
+
 } else {
     if ($rows != true) {
         $errorText = "No Account Found";
@@ -49,6 +50,7 @@ if ($userName == "" | $userPassword == "") {
             document.getElementById("submit").click();
         </script>
         EOD;
+
     } else {
         if ($HashedPassword != $rows[0]['userPassword']) {
             $errorText = "that is not the right password for that account.";
@@ -63,6 +65,7 @@ if ($userName == "" | $userPassword == "") {
                 document.getElementById("submit").click();
             </script>
             EOD;
+
         } else {
             $_SESSION['userName'] = $userName;
             $_SESSION['userId'] = $rows[0]['userId'];
@@ -76,6 +79,7 @@ if ($userName == "" | $userPassword == "") {
                     document.getElementById("submit").click();
             </script>
             EOD;
+            
         }
     }
 }
