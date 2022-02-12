@@ -34,6 +34,7 @@ if ($userName == "" | $userPassword == "") {
         document.getElementById("submit").click();
     </script>
     EOD;
+    
 }
 // } else {
 //     if ($rows != true) {
