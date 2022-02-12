@@ -7,10 +7,10 @@ require "/{$rootD}/htmlStart.php";
 $errors = [];
 
 
-// $sql = <<<EOD
-// SELECT * FROM esignature.users
-// WHERE userEmail=?;
-// EOD;
+$sql = <<<EOD
+SELECT * FROM esignature.users
+WHERE userEmail=?;
+EOD;
 // $userName = $_POST['userName'];
 // $userPassword = $_POST['password'];
 
