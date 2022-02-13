@@ -6,13 +6,15 @@
 <?php
     $array = [1,2,3,4];
 
+    $longQueryString = "";
+
     $sqlupdate = <<<EOD
     UPDATE `esignature`.`tags` 
     SET `tagName` = ? WHERE (`tagId` = ?);
     EOD;
 
     foreach($array as $key => $value){
-        echo $key;
+        $longQueryString = $longQueryString . $sqlupdate;
     }
-    echo $sqlupdate;
+    echo $longQueryString;
 ?>
