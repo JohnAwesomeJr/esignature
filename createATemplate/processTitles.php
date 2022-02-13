@@ -33,10 +33,10 @@ foreach ($_POST['title'] as $key => $value) {
         $q1 = $_POST['title'][$key]["'titlesId'"];
         array_push($prepairedQueryQuestionsListUpdate, $q1);
 
-$sqlupdate = <<<EOD
-UPDATE `esignature`.`titles` 
-SET `titleName` = ? WHERE (`titlesId` = ?);
-EOD;
+        $sqlupdate = <<<EOD
+        UPDATE `esignature`.`titles` 
+        SET `titleName` = ? WHERE (`titlesId` = ?);
+        EOD;
 
         $titleUpdateQUery = $titleUpdateQUery . $sqlupdate;
     } else {
@@ -47,10 +47,10 @@ EOD;
         $q1 = $_GET['templateNumber'];
         array_push($prepairedQueryQuestionsListAddNew, $q1);
 
-$sqlAddNew = <<<EOD
-INSERT INTO `esignature`.`titles` (`titleName` ,`parentTemplate`) 
-VALUES (?, ?);
-EOD;
+        $sqlAddNew = <<<EOD
+        INSERT INTO `esignature`.`titles` (`titleName` ,`parentTemplate`) 
+        VALUES (?, ?);
+        EOD;
 
         $titleAddNewQUery = $titleAddNewQUery . $sqlAddNew;
     }
@@ -60,9 +60,9 @@ EOD;
         $q1 = $_POST['title'][$key]["'titlesId'"];
         array_push($prepairedQueryQuestionsListDelete, $q1);
 
-$deleteSql = <<<EOD
-DELETE FROM `esignature`.`titles` WHERE (`titlesId` = ?);
-EOD;
+        $deleteSql = <<<EOD
+        DELETE FROM `esignature`.`titles` WHERE (`titlesId` = ?);
+        EOD;
 
         $titleDeleteQUery = $titleDeleteQUery . $deleteSql;
     }
