@@ -98,8 +98,10 @@ EOD;
         }
     }
     echo "<h1>long Query String</h1>";
-
     echo $tagUpdateQUery;
+    echo $tagAddNewQUery;
+    echo $tagDeleteQUery;
+
 echo "<h1>update</h1>";
 echo "<pre>";
 print_r($prepairedQueryQuestionsListUpdate);
