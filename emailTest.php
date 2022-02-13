@@ -20,7 +20,6 @@ use PHPMailer\PHPMailer\Exception;
 $mail = new PHPMailer(true);
 ?>
 
-
 <?php
 //if contract emails have not been sent
 $sql = <<<EOD
