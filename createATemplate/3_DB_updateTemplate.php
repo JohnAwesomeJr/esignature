@@ -1,5 +1,5 @@
-<?php require "/var/www/html/esignature/arrayVisualizer.php"; ?>
 <?php require "/var/www/html/esignature/.env"; ?>
+<?php require "/var/www/html/esignature/arrayVisualizer.php"; ?>
 <?php ob_start(); ?>
 <?php
 require "/{$rootD}/classes/db.php";
@@ -97,6 +97,20 @@ EOD;
             $tagDeleteQUery = $tagDeleteQUery . $deleteSql;
         }
     }
+echo "<h1>update</h1?";
+echo "<pre>";
+print_r($prepairedQueryQuestionsListUpdate);
+echo "<pre>";
+
+echo "<h1>add new</h1?";
+echo "<pre>";
+print_r($prepairedQueryQuestionsListAddNew);
+echo "<pre>";
+
+echo "<h1>delete</h1?";
+echo "<pre>";
+print_r($prepairedQueryQuestionsListDelete);
+echo "<pre>";
 
     // update Items
     $db->updateSql($tagUpdateQUery, $prepairedQueryQuestionsListUpdate);
