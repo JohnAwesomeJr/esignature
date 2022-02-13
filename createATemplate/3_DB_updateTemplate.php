@@ -41,15 +41,15 @@ EOD;
 
 
     // update variables
-    $tagUpdateQUery = "SELECT * FROM users;";
+    $tagUpdateQUery = "";
     $prepairedQueryQuestionsListUpdate = [];
 
     // update variables
-    $tagAddNewQUery = "SELECT * FROM users;";
+    $tagAddNewQUery = "";
     $prepairedQueryQuestionsListAddNew = [];
 
     // update variables
-    $tagDeleteQUery = "SELECT * FROM users;";
+    $tagDeleteQUery = "";
     $prepairedQueryQuestionsListDelete = [];
 
 
