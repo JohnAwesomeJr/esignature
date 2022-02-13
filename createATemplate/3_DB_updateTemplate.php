@@ -1,3 +1,4 @@
+<?php require "/var/www/html/esignature/arrayVisualizer.php"; ?>
 <?php require "/var/www/html/esignature/.env"; ?>
 <?php ob_start(); ?>
 <?php
