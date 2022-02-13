@@ -1,4 +1,4 @@
-<?php require "/var/www/html/esignature/.env"; ?>
+<?php //require "/var/www/html/esignature/.env"; ?>
 <?php
 
 // update variables
@@ -25,12 +25,12 @@ echo "</pre>";
 
 
 foreach ($_POST['title'] as $key => $value) {
-    if ($_POST['title'][$key]["'titlesId'"] != "none") {
+    if ($_POST['title'][$key]["'tagId'"] != "none") {
 
         $q3 = $_POST['title'][$key]["'name'"];
         array_push($prepairedQueryQuestionsListUpdate, $q3);
 
-        $q1 = $_POST['title'][$key]["'titlesId'"];
+        $q1 = $_POST['title'][$key]["'tagId'"];
         array_push($prepairedQueryQuestionsListUpdate, $q1);
 
         $sqlupdate = <<<EOD
@@ -57,7 +57,7 @@ foreach ($_POST['title'] as $key => $value) {
 
     if ($_POST['title'][$key]["'deleteFlag'"] == 1) {
 
-        $q1 = $_POST['title'][$key]["'titlesId'"];
+        $q1 = $_POST['title'][$key]["'tagId'"];
         array_push($prepairedQueryQuestionsListDelete, $q1);
 
         $deleteSql = <<<EOD

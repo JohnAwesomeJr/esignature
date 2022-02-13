@@ -30,11 +30,12 @@ error_reporting(E_ALL);
     $userId = $_SESSION['userId'];
 
     $db = new db();
-$insertExample = <<<EOD
-UPDATE `esignature`.`template` 
-SET `templateName` = ?, `templateContent` = ? 
-WHERE (`templateId` = ?);
-EOD;
+    $insertExample = <<<EOD
+    UPDATE `esignature`.`template` 
+    SET `templateName` = ?, `templateContent` = ? 
+    WHERE (`templateId` = ?);
+    EOD;
+    
     $db->createSql($insertExample, [$_POST['templateName'], $escape, $_GET['templateNumber']]);
 
 
