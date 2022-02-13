@@ -25,17 +25,17 @@ echo "</pre>";
 
 
 foreach ($_POST['title'] as $key => $value) {
-    if ($_POST['title'][$key]["'tagId'"] != "none") {
+    if ($_POST['title'][$key]["'titlesId'"] != "none") {
 
         $q3 = $_POST['title'][$key]["'name'"];
         array_push($prepairedQueryQuestionsListUpdate, $q3);
 
-        $q1 = $_POST['title'][$key]["'tagId'"];
+        $q1 = $_POST['title'][$key]["'titlesId'"];
         array_push($prepairedQueryQuestionsListUpdate, $q1);
 
 $sqlupdate = <<<EOD
 UPDATE `esignature`.`titles` 
-SET `titleName` = ? WHERE (`tagId` = ?);
+SET `titleName` = ? WHERE (`titlesId` = ?);
 EOD;
 
         $titleUpdateQUery = $titleUpdateQUery . $sqlupdate;
@@ -57,7 +57,7 @@ EOD;
 
     if ($_POST['title'][$key]["'deleteFlag'"] == 1) {
 
-        $q1 = $_POST['title'][$key]["'tagId'"];
+        $q1 = $_POST['title'][$key]["'titlesId'"];
         array_push($prepairedQueryQuestionsListDelete, $q1);
 
 $deleteSql = <<<EOD
