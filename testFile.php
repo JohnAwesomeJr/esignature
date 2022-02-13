@@ -12,7 +12,7 @@
     EOD;
 
     foreach($array as $key => $value){
-        echo "sup";
+        echo $key;
     }
     echo $sqlupdate;
 ?>
