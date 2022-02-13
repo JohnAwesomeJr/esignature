@@ -6,6 +6,7 @@ class db
 {
     public function selectSql($sql, $prepairedArray)
     {
+        if(!empty($sql)){
         global $mysqlUser;
         global $mysqlPassword;
 
@@ -14,6 +15,7 @@ class db
         $stmt->execute([...$prepairedArray]);
         $rows = $stmt->fetchAll();
         return $rows;
+        }
     }
     public function createSql($sql, $prepairedArray)
     {
