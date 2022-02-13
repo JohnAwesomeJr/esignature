@@ -97,17 +97,17 @@ EOD;
             $tagDeleteQUery = $tagDeleteQUery . $deleteSql;
         }
     }
-echo "<h1>update</h1?";
+echo "<h1>update</h1>";
 echo "<pre>";
 print_r($prepairedQueryQuestionsListUpdate);
 echo "<pre>";
 
-echo "<h1>add new</h1?";
+echo "<h1>add new</h1>";
 echo "<pre>";
 print_r($prepairedQueryQuestionsListAddNew);
 echo "<pre>";
 
-echo "<h1>delete</h1?";
+echo "<h1>delete</h1>";
 echo "<pre>";
 print_r($prepairedQueryQuestionsListDelete);
 echo "<pre>";
