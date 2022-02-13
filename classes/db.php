@@ -7,46 +7,52 @@ class db
     public function selectSql($sql, $prepairedArray)
     {
         if(!empty($sql)){
-        global $mysqlUser;
-        global $mysqlPassword;
+            global $mysqlUser;
+            global $mysqlPassword;
 
-        $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([...$prepairedArray]);
-        $rows = $stmt->fetchAll();
-        return $rows;
+            $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([...$prepairedArray]);
+            $rows = $stmt->fetchAll();
+            return $rows;
         }
     }
     public function createSql($sql, $prepairedArray)
     {
-        global $mysqlUser;
-        global $mysqlPassword;
+        if(!empty($sql)){
+            global $mysqlUser;
+            global $mysqlPassword;
 
-        $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([...$prepairedArray]);
-        $rows = $pdo->lastInsertId();
-        return $rows;
+            $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([...$prepairedArray]);
+            $rows = $pdo->lastInsertId();
+            return $rows;
+        }
     }
     public function updateSql($sql, $prepairedArray)
     {
-        global $mysqlUser;
-        global $mysqlPassword;
+        if(!empty($sql)){
+            global $mysqlUser;
+            global $mysqlPassword;
 
-        $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([...$prepairedArray]);
-        $rows = $stmt->fetchAll();
-        return $rows;
+            $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([...$prepairedArray]);
+            $rows = $stmt->fetchAll();
+            return $rows;
+        }
     }
     public function deleteSql($sql, $prepairedArray)
     {
-        global $mysqlUser;
-        global $mysqlPassword;
+        if(!empty($sql)){
+            global $mysqlUser;
+            global $mysqlPassword;
 
-        $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([...$prepairedArray]);
+            $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([...$prepairedArray]);
+        }
     }
 }
 
