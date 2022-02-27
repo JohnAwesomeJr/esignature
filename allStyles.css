@@ -358,3 +358,14 @@ body {
     background: rgb(0, 0, 0);
     background: linear-gradient(0deg, rgba(0, 0, 0, 50%) 0%, rgba(0, 0, 0, 0) 100%);
 }
+
+.buttonNew{
+    border-radius: 15px;
+    border: none;
+    color:white;
+    padding:20px 50px;
+    cursor: pointer;
+    background-color: var(--secondColor);
+    pointer-events: auto;
+
+}

@@ -1,6 +1,5 @@
 <?php require "/var/www/html/esignature/.env"; ?>
-
-
+<?php require "/{$rootD}/colors.php"; ?>
 
 
 <!DOCTYPE html>
@@ -15,7 +14,7 @@
     <style>
         #root{
             position: fixed;
-            border:solid rgb(133, 247, 125) 4px;
+            /* border:solid rgb(133, 247, 125) 4px; */
             width:100vw;
             height:600px;
             pointer-events: none;
@@ -34,7 +33,6 @@
 <body>
 
 <div id="root" class="flexColumn xFlexCenter yFlexCenter">
-    <h1>This page is not yet ready. <br> Come back again.</h1>
 </div>
 
 </body>
@@ -51,26 +49,44 @@
     },1);
 
 
+
+
+
     root = document.getElementById('root');
 
-    box = document.createElement('div');
-    box.className = "flexColumn xFlexCenter yFlexCenter";
+
+
+
+    box = document.createElement('form');
+    box.className = "flexColumn xFlexCenter yFlexCenter shadow padding" ;
+    box.style.borderRadius = "20px";
     root.append(box);
 
+
     title = document.createElement('h3');
-    title.innerHTML = "test";
+    title.innerHTML = "You Can Signup Here!";
     box.append(title);
 
+
     inputEmail = document.createElement('input');
+    inputEmail.type = "email";
     inputEmail.name = "emailInputValue";
     inputEmail.placeholder = "Email";
-
     box.append(inputEmail);
 
+
     inputPassword = document.createElement('input');
+    inputPassword.type = "password";
     inputPassword.name = "passwordInputValue";
     inputPassword.placeholder = "Password";
     box.append(inputPassword);
+
+
+    submitButton = document.createElement('button');
+    submitButton.type = "submit";
+    submitButton.innerHTML = "Sign Up";
+    submitButton.className = "buttonNew";
+    box.append(submitButton);
 
 
     
