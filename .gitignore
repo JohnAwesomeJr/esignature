@@ -1,1 +1,4 @@
 .env
+pdfFiles/*
+!pdfFiles/gitFolderHolder
+
