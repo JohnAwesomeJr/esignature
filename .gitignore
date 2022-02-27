@@ -1,3 +1,6 @@
 .env
 pdfFiles/*
 !pdfFiles/gitFolderHolder
+
+signature/signatureUploads/*
+!signature/signatureUploads/gitFolderHolder
