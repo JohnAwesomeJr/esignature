@@ -46,7 +46,7 @@ session_destroy();
                 <br>
                 <input type="submit" value="Login">
             </form>
-            <a href="http://www.google.com"> Create An Account </a>
+            <a href="<?= $rootFolder; ?>makeUser.php"> Create An Account </a>
         </div>
     </div>
     </div><!-- endo of base container -->
