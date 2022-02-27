@@ -26,6 +26,7 @@
         }
         body{
             pointer-events: none;
+            background: blue;
         }
     </style>
 
@@ -62,6 +63,7 @@
     box.method = "post"
     box.style.borderRadius = "20px";
     root.append(box);
+    box.style.background = "white";
     box.style.width = "0px";
     box.style.height = "0px";
     box.style.padding = "0px";
@@ -70,12 +72,13 @@
     box.style.transition = "all 500ms cubic-bezier(.86,0,.58,1.6) 0s";
 
     setTimeout(()=>{
-    box.style.width = "400px";
     box.style.height = "400px";
     box.style.padding = "30px";
-
-
     },500)
+
+    setTimeout(()=>{
+    box.style.width = "400px";
+    },1000)
 
 
     title = document.createElement('p');
