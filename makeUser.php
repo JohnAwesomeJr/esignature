@@ -32,9 +32,6 @@
 
 <div id="root" class="flexColumn xFlexCenter yFlexCenter">
     <h1>This page is not yet ready. <br> Come back again.</h1>
-    <input>
-
-
 </div>
 
 </body>
@@ -49,4 +46,29 @@
         root.style.height = visableSpace + "px";
         window.scrollTo(0,0);
     },1);
+
+
+    root = document.getElementById('root');
+
+    box = document.createElement('div');
+    box.className = "flexColumn xFlexCenter yFlexCenter";
+    root.append(box);
+
+    title = document.createElement('h3');
+    title.innerHTML = "test";
+    box.append(title);
+
+    inputEmail = document.createElement('input');
+    inputEmail.name = "emailInputValue";
+    inputEmail.placeholder = "Email";
+
+    box.append(inputEmail);
+
+    inputPassword = document.createElement('input');
+    inputPassword.name = "passwordInputValue";
+    inputPassword.placeholder = "Password";
+    box.append(inputPassword);
+
+
+    
 </script>
