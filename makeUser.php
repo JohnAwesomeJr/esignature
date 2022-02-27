@@ -26,7 +26,7 @@
         }
         body{
             pointer-events: none;
-            background: blue;
+            background: #80b2d0;
         }
     </style>
 
@@ -59,7 +59,7 @@
 
 
     box = document.createElement('form');
-    box.className = "flexColumn xFlexCenter yFlexCenter shadow padding" ;
+    box.className = "flexColumn xFlexCenter yFlexSpaceAround shadow padding" ;
     box.method = "post"
     box.style.borderRadius = "20px";
     root.append(box);
@@ -72,17 +72,29 @@
     box.style.transition = "all 500ms cubic-bezier(.86,0,.58,1.6) 0s";
 
     setTimeout(()=>{
-    box.style.height = "400px";
-    box.style.padding = "30px";
+        box.style.height = "400px";
+        box.style.padding = "30px";
+        setTimeout(()=>{
+            box.style.width = "400px";
+            setTimeout(()=>{
+                title.style.opacity = 1;
+                setTimeout(()=>{
+                    inputEmail.style.opacity = 1;
+                    setTimeout(()=>{
+                        inputPassword.style.opacity = 1;
+                        setTimeout(()=>{
+                            submitButton.style.opacity = 1;
+                        },200)
+                    },100)
+                },50)
+            },500)
+        },500)
     },500)
-
-    setTimeout(()=>{
-    box.style.width = "400px";
-    },1000)
-
 
     title = document.createElement('p');
     title.innerHTML = "Create an Account";
+    title.style.opacity = 0;
+    title.style.transition = "all 500ms";
     box.append(title);
 
 
@@ -90,6 +102,8 @@
     inputEmail.type = "email";
     inputEmail.name = "emailInputValue";
     inputEmail.placeholder = "Email";
+    inputEmail.style.opacity = 0;
+    inputEmail.style.transition = "all 500ms";
     box.append(inputEmail);
 
 
@@ -97,6 +111,8 @@
     inputPassword.type = "password";
     inputPassword.name = "passwordInputValue";
     inputPassword.placeholder = "Password";
+    inputPassword.style.opacity = 0;
+    inputPassword.style.transition = "all 500ms";
     box.append(inputPassword);
 
 
@@ -104,6 +120,10 @@
     submitButton.type = "submit";
     submitButton.innerHTML = "Sign Up";
     submitButton.className = "buttonNew";
+    submitButton.style.opacity = 0;
+    submitButton.style.transition = "all 500ms";
     box.append(submitButton);
+
+
     
 </script>
