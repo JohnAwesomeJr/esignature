@@ -25,6 +25,9 @@
         input{
             pointer-events: auto;
         }
+        body{
+            pointer-events: none;
+        }
     </style>
 
 </head>
