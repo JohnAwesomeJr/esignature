@@ -59,6 +59,7 @@
 
     box = document.createElement('form');
     box.className = "flexColumn xFlexCenter yFlexCenter shadow padding" ;
+    box.method = "post"
     box.style.borderRadius = "20px";
     root.append(box);
 
@@ -87,7 +88,5 @@
     submitButton.innerHTML = "Sign Up";
     submitButton.className = "buttonNew";
     box.append(submitButton);
-
-
     
 </script>
