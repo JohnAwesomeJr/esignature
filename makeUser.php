@@ -62,10 +62,24 @@
     box.method = "post"
     box.style.borderRadius = "20px";
     root.append(box);
+    box.style.width = "0px";
+    box.style.height = "0px";
+    box.style.padding = "0px";
+
+    box.style.overflow = "hidden";
+    box.style.transition = "all 500ms cubic-bezier(.86,0,.58,1.6) 0s";
+
+    setTimeout(()=>{
+    box.style.width = "400px";
+    box.style.height = "400px";
+    box.style.padding = "30px";
 
 
-    title = document.createElement('h3');
-    title.innerHTML = "You Can Signup Here!";
+    },500)
+
+
+    title = document.createElement('p');
+    title.innerHTML = "Create an Account";
     box.append(title);
 
 
