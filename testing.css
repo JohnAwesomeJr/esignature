@@ -1,34 +1,29 @@
-/* body {
-  height: 100vh;
-  width: 100vw;
-  position: absolute;
-
-  border: solid black 3px;
-} */
 * {
   box-sizing: border-box;
 }
 #container1 {
+  position: fixed;
+  top:0px;
+  left:0px;
   width: 50vw;
-  height: 1000px;
-  left: 0px;
-  top: 0px;
+  height: 2000px;
   border: solid rgb(0, 255, 0) 5px;
   pointer-events: none;
-  transition: all 1s;
+  transition: all 200ms;
 }
 
 #formBox {
-  position: fixed;
+  position: absolute;
   left: 0px;
-  bottom: 0;
-  pointer-events: auto;
-}
-#button {
+  bottom: 0px;
   pointer-events: auto;
 }
 #box {
-  position: fixed;
+  position: absolute;
   top: 0px;
   left: 0px;
+  width: 100px;
+  height: 100px;
+  background: red;
+  pointer-events: auto;
 }
