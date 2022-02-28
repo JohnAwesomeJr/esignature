@@ -72,12 +72,16 @@
                 box.style.width = "400px";
                 setTimeout(() => {
                     title.style.opacity = 1;
+                    title.style.filter = "blur(0px)"
                     setTimeout(() => {
                         inputEmail.style.opacity = 1;
+                        inputEmail.style.filter = "blur(0px)"
                         setTimeout(() => {
                             inputPassword.style.opacity = 1;
+                            inputPassword.style.filter = "blur(0px)"
                             setTimeout(() => {
                                 submitButton.style.opacity = 1;
+                                submitButton.style.filter = "blur(0px)"
                             }, 200)
                         }, 100)
                     }, 50)
@@ -88,7 +92,8 @@
         title = document.createElement('p');
         title.innerHTML = "Create an Account";
         title.style.opacity = 0;
-        title.style.transition = "all 500ms";
+        title.style.transition = "all 2000ms";
+        title.style.filter = "blur(10px)"
         box.append(title);
 
 
@@ -98,6 +103,7 @@
         inputEmail.placeholder = "Email";
         inputEmail.style.opacity = 0;
         inputEmail.style.transition = "all 500ms";
+        inputEmail.style.filter = "blur(10px)";
         box.append(inputEmail);
 
 
@@ -107,6 +113,7 @@
         inputPassword.placeholder = "Password";
         inputPassword.style.opacity = 0;
         inputPassword.style.transition = "all 500ms";
+        inputPassword.style.filter = "blur(10px)";
         box.append(inputPassword);
 
 
@@ -115,7 +122,8 @@
         submitButton.innerHTML = "Sign Up";
         submitButton.className = "buttonNew";
         submitButton.style.opacity = 0;
-        submitButton.style.transition = "all 500ms";
+        submitButton.style.transition = "all 1000ms";
+        submitButton.style.filter = "blur(10px)";
         box.append(submitButton);
     </script>
 <?php else : ?>
