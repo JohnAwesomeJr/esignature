@@ -119,7 +119,27 @@
         box.append(submitButton);
     </script>
 <?php else : ?>
-    <!-- it the email alredy in the database? -->
+    <!-- is the email alredy in the database? -->
+    <?php require "/{$rootD}/classes/db.php" ?>
+
+    <?php
+    // SELECT
+    $db = new db();
+    $selectExample = <<<EOD
+    SELECT userEmail FROM esignature.users
+    WHERE userEmail = ?;
+    EOD;
+    $fromDatabase = $db->selectSql($selectExample, [$_POST['emailInputValue']]);
+
+
+    if (array_key_exists(0, $fromDatabase)) {
+        echo "<h1>that email is alredy reistered</h1>";
+    } else {
+        echo "<h1>its not in the database, adding it now</h1>";
+    }
+    ?>
+
+
 
 
 
