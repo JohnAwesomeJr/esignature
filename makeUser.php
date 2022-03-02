@@ -40,18 +40,18 @@
 </body>
 
 </html>
-<?php if (empty($_POST)) : ?>
-    <script>
-        let visableSpace = 0;
-        let root = document.getElementById('root');
-        setInterval(() => {
-            let visableSpace = window.visualViewport.height;
-            root.style.height = visableSpace + "px";
-            window.scrollTo(0, 0);
-        }, 1);
+<script>
+    let visableSpace = 0;
+    let root = document.getElementById('root');
+    setInterval(() => {
+        let visableSpace = window.visualViewport.height;
+        root.style.height = visableSpace + "px";
+        window.scrollTo(0, 0);
+    }, 1);
 
-        root = document.getElementById('root');
+    root = document.getElementById('root');
 
+    function buildUiFormBox() {
         box = document.createElement('form');
         box.className = "flexColumn xFlexCenter yFlexSpaceAround shadow padding";
         box.method = "post"
@@ -71,39 +71,37 @@
                 box.style.padding = "30px";
                 box.style.width = "400px";
                 setTimeout(() => {
-                    title.style.opacity = 1;
-                    title.style.filter = "blur(0px)"
                     setTimeout(() => {
-                        inputEmail.style.opacity = 1;
-                        inputEmail.style.filter = "blur(0px)"
                         setTimeout(() => {
-                            inputPassword.style.opacity = 1;
-                            inputPassword.style.filter = "blur(0px)"
                             setTimeout(() => {
-                                submitButton.style.opacity = 1;
-                                submitButton.style.filter = "blur(0px)"
+                                console.log('animation done');
                             }, 200)
                         }, 100)
                     }, 50)
                 }, 500)
             }, 500)
         }, 500)
+    }
 
+    function signupMessage(stringMessage, stringColor) {
         title = document.createElement('p');
-        title.innerHTML = "Create an Account";
-        title.style.opacity = 0;
+        title.innerHTML = stringMessage;
+        title.style.opacity = 1;
         title.style.transition = "all 2000ms";
-        title.style.filter = "blur(10px)"
+        title.style.filter = "blur(0px)"
+        title.style.color = stringColor;
         box.append(title);
+    }
 
+    function placeSignupInput() {
 
         inputEmail = document.createElement('input');
         inputEmail.type = "email";
         inputEmail.name = "emailInputValue";
         inputEmail.placeholder = "Email";
-        inputEmail.style.opacity = 0;
+        inputEmail.style.opacity = 1;
         inputEmail.style.transition = "all 500ms";
-        inputEmail.style.filter = "blur(10px)";
+        inputEmail.style.filter = "blur(0px)";
         box.append(inputEmail);
 
 
@@ -111,9 +109,9 @@
         inputPassword.type = "password";
         inputPassword.name = "passwordInputValue";
         inputPassword.placeholder = "Password";
-        inputPassword.style.opacity = 0;
+        inputPassword.style.opacity = 1;
         inputPassword.style.transition = "all 500ms";
-        inputPassword.style.filter = "blur(10px)";
+        inputPassword.style.filter = "blur(0px)";
         box.append(inputPassword);
 
 
@@ -121,10 +119,17 @@
         submitButton.type = "submit";
         submitButton.innerHTML = "Sign Up";
         submitButton.className = "buttonNew";
-        submitButton.style.opacity = 0;
+        submitButton.style.opacity = 1;
         submitButton.style.transition = "all 1000ms";
-        submitButton.style.filter = "blur(10px)";
+        submitButton.style.filter = "blur(0px)";
         box.append(submitButton);
+    }
+</script>
+<?php if (empty($_POST)) : ?>
+    <script>
+        buildUiFormBox();
+        signupMessage("Create An Account", "black");
+        placeSignupInput();
     </script>
 <?php else : ?>
     <!-- is the email alredy in the database? -->
@@ -138,14 +143,20 @@
     WHERE userEmail = ?;
     EOD;
     $fromDatabase = $db->selectSql($selectExample, [$_POST['emailInputValue']]);
-
-
-    if (array_key_exists(0, $fromDatabase)) {
-        echo "<h1>that email is alredy reistered</h1>";
-    } else {
-        echo "<h1>its not in the database, adding it now</h1>";
-    }
     ?>
+
+    <?php if (array_key_exists(0, $fromDatabase)) : ?>
+        <script>
+            buildUiFormBox();
+            signupMessage("that email is alredy reistered", "red");
+            placeSignupInput();
+        </script>
+    <?php else : ?>
+        <script>
+            buildUiFormBox();
+            signupMessage("Thank you for signing up, you may now login", "black");
+        </script>
+    <?php endif; ?>
 
 
 
