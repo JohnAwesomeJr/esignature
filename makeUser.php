@@ -1,6 +1,22 @@
 <?php require "/var/www/html/esignature/.env"; ?>
 <?php require "/{$rootD}/colors.php"; ?>
 
+<?php function insertNewUserIntoDatabase($emailAddress, $password)
+{
+    $curentDate = date("m-d-Y");
+    $saltedPassword = strval($password) . strval($curentDate);
+    $hashedPassword = hash("sha512", $saltedPassword);
+    //INSERT
+    $db = new db();
+    $insertExample = <<<EOD
+            INSERT INTO `esignature`.`users` (`userEmail`, `userPassword`, `salt`) 
+            VALUES (?, ?, ?);
+            EOD;
+    // use echo to see the key of the last inserted 
+    $db->createSql($insertExample, [$emailAddress, $hashedPassword, $curentDate]);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -124,6 +140,33 @@
         submitButton.style.filter = "blur(0px)";
         box.append(submitButton);
     }
+
+    function countDownTimer(ParentElement, redirectLink) {
+        countDown = document.createElement('p');
+        countDown.innerHTML = 5;
+        setInterval(() => {
+            countDown.innerHTML = 4;
+            setInterval(() => {
+                countDown.innerHTML = 3;
+                setInterval(() => {
+                    countDown.innerHTML = 2;
+                    setInterval(() => {
+                        countDown.innerHTML = 1;
+                        setInterval(() => {
+                            countDown.innerHTML = 0;
+                            window.location.href = redirectLink;
+
+                        }, 1000)
+                    }, 1000)
+                }, 1000)
+            }, 1000)
+        }, 1000)
+        countDown.style.opacity = 1;
+        countDown.style.transition = "all 2000ms";
+        countDown.style.filter = "blur(0px)"
+        countDown.style.color = "black";
+        ParentElement.append(countDown);
+    }
 </script>
 <?php if (empty($_POST)) : ?>
     <script>
@@ -152,14 +195,12 @@
             placeSignupInput();
         </script>
     <?php else : ?>
+        <?php insertNewUserIntoDatabase($_POST['emailInputValue'], $_POST['passwordInputValue']); ?>
         <script>
             buildUiFormBox();
             signupMessage("Thank you for signing up, you may now login", "black");
+            countDownTimer(box, "<?= $rootFolder; ?>");
+            signupMessage("Login on the next screen", "black");
         </script>
     <?php endif; ?>
-
-
-
-
-
 <?php endif; ?>
