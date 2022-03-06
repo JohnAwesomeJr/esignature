@@ -21,7 +21,7 @@
 
             <?php
 
-$sql = <<<EOD
+            $sql = <<<EOD
 SELECT contract.contractId as contractId, 
 contract.contractName as contractName,
 contract.emailSent as contractStatus,
@@ -84,7 +84,7 @@ EOD;
 
             <?php
 
-$sql = <<<EOD
+            $sql = <<<EOD
 SELECT * 
 FROM esignature.template
 WHERE parentUser = ?;
@@ -138,13 +138,33 @@ EOD;
 
         <?php
 
+        // Check if there are any templates
+
+        // SELECT
+        require "/{$rootD}/classes/db.php";
+        $db = new db();
+        $selectExample = <<<EOD
+        SELECT parentUser FROM esignature.template
+        WHERE parentUser = ?;
+        EOD;
+
+        $templateExsistanceCheck = $db->selectSql($selectExample, [1]);
+        $templatesExsistanceCheckFinalValue = $templateExsistanceCheck[0];
+
+        // END Check if there are any templates
+
+
         $allButtons = [
             $button1 = ["contractsButton", $rootFolder . "templatesAndContracts.php?screen=contracts"],
             $button2 = ["templatesButton", $rootFolder . "templatesAndContracts.php?screen=templates"]
         ];
         if ($_GET['screen'] == "contracts") {
-            //URL to the create contracts page!!!!!!!!!!!!!!!!
-            $button3 = ["plusButtonShort", $rootFolder . "createAContract/0createAContract.php"];
+            if (array_key_exists(0, $templatesExsistanceCheckFinalValue)) {
+                //URL to the create contracts page!!!!!!!!!!!!!!!!
+                $button3 = ["plusButtonShort", $rootFolder . "createAContract/0createAContract.php"];
+            } else {
+                // $button3 = "<div>nope</div>";
+            }
         } else {
             //URL to the create templates page!!!!!!!!!!!!!!!!
             $button3 = ["plusButtonShort", $rootFolder . "createATemplate/1_DB_createATemplate.php"];
