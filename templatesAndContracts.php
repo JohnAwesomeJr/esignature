@@ -167,7 +167,7 @@ EOD;
             $button2 = ["templatesButton", $rootFolder . "templatesAndContracts.php?screen=templates"]
         ];
         if ($_GET['screen'] == "contracts") {
-            if (array_key_exists(0, $templatesExsistanceCheckFinalValue)) {
+            if (array_key_exists(0, (array)$templatesExsistanceCheckFinalValue)) {
                 //URL to the create contracts page!!!!!!!!!!!!!!!!
                 $button3 = ["plusButtonShort", $rootFolder . "createAContract/0createAContract.php"];
             } else {
