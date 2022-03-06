@@ -148,7 +148,7 @@ EOD;
         WHERE parentUser = ?;
         EOD;
 
-        $templateExsistanceCheck = $db->selectSql($selectExample, [1]);
+        $templateExsistanceCheck = $db->selectSql($selectExample, [$_SESSION['userId']]);
         $templatesExsistanceCheckFinalValue = $templateExsistanceCheck[0];
 
         // END Check if there are any templates
