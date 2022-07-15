@@ -5,7 +5,7 @@
     <!-- are you the owner of the contract? -->
     <?php
 
-$sql = <<<EOD
+    $sql = <<<EOD
 SELECT contractParentUser
 FROM esignature.contract
 WHERE contractId = ?;
@@ -13,7 +13,7 @@ EOD;
 
     $contractNumber = $_GET['contractNumber'];
 
-    $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+    $pdo = new PDO("mysql:host={$mysqlIpAddress};dbname=esignature", $mysqlUser, $mysqlPassword);
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$contractNumber]);
     $rows = $stmt->fetchAll();

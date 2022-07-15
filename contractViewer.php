@@ -19,7 +19,7 @@
 
         <?php
 
-$sql = <<<EOD
+        $sql = <<<EOD
 SELECT contractId, contractParentUser
 FROM esignature.contract
 WHERE contractId = ?
@@ -29,7 +29,7 @@ EOD;
         $userEmail = $_SESSION['userId'];
         $contractNumber = $_GET['contractNumber'];
 
-        $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+        $pdo = new PDO("mysql:host={$mysqlIpAddress};dbname=esignature", $mysqlUser, $mysqlPassword);
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$contractNumber, $userEmail]);
         $rows = $stmt->fetchAll();
@@ -43,7 +43,7 @@ EOD;
 
             $contractId = $_GET['contractNumber'];
 
-$sql = <<<EOD
+            $sql = <<<EOD
 SELECT 
 signers.signerId as signerId,
 signers.signerTitle as signerTitle,
@@ -62,7 +62,7 @@ EOD;
 
             $userEmail = $_SESSION['userName'];
 
-            $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+            $pdo = new PDO("mysql:host={$mysqlIpAddress};dbname=esignature", $mysqlUser, $mysqlPassword);
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$contractId]);
             $rows = $stmt->fetchAll();
@@ -113,13 +113,13 @@ EOD;
 
             <?php
 
-$sql = <<<EOD
+            $sql = <<<EOD
 SELECT contractName, contractContent, draft
 FROM esignature.contract
 WHERE contractId = ?;
 EOD;
 
-            $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+            $pdo = new PDO("mysql:host={$mysqlIpAddress};dbname=esignature", $mysqlUser, $mysqlPassword);
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$contractId]);
             $rows = $stmt->fetchAll();

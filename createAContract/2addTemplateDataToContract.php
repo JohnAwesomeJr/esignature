@@ -13,7 +13,7 @@
 
     $contractNumber = $_GET['contractNumber'];
 
-    $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+    $pdo = new PDO("mysql:host={$mysqlIpAddress};dbname=esignature", $mysqlUser, $mysqlPassword);
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$contractNumber]);
     $rows = $stmt->fetchAll();
@@ -27,13 +27,13 @@
         <!-- get a list of all the titles to from the template-->
         <?php
 
-$sql = <<<EOD
+        $sql = <<<EOD
 SELECT *
 FROM esignature.titles
 WHERE parentTemplate = ?;
 EOD;
 
-        $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+        $pdo = new PDO("mysql:host={$mysqlIpAddress};dbname=esignature", $mysqlUser, $mysqlPassword);
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$_GET['templateNumber']]);
         $listOfTitles = $stmt->fetchAll();
@@ -45,12 +45,12 @@ EOD;
         <?php
 
         foreach ($listOfTitles as $key => $value) {
-$sql = <<<EOD
+            $sql = <<<EOD
 INSERT INTO
 signers(signerTitle, signerParentContract)
 VALUES (?, ?); 
 EOD;
-            $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+            $pdo = new PDO("mysql:host={$mysqlIpAddress};dbname=esignature", $mysqlUser, $mysqlPassword);
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$listOfTitles[$key]['titleName'], $_GET['contractNumber']]);
             $rows = $pdo->lastInsertId();
@@ -62,13 +62,13 @@ EOD;
 
         <?php
 
-$sql = <<<EOD
+        $sql = <<<EOD
 SELECT templateContent
 FROM esignature.template
 WHERE templateId = ?;
 EOD;
 
-        $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+        $pdo = new PDO("mysql:host={$mysqlIpAddress};dbname=esignature", $mysqlUser, $mysqlPassword);
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$_GET['templateNumber']]);
         $rows = $stmt->fetchAll();
@@ -78,13 +78,13 @@ EOD;
         <!-- update the content based on the template -->
 
         <?php
-$sql = <<<EOD
+        $sql = <<<EOD
 UPDATE esignature.contract
 SET contractContent=?
 WHERE contractId=?;     
 EOD;
 
-        $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+        $pdo = new PDO("mysql:host={$mysqlIpAddress};dbname=esignature", $mysqlUser, $mysqlPassword);
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$rows[0]['templateContent'], $_GET['contractNumber']]);
         $insertSigneres = $stmt->fetchAll();

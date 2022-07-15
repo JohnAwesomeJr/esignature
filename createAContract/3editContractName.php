@@ -7,7 +7,7 @@
     <!-- are you the owner of the contract? -->
     <?php
 
-$sql = <<<EOD
+    $sql = <<<EOD
 SELECT contractParentUser
 FROM esignature.contract
 WHERE contractId = ?;
@@ -15,7 +15,7 @@ EOD;
 
     $contractNumber = $_GET['contractNumber'];
 
-    $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+    $pdo = new PDO("mysql:host={$mysqlIpAddress};dbname=esignature", $mysqlUser, $mysqlPassword);
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$contractNumber]);
     $rows = $stmt->fetchAll();
@@ -34,13 +34,13 @@ EOD;
             <div style="height:85px;"></div>
             <?php if ($_POST) : ?>
                 <?php
-$sql = <<<EOD
+                $sql = <<<EOD
 UPDATE esignature.contract
 SET contractName=?
 WHERE contractId=?;        
 EOD;
 
-                $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+                $pdo = new PDO("mysql:host={$mysqlIpAddress};dbname=esignature", $mysqlUser, $mysqlPassword);
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute([$_POST['updatedName'], $_GET['contractNumber']]);
                 $rows = $stmt->fetchAll();
@@ -64,7 +64,7 @@ EOD;
 
                             <?php
 
-$sql = <<<EOD
+                            $sql = <<<EOD
 SELECT contractName
 FROM esignature.contract
 WHERE contractId = ?;
@@ -72,7 +72,7 @@ EOD;
 
                             $contractNumber = $_GET['contractNumber'];
 
-                            $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+                            $pdo = new PDO("mysql:host={$mysqlIpAddress};dbname=esignature", $mysqlUser, $mysqlPassword);
                             $stmt = $pdo->prepare($sql);
                             $stmt->execute([$contractNumber]);
                             $rows = $stmt->fetchAll();

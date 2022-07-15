@@ -35,7 +35,7 @@ EOD;
 
             $userEmail = $_SESSION['userId'];
 
-            $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+            $pdo = new PDO("mysql:host={$mysqlIpAddress};dbname=esignature", $mysqlUser, $mysqlPassword);
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$userEmail]);
             $rows = $stmt->fetchAll();
@@ -92,7 +92,7 @@ EOD;
 
             $user = $_SESSION['userId'];
 
-            $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+            $pdo = new PDO("mysql:host={$mysqlIpAddress};dbname=esignature", $mysqlUser, $mysqlPassword);
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$user]);
             $rows = $stmt->fetchAll();

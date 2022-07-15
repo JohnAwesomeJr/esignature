@@ -29,7 +29,7 @@ WHERE contractId = ?;
 EOD;
 
 $id = 2;
-$pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+$pdo = new PDO("mysql:host={$mysqlIpAddress};dbname=esignature", $mysqlUser, $mysqlPassword);
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$id]);
 $emailStatus = $stmt->fetchAll();
@@ -38,13 +38,13 @@ $emailStatus = $stmt->fetchAll();
 
     <?php
     // sql get a list of signers
-$sql = <<<EOD
+    $sql = <<<EOD
 SELECT * 
 FROM esignature.signers 
 WHERE signerParentContract=?; 
 EOD;
     $id = 2;
-    $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+    $pdo = new PDO("mysql:host={$mysqlIpAddress};dbname=esignature", $mysqlUser, $mysqlPassword);
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$id]);
     $rows = $stmt->fetchAll();

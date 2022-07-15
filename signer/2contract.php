@@ -17,7 +17,7 @@ FROM contract
 WHERE contractId = ?;
 EOD;
 $id = $_GET['contractNumber'];
-$pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+$pdo = new PDO("mysql:host={$mysqlIpAddress};dbname=esignature", $mysqlUser, $mysqlPassword);
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$id]);
 $rows = $stmt->fetchAll();

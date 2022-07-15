@@ -14,13 +14,13 @@ error_reporting(E_ALL);
     <?php
     $templateId = $_GET['templateNumber'];
 
-$sql = <<<EOD
+    $sql = <<<EOD
 SELECT * FROM esignature.template
 WHERE templateId = ?;
 EOD;
 
 
-    $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+    $pdo = new PDO("mysql:host={$mysqlIpAddress};dbname=esignature", $mysqlUser, $mysqlPassword);
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$templateId]);
     $templateDbArray = $stmt->fetchAll();
@@ -59,7 +59,7 @@ EOD;
 
             //INSERT
             $db = new db();
-$insertExample = <<<EOD
+            $insertExample = <<<EOD
 INSERT INTO `esignature`.`titles` (`parentTemplate`, `titleName`) 
 VALUES (?, ?);
 EOD;

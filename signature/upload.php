@@ -25,7 +25,7 @@ SET signers.signerImagePath=?, signers.signDate=?
 WHERE signerId = ?;
 EOD;
 
-$pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+$pdo = new PDO("mysql:host={$mysqlIpAddress};dbname=esignature", $mysqlUser, $mysqlPassword);
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$completeFilePath, $todaysDate, $_GET['contractSigner']]);
 $rows = $stmt->fetchAll();

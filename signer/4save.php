@@ -22,7 +22,7 @@ require "/var/www/html/esignature/.env";
 <body>
     <?php
 
-$sql = <<<EOD
+    $sql = <<<EOD
 SELECT * 
 FROM esignature.signers
 WHERE signerParentContract =?;
@@ -30,7 +30,7 @@ EOD;
 
     $id = $_GET['contractNumber'];
 
-    $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+    $pdo = new PDO("mysql:host={$mysqlIpAddress};dbname=esignature", $mysqlUser, $mysqlPassword);
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$id]);
     $rows = $stmt->fetchAll();
@@ -55,7 +55,7 @@ EOD;
             $signerEmail = $rows[$value]['signerEmail'];
             $signerTitle = $rows[$value]['signerTitle'];
             $signatureName = $rows[$value]['signerName'];
-$html = <<<EOD
+            $html = <<<EOD
 <br>
 <table style="page-break-inside: avoid;">
 <tr>
@@ -85,7 +85,7 @@ EOD;
         }
 
 
-$sql = <<<EOD
+        $sql = <<<EOD
 SELECT contractContent, contractName
 FROM esignature.contract
 WHERE contractId = ?;
@@ -93,7 +93,7 @@ EOD;
 
         $id = $_GET['contractNumber'];
 
-        $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+        $pdo = new PDO("mysql:host={$mysqlIpAddress};dbname=esignature", $mysqlUser, $mysqlPassword);
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$id]);
         $rows = $stmt->fetchAll();

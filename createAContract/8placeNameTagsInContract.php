@@ -13,7 +13,7 @@ error_reporting(E_ALL);
     <!-- are you the owner of the contract? -->
     <?php
 
-$sql = <<<EOD
+    $sql = <<<EOD
 SELECT contractParentUser
 FROM esignature.contract
 WHERE contractId = ?;
@@ -21,7 +21,7 @@ EOD;
 
     $contractNumber = $_GET['contractNumber'];
 
-    $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+    $pdo = new PDO("mysql:host={$mysqlIpAddress};dbname=esignature", $mysqlUser, $mysqlPassword);
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$contractNumber]);
     $rows = $stmt->fetchAll();
@@ -60,7 +60,7 @@ EOD;
 
 
         // SELECT
-$getTags = <<<EOD
+        $getTags = <<<EOD
 SELECT signerId,signerName, signerTitle
 FROM esignature.signers
 WHERE signerParentContract = ?;
@@ -82,7 +82,7 @@ EOD;
 
 
         // SELECT
-$getContract = <<<EOD
+        $getContract = <<<EOD
 SELECT contractContent
 FROM esignature.contract
 WHERE contractId = ?;
@@ -106,7 +106,7 @@ EOD;
 
 
         // UPDATE
-$updateContractWithTag = <<<EOD
+        $updateContractWithTag = <<<EOD
 UPDATE `esignature`.`contract` 
 SET contractContent = ?
 WHERE (`contractId` = ?);

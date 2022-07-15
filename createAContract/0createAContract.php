@@ -5,13 +5,13 @@
 
     <!-- Add a new contract to database -->
     <?php
-$sql = <<<EOD
+    $sql = <<<EOD
 INSERT INTO
 contract(contractParentUser,draft)
 VALUES (?,1); 
 EOD;
     $contractOwner = $_SESSION['userId'];
-    $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+    $pdo = new PDO("mysql:host={$mysqlIpAddress};dbname=esignature", $mysqlUser, $mysqlPassword);
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$contractOwner]);
     // the row number of the last inserted item so you can go back and edit it

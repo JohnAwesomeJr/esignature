@@ -1,16 +1,16 @@
 <?php
 
-require "/var/www/html/esignature/.env";
 
 class db
 {
     public function selectSql($sql, $prepairedArray)
     {
-        if(!empty($sql)){
+        require "/var/www/html/esignature/.env";
+        if (!empty($sql)) {
             global $mysqlUser;
             global $mysqlPassword;
 
-            $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+            $pdo = new PDO("mysql:host={$mysqlIpAddress};dbname=esignature", $mysqlUser, $mysqlPassword);
             $stmt = $pdo->prepare($sql);
             $stmt->execute([...$prepairedArray]);
             $rows = $stmt->fetchAll();
@@ -19,11 +19,12 @@ class db
     }
     public function createSql($sql, $prepairedArray)
     {
-        if(!empty($sql)){
+        require "/var/www/html/esignature/.env";
+        if (!empty($sql)) {
             global $mysqlUser;
             global $mysqlPassword;
 
-            $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+            $pdo = new PDO("mysql:host={$mysqlIpAddress};dbname=esignature", $mysqlUser, $mysqlPassword);
             $stmt = $pdo->prepare($sql);
             $stmt->execute([...$prepairedArray]);
             $rows = $pdo->lastInsertId();
@@ -32,11 +33,12 @@ class db
     }
     public function updateSql($sql, $prepairedArray)
     {
-        if(!empty($sql)){
+        require "/var/www/html/esignature/.env";
+        if (!empty($sql)) {
             global $mysqlUser;
             global $mysqlPassword;
 
-            $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+            $pdo = new PDO("mysql:host={$mysqlIpAddress};dbname=esignature", $mysqlUser, $mysqlPassword);
             $stmt = $pdo->prepare($sql);
             $stmt->execute([...$prepairedArray]);
             $rows = $stmt->fetchAll();
@@ -45,11 +47,12 @@ class db
     }
     public function deleteSql($sql, $prepairedArray)
     {
-        if(!empty($sql)){
+        require "/var/www/html/esignature/.env";
+        if (!empty($sql)) {
             global $mysqlUser;
             global $mysqlPassword;
 
-            $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+            $pdo = new PDO("mysql:host={$mysqlIpAddress};dbname=esignature", $mysqlUser, $mysqlPassword);
             $stmt = $pdo->prepare($sql);
             $stmt->execute([...$prepairedArray]);
         }

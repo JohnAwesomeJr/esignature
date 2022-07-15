@@ -13,7 +13,7 @@ error_reporting(E_ALL);
 
   <?php
 
-$sql = <<<EOD
+  $sql = <<<EOD
 SELECT contractParentUser
 FROM esignature.contract
 WHERE contractId = ?;
@@ -21,7 +21,7 @@ EOD;
 
   $contractNumber = $_GET['contractNumber'];
 
-  $pdo = new PDO('mysql:host=localhost;dbname=esignature', $mysqlUser, $mysqlPassword);
+  $pdo = new PDO("mysql:host={$mysqlIpAddress};dbname=esignature", $mysqlUser, $mysqlPassword);
 
   $stmt = $pdo->prepare($sql);
   $stmt->execute([$contractNumber]);
@@ -57,7 +57,7 @@ EOD;
 
     // SELECT
     $db = new db();
-$selectExample = <<<EOD
+    $selectExample = <<<EOD
 SELECT * 
 FROM esignature.contract
 WHERE contractId = ?;
