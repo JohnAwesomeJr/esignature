@@ -1,6 +1,6 @@
-.env
-pdfFiles/*
-!pdfFiles/gitFolderHolder
+html/esignature/.env
+html/esignature/pdfFiles/*
+!html/esignature/pdfFiles/gitFolderHolder
 
-signature/signatureUploads/*
-!signature/signatureUploads/gitFolderHolder
+html/esignature/signature/signatureUploads/*
+!html/esignature/signature/signatureUploads/gitFolderHolder

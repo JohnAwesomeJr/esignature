@@ -1,0 +1,30 @@
+version: "3.9"
+services:
+  db:
+    image: mariadb:10.7.4
+    volumes:
+      - "./mysql:/var/lib/mysql/"
+    environment:
+      MYSQL_DATABASE: esignature
+      MYSQL_USER: lamp_docker
+      MYSQL_PASSWORD: password
+      MARIADB_RANDOM_ROOT_PASSWORD: 1
+    ports:
+      - "33061:3306"
+    networks:
+      - lampDocker
+  web:
+    depends_on:
+      - db
+    image: mylamp:latest
+    volumes:
+      - "./html:/var/www/html/"
+      - "./php:/usr/local/etc/php/"
+    ports:
+      - 80:80
+      - 433:433
+    networks:
+      - lampDocker
+networks:
+  lampDocker: 
+    driver: bridge

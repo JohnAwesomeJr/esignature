@@ -1,0 +1,79 @@
+.content {
+  width: 90vw !important;
+}
+#editor {
+  width: 100% !important;
+}
+.pell-button-selected {
+  background: orange !important;
+}
+
+.pell-actionbar {
+  width: 100% !important;
+}
+
+.pell-button:nth-child(3) {
+  display: none;
+}
+
+.pell-button:nth-child(4) {
+  display: none;
+}
+.pell-button:nth-child(8) {
+  display: none;
+}
+.pell-button:nth-child(11) {
+  display: none;
+}
+.pell-button:nth-child(12) {
+  display: none;
+}
+.pell-button:nth-child(13) {
+  display: none;
+}
+.pell-button:nth-child(14) {
+  display: none;
+}
+
+.slideOutPanel {
+  background: #f5f5f5;
+  position: fixed;
+  right: 0px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 360px;
+  height: calc(100vh - 50px);
+  transition: all 1s;
+  /* box-shadow: -7px -20px 20px 0px rgb(23 47 90 / 25%); */
+  box-shadow: -9px 17px 20px 0px rgb(23 47 90 / 25%);
+  padding: 20px;
+  border-radius: 20px 20px 20px 20px;
+}
+
+.smallButton {
+  padding: 5px !important;
+  margin: 5px !important;
+  width: 100px !important;
+  height: 50px !important;
+  border-radius: 15px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+#darkMenuCover {
+  /* width: 500px; */
+  /* height: 500px; */
+  background: #00000000;
+
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+
+  transition: all 1s;
+  pointer-events: none;
+}
