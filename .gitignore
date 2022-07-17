@@ -4,3 +4,6 @@ html/esignature/pdfFiles/*
 
 html/esignature/signature/signatureUploads/*
 !html/esignature/signature/signatureUploads/gitFolderHolder
+
+mysql/*
+!mysql/gitFolderHolder
