@@ -10,6 +10,7 @@
 1. Run docker compose.
 1. Set File permissions.
 1. Run database migration.
+1. update the .env file
 
 
 ### STEP 1 (build the custom Docker server image)
@@ -48,4 +49,15 @@ USE esignature; SOURCE /mysqlSetup/databaseBackup.sql; exit;
 ```
 ```
 exit
+```
+### STEP 5 (update the .env file)
+update all of the SMTP settings for sending emails.
+
+The database variables you dont need to change.
+
+```
+cp html/esignature/sample.env html/esignature/.env
+```
+```
+sudo nano html/esignature/.env
 ```
