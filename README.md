@@ -61,3 +61,9 @@ cp html/esignature/sample.env html/esignature/.env
 ```
 sudo nano html/esignature/.env
 ```
+
+navigate to your localhost to see if it works
+Go to your **BROWSER**
+```
+http://localhost/esignature/
+```
