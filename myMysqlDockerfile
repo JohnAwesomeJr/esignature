@@ -1,0 +1,3 @@
+FROM mariadb:10.7.4
+COPY mysqlSetup/* /mysqlSetup/
+RUN ["chmod", "777", "-R" , "/mysqlSetup"]
