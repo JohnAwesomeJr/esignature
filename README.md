@@ -45,7 +45,7 @@ mysql -ulamp_docker -ppassword
 ```
 Run the migration to setup the database.
 ```
-USE esignature; SOURCE /mysqlSetup/databaseBackup.sql; exit;
+USE esignature; SOURCE /mysqlsetup/databaseBackup.sql; exit;
 ```
 ```
 exit
